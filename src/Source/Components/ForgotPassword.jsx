@@ -69,11 +69,11 @@ export default function ForgotPassword() {
     function ChangeTitle() {
         
         if (stage == "1") {
-            return "Enter Phone No."
+            return "1. Enter Phone No."
         } else if (stage == "2") {
-            return "Enter OTP"
+            return "2. Enter OTP"
         } else {
-            return "Reset Password"
+            return "3. Reset Password"
         }
     }
 
@@ -85,18 +85,28 @@ export default function ForgotPassword() {
       </Text>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent minH={"50vh"}>
+        <ModalContent
+          backgroundImage={
+            "https://t4.ftcdn.net/jpg/00/96/16/55/360_F_96165533_wniDWHng1aa8S2wMU84VYuajAuORUCuH.jpg"
+          }
+          minH={"40vh"}
+        >
           <ModalHeader>
             <ChangeTitle />
           </ModalHeader>
           <ModalCloseButton />
 
-          <ModalBody display={'flex'} alignItems={'center'} justifyContent={"space-evenly"} >
+          <ModalBody
+            display={"flex"}
+            alignItems={"center"}
+            justifyContent={"space-evenly"}
+          >
             {stage == "1" && (
-              <Stack w="70%" >
+              <Stack w="70%">
                 <InputGroup size={"sm"}>
                   <InputLeftAddon children="+91" />
                   <Input
+                    bg="white"
                     required
                     type="number"
                     focusBorderColor="lime"
@@ -106,23 +116,30 @@ export default function ForgotPassword() {
                   />
                 </InputGroup>
 
-                <Button onClick={()=>setStage(2)} colorScheme="messenger">Get OTP</Button>
+                <Button onClick={() => setStage(2)} colorScheme="messenger">
+                  Get OTP
+                </Button>
               </Stack>
             )}
 
             {stage == 2 && (
               <Stack w="100%">
                 <HStack m={"auto"}>
-                  <PinInput placeholder="🔑">
-                    <PinInputField />
-                    <PinInputField />
-                    <PinInputField />
-                    <PinInputField />
-                    <PinInputField />
-                    <PinInputField />
+                  <PinInput bg="white" placeholder="🔑">
+                    <PinInputField bg="white" />
+                    <PinInputField bg="white" />
+                    <PinInputField bg="white" />
+                    <PinInputField bg="white" />
+                    <PinInputField bg="white" />
+                    <PinInputField bg="white" />
                   </PinInput>
                 </HStack>
-                <Button onClick={()=>setStage(3)} colorScheme="messenger" m="auto" w="70%">
+                <Button
+                  onClick={() => setStage(3)}
+                  colorScheme="messenger"
+                  m="auto"
+                  w="70%"
+                >
                   Submit
                 </Button>
               </Stack>
@@ -131,6 +148,7 @@ export default function ForgotPassword() {
               <Stack>
                 <InputGroup size="md">
                   <Input
+                    bg="white"
                     pr="4.5rem"
                     type={show ? "text" : "password"}
                     placeholder="Enter password"
@@ -143,7 +161,9 @@ export default function ForgotPassword() {
                     {show ? <ViewIcon /> : <ViewOffIcon />}
                   </InputRightElement>
                 </InputGroup>
-                <Button onClick={()=>setStage(1)} colorScheme="teal">Reset Password</Button>
+                <Button onClick={() => setStage(1)} colorScheme="teal">
+                  Reset Password
+                </Button>
               </Stack>
             )}
           </ModalBody>
