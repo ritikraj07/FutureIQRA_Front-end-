@@ -35,12 +35,15 @@ export default function SignUp() {
   const [isVerify, setVerify] = useState(false);
   const [isDisabled, setDisable] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [optloading, setOPTloading] = useState(false)
   const toast = useToast();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const GetOTP = async () => {
+    setOPTloading(true)
     if (!checkFields()) {
+      setOPTloading(false)
       return;
     }
 
@@ -57,7 +60,7 @@ export default function SignUp() {
       navigate("/login");
       return;
     } else {
-      console.log("no account found with this number");
+      // console.log("no account found with this number");
     }
 
     phone = "+91" + phone;
@@ -73,6 +76,8 @@ export default function SignUp() {
     } catch (error) {
       console.log(error);
     }
+    setOPTloading(false)
+
   };
 
   async function VerifyOTP(event) {
@@ -235,7 +240,6 @@ export default function SignUp() {
               <InputGroup size={"sm"}>
                 <InputLeftAddon children="Refer Code" />
                 <Input
-                  
                   type="number"
                   value={referCode}
                   disabled={isDisabled}
@@ -289,13 +293,22 @@ export default function SignUp() {
                   onChange={(e) => setOTP(e.target.value)}
                 />
                 <InputRightAddon
-                  children="Get OTP"
+                  children={
+                    <Button
+                      onClick={() => {
+                        
+                        GetOTP();
+                        
+                      }}
+                      isLoading={optloading}
+                      color={"white"}
+                      bg={"transparent"}
+                      _hover={{}}
+                    >
+                      Get OPT
+                    </Button>
+                  }
                   bg={"#2658e6"}
-                  color="white"
-                  cursor={"pointer"}
-                  onClick={() => {
-                    GetOTP();
-                  }}
                 />
               </InputGroup>
               <Button
