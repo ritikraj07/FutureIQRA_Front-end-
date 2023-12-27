@@ -19,6 +19,7 @@ import { Auth } from "../Services/firebase";
 import { useDispatch } from "react-redux";
 import { GetRequest } from "../Services/ApiCall";
 import { setUser } from "../Redux/Reducers/UserReducers";
+import ForgotPassword from "../Components/ForgotPassword";
 
 export default function Login() {
   const url = import.meta.env.VITE_API_URL;
@@ -97,9 +98,10 @@ export default function Login() {
       backgroundColor={"#2658e6"}
       py={30}
       px={20}
+      pos={'relative'}
     >
       <Image
-        pos={"fixed"}
+        pos={"absolute"}
         w={"80px"}
         top={[1, 5]}
         left={[1, 30]}
@@ -177,15 +179,7 @@ export default function Login() {
               SignUp Now
             </Text>
 
-            {/* <Text
-              color="#2658e6"
-              cursor={"pointer"}
-              onClick={() => {
-                navigate("/signup");
-              }}
-            >
-              Forgot Password
-            </Text> */}
+           <ForgotPassword />
           </Flex>
         </Box>
       </Box>

@@ -192,9 +192,10 @@ export default function SignUp() {
       backgroundColor={"#2658e6"}
       py={30}
       px={20}
+      pos={'relative'}
     >
       <Image
-        pos={"fixed"}
+        pos={'absolute'}
         w={"80px"}
         top={[1, 5]}
         left={[1, 30]}
