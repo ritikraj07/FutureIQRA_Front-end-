@@ -43,7 +43,7 @@ export default function AdminQnA() {
     fetch(`${url}q&a/all/`)
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         const { status, data } = result;
         if (status) {
           Set_Question(data);
@@ -74,7 +74,7 @@ export default function AdminQnA() {
   }
 
   function SearchQuestion() {
-    console.log(query)
+    // console.log(query)
     GetRequest(`${url}q&a/search?q=${query}`)
       .then((res) => {
         let { status, data } = res;
@@ -94,9 +94,13 @@ export default function AdminQnA() {
         console.log(error);
       });
   }
+
+
   const QuestionBox = ({ question }) => {
+    
     const [answer, setAnswer] = useState(question.answer);
     let token = JSON.parse(localStorage.getItem("token"));
+
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", `Bearer ${token}`);
@@ -123,7 +127,7 @@ export default function AdminQnA() {
       fetch(`${url}q&a/id/${question._id}`, requestOptions)
         .then((response) => response.json())
         .then((result) => {
-          console.log(result);
+          // console.log(result);
           toast({
             title: "Answer Added",
             status: "success",
@@ -160,7 +164,7 @@ export default function AdminQnA() {
       fetch(`${url}q&a/${question._id}`, requestOptions)
         .then((response) => response.json())
         .then((result) => {
-          console.log(result)
+          // console.log(result)
            toast({
              title: "Question Deleted Successfully",
              status: "info",
@@ -179,6 +183,7 @@ export default function AdminQnA() {
         });
     }
 
+
     return (
       <Box
         bg="#272831"
@@ -190,7 +195,10 @@ export default function AdminQnA() {
       >
         {/* user who asked question */}
         <Flex my={["10px"]} alignItems={"center"}>
-          <Avatar src={photo || "https://bit.ly/sage-adebayo"} />
+          <Avatar
+            src={question?.user[0]?.image}
+            alt={question?.user[0]?.name}
+          />
           <Flex
             mx={["10px"]}
             flexDir={["column", "column", "row"]}
@@ -230,7 +238,7 @@ export default function AdminQnA() {
 
         <Flex mt={["10px"]}>
           <Button onClick={() => PostAnswer()}>Save</Button>&nbsp; &nbsp; &nbsp;
-          <Button onClick={()=> DeleteQuestion()}>Delete</Button>
+          <Button onClick={() => DeleteQuestion()}>Delete</Button>
         </Flex>
       </Box>
     );
@@ -253,7 +261,7 @@ export default function AdminQnA() {
   function AddQuestion() {
     PostRequest(`${url}q&a/`, { question: myQandA.myQuestion, answer: myQandA.myAnswer })
       .then((res) => {
-        console.log(res)
+        // console.log(res)
         if (res.status) {
           toast({
             title: "Question Add Successfully",

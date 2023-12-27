@@ -9,22 +9,15 @@ document.addEventListener('contextmenu', (event) => {
   event.preventDefault();
 });
   return (
-    <Flex position={'relative'}
+    <Flex
+      
       minH={"100vh"}
-      flexDir={"column"} justifyContent={"space-between"}>
+      flexDir={"column"}
+      justifyContent={"space-between"}
+    >
       <AllRoutes />
       <Copyright />
-      {/* <Button
-        position={'absolute'}
-        top={'50%'}
-        left={'50%'}
-        isLoading
-        
-
-        // spinner={<BeatLoader size={8} color="white" />}
-      >
-        Click me
-      </Button> */}
+   
     </Flex>
   );
 }

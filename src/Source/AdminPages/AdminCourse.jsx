@@ -107,7 +107,7 @@ export default function AdminCourse() {
         justifyContent={["center", "center", "space-around"]}
         
         flexWrap={"wrap"}
-        border={"1px solid green"}
+        // border={"1px solid green"}
         h="90vh" // Set height to full viewport height
         overflowY="scroll" // Enable vertical scrollbar
         sx={{
@@ -122,7 +122,7 @@ export default function AdminCourse() {
         }}
       >
         {courses?.map((course) => {
-          return <CourseBox course={course} ResetCourse={ResetCourse} />;
+          return <CourseBox key={course._id} course={course} ResetCourse={ResetCourse} />;
         })}
       </Flex>
     </Box>

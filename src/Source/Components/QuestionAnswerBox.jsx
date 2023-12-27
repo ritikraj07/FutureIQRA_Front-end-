@@ -16,13 +16,13 @@ import { PatchRequest } from "../Services/ApiCall";
 function QuestionAnswerBox({ question, index, EditLike}) {
   const url = import.meta.env.VITE_API_URL;
   const toast = useToast();
-  console.log("from question box==>", question);
+  // console.log("from question box==>", question);
 
   
 
 
   let { name, photo, phone } = question?.user[0];
-  console.log('render qa box');
+  // console.log('render qa box');
 
   function formatDate(inputDate) {
     const options = { year: "numeric", month: "long", day: "numeric" };

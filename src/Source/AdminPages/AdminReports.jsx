@@ -41,6 +41,7 @@ export default function AdminReports() {
   }, []);
 
   async function GetAllReport() {
+    
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append(
@@ -57,7 +58,7 @@ export default function AdminReports() {
     fetch(`${url}report/all`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         setReports(result.data);
       })
       .catch((error) => {
@@ -197,7 +198,7 @@ export default function AdminReports() {
           </Flex>
         </Th>
         <Td>
-          <Text onFocus={1} onClick={onOpen}>{report.report}</Text>
+          <Text noOfLines={1} onClick={onOpen}>{report.report}</Text>
         </Td>
         <Td noOfLines={1} >{formatReadableDate(report.createdAt)}</Td>
       </Tr>

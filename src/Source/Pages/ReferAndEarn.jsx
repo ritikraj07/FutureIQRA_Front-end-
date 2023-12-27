@@ -58,23 +58,23 @@ export default function ReferAndEarn() {
     <Box pb={[10]} bg="#2658e6">
       <Box
         // border={"1px solid red"}
+        
         w={"100%"}
         // h={"5%"}
         px={[1, 10]}
-        py={5}
+        // py={5}
         display={"flex"}
         alignItems={"center"}
         justifyContent={"space-between"}
       >
         <Image
-          w={"100px"}
-          h="40px"
-          src="src\Source\Assets\referralrich.png"
-          alt="Referral Rich"
+          w={"80px"}
+          h="80px"
+          src="https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYR8GeqMZenKekmh_Y-RZIPMrFPE_ykV7e79-vDsCyqAEHh6HzMwigDyEpRBuBylupqLDCtQlwcCRS_uGn6MZLQia_0B=w1920-h907"
+          alt="FutureIQRA"
         />
-
         <Heading display={["none", "none", "block"]} color={"white"}>
-          Referral Rich
+          Future IQRA
         </Heading>
 
         <Flex alignItems={"center"}>
@@ -90,7 +90,16 @@ export default function ReferAndEarn() {
         </Flex>
       </Box>
 
-      <Flex padding={[1, 10]} alignItems={"center"} justifyContent={"center"}>
+      <Flex
+        w={["98%", "95%", "90%"]}
+        m={"auto"}
+        bg="white"
+        borderRadius={"10"}
+        p={[1, 10]}
+        alignItems={"center"}
+        justifyContent={"center"}
+        mb={'10px'}
+      >
         <Box w={["30%"]} display={["none", "none", "block"]}>
           <Image
             w={"100%"}
@@ -102,24 +111,28 @@ export default function ReferAndEarn() {
         </Box>
 
         <Box p={[2, 10]}>
-          <Text color={"white"} my={-3} fontSize={["2xl", "3xl", "5xl"]}>
+          <Text color={"black"} my={-3} fontSize={["2xl", "3xl", "5xl"]}>
             Hey,{" "}
-            <span style={{ color: "yellow", fontWeight: "bold" }}> {name}</span>
+            <span style={{ color: "gold", fontWeight: "bold" }}> {name}</span>
           </Text>
-          <Text color={"white"} fontSize={["xl", "2xl", "3xl", "4xl"]}>
+          <Text color={"black"} fontSize={["xl", "2xl", "3xl", "4xl"]}>
             Share with your friends and Start earning
           </Text>
           <Flex color="white">
-            <Text mr={[10]}>Refer Code:</Text>
-            <Text>{referCode}</Text>
+            <Text mr={[10]}>Refer Code: {referCode}</Text>
           </Flex>
 
-          <Button colorScheme="whatsapp" onClick={() => copyToClipboard()}>
+          <Button
+            my={["20px"]}
+            colorScheme="whatsapp"
+            bg={"blue.500"}
+            onClick={() => copyToClipboard()}
+          >
             Click to copy link
           </Button>
 
-          <Box w={"100%"} bg={"white"} my={10} borderRadius={10} px={10} pb={5}>
-            <Text textAlign={"center"} fontWeight={"bold"} fontSize={["2xl"]}>
+          <Box w={"100%"}  my={10} borderRadius={10} px={10} pb={5}>
+            <Text color="teal" textAlign={"center"} fontWeight={"bold"} fontSize={["2xl"]}>
               Challenge
             </Text>
             <List mb={2}>

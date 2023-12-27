@@ -174,10 +174,10 @@ export default function Home() {
         justifyContent={"space-between"}
       >
         <Image
-          w={"60px"}
-          h="60px"
-          src="https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYT4pJC1nPny1dBkj3MZPA_ib-RBu24aZ3vG-9ltTDBixLf8x5Cv5qSehG5mH-kY_fkURG2R7ZcTaG-PQaeoPX1S8HADFg=w1920-h907"
-          alt="Referral Rich"
+          w={"100px"}
+          h="100px"
+          src="https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYR8GeqMZenKekmh_Y-RZIPMrFPE_ykV7e79-vDsCyqAEHh6HzMwigDyEpRBuBylupqLDCtQlwcCRS_uGn6MZLQia_0B=w1920-h907"
+          alt="FutureIQRA"
         />
 
         <Heading display={["none", "none", "block"]} color={"white"}>
@@ -213,7 +213,7 @@ export default function Home() {
           {/* photo input  */}
 
           <Box ml="3">
-            <Text color={"white"} fontWeight="bold">
+            <Text noOfLines={1} color={"white"} fontWeight="bold">
               {name}
               {/* <Badge ml="1" colorScheme="green">
                 #{rank}

@@ -7,6 +7,7 @@ import LeaderList from "../Components/LeaderList";
 import { useNavigate } from "react-router-dom";
 import { GetRequest } from "../Services/ApiCall";
 import { useSelector } from "react-redux";
+import Copyright from "../Components/CopyRight";
 
 export default function LeaderBoard() {
   const url = import.meta.env.VITE_API_URL;
@@ -44,7 +45,11 @@ export default function LeaderBoard() {
 
 
   return (
-    <Box height={window.innerHeight} backgroundColor={"#2658e6"}>
+    <Box
+      height={'100%'}
+      backgroundColor={"#2658e6"}
+      minH={'100vh'}
+    >
       <Flex alignItems={"center"}>
         <ChevronLeftIcon
           onClick={() => navigate("/")}
@@ -58,10 +63,10 @@ export default function LeaderBoard() {
 
       <Flex
         bg={"white"}
-        paddingTop={1}
+        p={['1px','2px','5px']}
         bgGradient="linear(to-b, white, #2658e6)"
         justifyContent={["center", "center", "space-around"]}
-        alignItems={["center"]}
+        alignItems={["center","center","center","start"]}
         flexDir={["column", "column", "column", "row"]}
       >
         {leaderboard.length > 2 && <TopLeaders leaderboard={leaderboard} />}
@@ -71,6 +76,7 @@ export default function LeaderBoard() {
           bg="#32085F"
           p={"10px"}
           borderRadius={"20px"}
+          h={'100%'}
         >
           <Text
             fontSize={"2xl"}
@@ -82,7 +88,7 @@ export default function LeaderBoard() {
             Meet Our Leaders{" "}
           </Text>
           <Box
-            h={window.innerHeight - 120}
+            h={'100%'}
             overflowY={"hidden"}
             overflow={"scroll"}
             css={{
@@ -123,6 +129,7 @@ export default function LeaderBoard() {
           </Box>
         </Box>
       </Flex>
+      {/* <Copyright /> */}
     </Box>
   );
 }

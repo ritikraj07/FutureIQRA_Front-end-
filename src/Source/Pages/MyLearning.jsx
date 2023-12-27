@@ -115,7 +115,7 @@ const NoContentBox = () => {
           flexWrap={"wrap"}
         >
           {courses?.map((course) => {
-            return <CourseTemplate course={course} watch={true} />;
+            return <CourseTemplate key={course._id} course={course} watch={true} />;
           })}
 
           {courses.length == 0 && (

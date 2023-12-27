@@ -106,7 +106,7 @@ export default function CourseDes() {
         flexWrap={"wrap"}
       >
         {courses?.map((course) => {
-          return <CourseTemplate course={course} />;
+          return <CourseTemplate key={course._id} course={course} />;
         })}
 
         {courses?.length == 0 && (

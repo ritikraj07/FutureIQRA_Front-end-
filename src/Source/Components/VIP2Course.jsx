@@ -14,9 +14,9 @@ const Vip2Course = () => {
   return (
     <Flex
       flexDir={["column"]}
-      p={["20px 50px"]}
+      p={["5px", "20px 50px"]}
       w={["100%"]}
-      h={["300px"]}
+      // h={["300px"]}
       bg={"rgb(28,29,31)"}
     >
       <Heading color={"gold"} textAlign={"center"}>

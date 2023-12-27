@@ -2,7 +2,7 @@
 async function GetRequest(url) {
     let data = await fetch(url)
     data = await data.json()
-    console.log("GetRequest", data)
+    // console.log("GetRequest", data)
     return data
 }
 
@@ -20,10 +20,10 @@ async function PostRequest(url, data) {
         });
 
         const result = await response.json();
-        console.log("Success:", result);
+        // console.log("Success:", result);
         return result
     } catch (error) {
-        console.error("Error:", error);
+        // console.error("Error:", error);
     }
 }
 
@@ -42,7 +42,7 @@ function GetDataFromToken(token) {
     );
 
     let result = JSON.parse(jsonPayload);
-    console.log("auth", result);
+    // console.log("auth", result);
     return result
 
 }
@@ -80,7 +80,7 @@ async function DeleteRequest(url) {
         });
 
         const result = await response.json();
-        console.log('Success:', result);
+        // console.log('Success:', result);
         return result;
     } catch (error) {
         console.error('Error:', error);

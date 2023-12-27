@@ -22,7 +22,7 @@ import { setUser } from "../Redux/Reducers/UserReducers";
 
 export default function SignUp() {
   const url = import.meta.env.VITE_API_URL;
-  let {refercode} = useParams() || ''
+  let { refercode } = useParams() || "";
   // console.log(refercode)
   const [referCode, setReferCode] = useState(refercode);
   // console.log('state', referCode)
@@ -34,17 +34,19 @@ export default function SignUp() {
   const [photo, setPhoto] = useState("");
   const [isVerify, setVerify] = useState(false);
   const [isDisabled, setDisable] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
- 
   const GetOTP = async () => {
     if (!checkFields()) {
-      return
+      return;
     }
 
-    let isUserExistWithThisNumber = await GetRequest(url + `user/phone/${phone}`);
+    let isUserExistWithThisNumber = await GetRequest(
+      url + `user/phone/${phone}`
+    );
     if (isUserExistWithThisNumber) {
       toast({
         title: "Account Already Exist",
@@ -73,14 +75,17 @@ export default function SignUp() {
     }
   };
 
+  async function VerifyOTP(event) {
+    setIsLoading(true);
+    event.preventDefault();
 
-  async function VerifyOTP() {
-    
-    user.confirm(otp)
+    user
+      .confirm(otp)
       .then((res) => {
-        console.log(res)
-        Register()
-      }).catch((error) => {
+        // console.log(res);
+        Register();
+      })
+      .catch((error) => {
         console.log(error);
         toast({
           title: "something went wrong",
@@ -88,9 +93,8 @@ export default function SignUp() {
           duration: 3000,
           description: error,
         });
-    })
-
-
+      });
+    setIsLoading(false);
   }
 
   const Register = async () => {
@@ -106,7 +110,6 @@ export default function SignUp() {
       return;
     }
 
-
     // create account here
 
     let data = {
@@ -118,8 +121,9 @@ export default function SignUp() {
         "https://6570556c9c603163391e8ba0--joyful-kheer-008761.netlify.app/Avatar/avatar1.jpg",
     };
 
+    setIsLoading(true)
     let result = await PostRequest(url + `user/create-account`, data);
-    console.log("==>", result);
+    // console.log("==>", result);
 
     if (result.status) {
       localStorage.setItem("token", JSON.stringify(result.token));
@@ -131,6 +135,7 @@ export default function SignUp() {
         status: "error",
         duration: 3000,
       });
+      setIsLoading(false)
     }
   };
 
@@ -185,10 +190,12 @@ export default function SignUp() {
     >
       <Image
         pos={"fixed"}
-        w={"60px"}
-        h="60px"
-        src="src\Source\Assets\referralrich.png"
-        alt="Referral Rich"
+        w={"80px"}
+        top={[1, 5]}
+        left={[1, 30]}
+        h="80px"
+        src="https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYR8GeqMZenKekmh_Y-RZIPMrFPE_ykV7e79-vDsCyqAEHh6HzMwigDyEpRBuBylupqLDCtQlwcCRS_uGn6MZLQia_0B=w1920-h907"
+        alt="FutureIQRA"
       />
       <Box w={"100%"} display={"flex"} flexDir={"column"} alignItems={"center"}>
         <Heading color={"white"}>Welcome</Heading>
@@ -210,42 +217,46 @@ export default function SignUp() {
             Register now
           </Text>
 
-          <Stack spacing={4} my={5}>
-            <InputGroup size={"sm"}>
-              <InputLeftAddon children="+91" />
-              <Input
-                type="number"
-                focusBorderColor="lime"
-                placeholder="Phone Number"
-                errorBorderColor="red"
-                disabled={isDisabled}
-                onChange={(e) => setphone(e.target.value)}
-              />
-            </InputGroup>
+          <form onSubmit={VerifyOTP}>
+            <Stack spacing={4} my={5}>
+              <InputGroup size={"sm"}>
+                <InputLeftAddon children="+91" />
+                <Input
+                  required
+                  type="number"
+                  focusBorderColor="lime"
+                  placeholder="Phone Number"
+                  errorBorderColor="red"
+                  disabled={isDisabled}
+                  onChange={(e) => setphone(e.target.value)}
+                />
+              </InputGroup>
 
-            <InputGroup size={"sm"}>
-              <InputLeftAddon children="Refer Code" />
-              <Input
-                type="number"
-                value={referCode}
-                disabled={isDisabled}
-                focusBorderColor="lime"
-                placeholder="Enter Refer Code"
-                onChange={(e) => setReferCode(e.target.value)}
-              />
-            </InputGroup>
-            <InputGroup size={"sm"}>
-              <Input
-                type="text"
-                disabled={isDisabled}
-                focusBorderColor="lime"
-                placeholder="Enter Your Name"
-                errorBorderColor="red"
-                onChange={(e) => setName(e.target.value)}
-              />
-            </InputGroup>
+              <InputGroup size={"sm"}>
+                <InputLeftAddon children="Refer Code" />
+                <Input
+                  
+                  type="number"
+                  value={referCode}
+                  disabled={isDisabled}
+                  focusBorderColor="lime"
+                  placeholder="Enter Refer Code"
+                  onChange={(e) => setReferCode(e.target.value)}
+                />
+              </InputGroup>
+              <InputGroup size={"sm"}>
+                <Input
+                  required
+                  type="text"
+                  disabled={isDisabled}
+                  focusBorderColor="lime"
+                  placeholder="Enter Your Name"
+                  errorBorderColor="red"
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </InputGroup>
 
-            {/* <InputGroup size={"sm"}>
+              {/* <InputGroup size={"sm"}>
               <Input
                 type="file"
                 disabled={isDisabled}
@@ -254,49 +265,53 @@ export default function SignUp() {
                 accept="image/*"
               />
             </InputGroup> */}
-            <Box my={-3} id="recaptcha"></Box>
+              <Box my={-3} id="recaptcha"></Box>
 
-            <InputGroup size={"sm"}>
-              <Input
-                type="text"
-                disabled={isDisabled}
-                focusBorderColor="lime"
-                placeholder="Create a 6 digit login password"
-                errorBorderColor="red"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </InputGroup>
+              <InputGroup size={"sm"}>
+                <Input
+                  required
+                  type="text"
+                  disabled={isDisabled}
+                  focusBorderColor="lime"
+                  placeholder="Create a 6 digit login password"
+                  errorBorderColor="red"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </InputGroup>
 
-            <InputGroup size={"sm"}>
-              <InputLeftAddon children="OTP" />
-              <Input
-                type="number"
-                focusBorderColor="lime"
-                placeholder="Enter OTP"
-                onChange={(e) => setOTP(e.target.value)}
-              />
-              <InputRightAddon
-                children="Get OTP"
-                bg={"#2658e6"}
-                color="white"
-                cursor={"pointer"}
-                onClick={() => {
-                  GetOTP();
-                }}
-              />
-            </InputGroup>
-            <Button
-              // spinner={<BeatLoader size={8} color="white" />}
-              loadingText="Registering You"
-              isLoading={false}
-              colorScheme="messenger"
-              variant="solid"
-              isDisabled={!isDisabled}
-              onClick={VerifyOTP}
-            >
-              Register Now
-            </Button>
-          </Stack>
+              <InputGroup size={"sm"}>
+                <InputLeftAddon children="OTP" />
+                <Input
+                  required
+                  type="number"
+                  focusBorderColor="lime"
+                  placeholder="Enter OTP"
+                  onChange={(e) => setOTP(e.target.value)}
+                />
+                <InputRightAddon
+                  children="Get OTP"
+                  bg={"#2658e6"}
+                  color="white"
+                  cursor={"pointer"}
+                  onClick={() => {
+                    GetOTP();
+                  }}
+                />
+              </InputGroup>
+              <Button
+                loadingText="welcome to FutureIQRa"
+                isLoading={isLoading}
+                colorScheme="messenger"
+                variant="solid"
+                isDisabled={!isDisabled}
+                // onClick={VerifyOTP}
+                type="submit"
+              >
+                Register Now
+              </Button>
+            </Stack>
+          </form>
+
           <Text
             color="#2658e6"
             cursor={"pointer"}

@@ -26,7 +26,7 @@ const CourseSlice = createSlice({
                 state.description = description,
                 state.intro = intro,
                 state.duration = duration            
-            console.log('current state',current(state))
+            // console.log('current state',current(state))
         },
 
         

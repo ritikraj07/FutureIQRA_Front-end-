@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/react";
 
 export default function Members({ member }) {
-  console.log('==member==>', member)
+  // console.log('==member==>', member)
     return (
       <Tr key={member._id} >
         <Td>

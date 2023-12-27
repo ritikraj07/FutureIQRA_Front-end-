@@ -51,7 +51,7 @@ export default function WatchCourse() {
   useEffect(() => {
     GetRequest(`${url}course/search?id=${course_id}`).then((res) => {
       if (res.status) {
-        console.log(res.data);
+        // console.log(res.data);
         dispatch(setCourse(res.data));
       } else {
         toast({

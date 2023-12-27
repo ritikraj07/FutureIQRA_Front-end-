@@ -43,28 +43,28 @@ export default function QuestionAnswer() {
 
   useEffect(() => {
     getQuestion()
-    console.log('43 first useEffect')
+    // console.log('43 first useEffect')
   }, [])
     
 
   function EditLike(index, newQuestion ) {
-    console.log("==", index, newQuestion);
+    // console.log("==", index, newQuestion);
     
     let oldQuestion = All_Question;
     oldQuestion[index].liked = newQuestion.liked
     Set_Question([...oldQuestion])
-    console.log(All_Question)
+    // console.log(All_Question)
 
   }
   
 
   function getQuestion() {
-    console.log('getQuestion function')
+    // console.log('getQuestion function')
 
     fetch(`${url}q&a/all/`)
       .then((response) => response.json())
       .then((result) => {
-        console.log(result)
+        // console.log(result)
         const {status, data } = result;
         if (status) {
           Set_Question(data)
@@ -87,6 +87,7 @@ export default function QuestionAnswer() {
       function AskedAQuestion() {
         // console.log(myQuestion);
 
+        
 
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -109,7 +110,7 @@ export default function QuestionAnswer() {
         fetch(`${url}q&a/`, requestOptions)
           .then((response) => response.json())
           .then((result) => {
-            console.log(result)
+            // console.log(result)
             toast({
               title: "Question Added",
               status: "info",
@@ -159,7 +160,7 @@ export default function QuestionAnswer() {
   
   function sortMyQuestion(value) {
     let newSortData;
-    console.log(value)
+    // console.log(value)
     if (value == 'liked') {
       newSortData = All_Question.sort((b,a) => a.liked.length - b.liked.length)
     } else {
@@ -180,7 +181,7 @@ export default function QuestionAnswer() {
 
   const performSearch = (value) => {
 
-     console.log(value)
+    //  console.log(value)
      GetRequest(`${url}q&a/search?q=${value}`)
        .then((res) => {
          let { status, data } = res
@@ -204,7 +205,7 @@ export default function QuestionAnswer() {
   
   const debounce = (func, delay) => {
      
-     console.log("timeoutId===>", timeoutId)
+    //  console.log("timeoutId===>", timeoutId)
      return (value) => {
        clearTimeout(timeoutId.current);
        timeoutId.current = setTimeout(() => {
@@ -248,10 +249,10 @@ export default function QuestionAnswer() {
         justifyContent={"space-between"}
       >
         <Image
-          w={"40px"}
-          h={"40px"}
-          src="src\Source\Assets\referralrich.png"
-          alt="Referral Rich"
+          w={"80px"}
+          h="80px"
+          src="https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYR8GeqMZenKekmh_Y-RZIPMrFPE_ykV7e79-vDsCyqAEHh6HzMwigDyEpRBuBylupqLDCtQlwcCRS_uGn6MZLQia_0B=w1920-h907"
+          alt="FutureIQRA"
         />
 
         <Flex alignItems={"center"}>
@@ -268,8 +269,8 @@ export default function QuestionAnswer() {
       <Flex
         // border={"1px solid red"}
         w={"100%"}
-        alignItems={"flex-start"}
-        justifyContent={"space-between"}
+        alignItems={["center", "center", "center", "flex-start"]}
+        justifyContent={["center", "space-between"]}
         flexDir={["column-reverse", "column-reverse", "column-reverse", "row"]}
       >
         <Box
@@ -307,16 +308,17 @@ export default function QuestionAnswer() {
           </Box>
 
           {/* question and aswer box */}
-          {All_Question?.map((question, i) =>{ 
-            if(question.answer!=''){
-             return <QuestionAnswerBox
-              key={question._id}
-              question={question}
-              index={i}
-              EditLike={EditLike}
-            />
+          {All_Question?.map((question, i) => {
+            if (question.answer != "") {
+              return (
+                <QuestionAnswerBox
+                  key={question._id}
+                  question={question}
+                  index={i}
+                  EditLike={EditLike}
+                />
+              );
             }
-           
           })}
         </Box>
 

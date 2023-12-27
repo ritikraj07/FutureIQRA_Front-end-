@@ -43,7 +43,7 @@ export default function AdminHome() {
 
   function GetAllUsers() {
     GetRequest(`${url}user/all`).then((res) => {
-      console.log(res)
+      // console.log(res)
       if (res.status) {
         setUser(res.data.users);
         setUserPlan(res.data.userCounts);
