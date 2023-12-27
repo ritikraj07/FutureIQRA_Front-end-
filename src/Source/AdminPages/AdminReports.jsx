@@ -128,20 +128,26 @@ export default function AdminReports() {
 
   const ReportBox = ({ report }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    // const openGmailAndSendMessage = (emailAddress, subject) => {
-    //   const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}&su=${encodeURIComponent(
-    //     subject
-    //   )}`;
-    //   window.open(gmailLink, "_blank");
-    // };
+   
 
     const openGmailAndSendMessage = (emailAddress, subject) => {
-      const emailLink = `mailto:${emailAddress}?subject=${encodeURIComponent(
-        subject
-      )}`;
-      window.open(emailLink, "_blank");
-    };
+     
+       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
+       if (isMobile) {
+         const emailLink = `mailto:${emailAddress}?subject=${encodeURIComponent(
+           subject
+         )}`;
+         window.open(emailLink, "_blank");
+       } else {
+         const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}&su=${encodeURIComponent(
+           subject
+         )}`;
+         window.open(gmailLink, "_blank");
+       }
+     };
+
+    
 
   
     return (
