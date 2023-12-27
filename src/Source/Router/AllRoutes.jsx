@@ -24,7 +24,7 @@ export default function AllRoutes() {
   return (
     <Routes>
       <Route
-        path="/"
+        path="/*"
         element={
           <Auth>
             <Home />
@@ -57,6 +57,7 @@ export default function AllRoutes() {
       />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
+      
       <Route path="/signup/:refercode" element={<SignUp />} />
       <Route
         path="/q&a"
