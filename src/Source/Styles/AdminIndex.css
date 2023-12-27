@@ -1,0 +1,36 @@
+
+
+.navLinkContainer{
+    background-color: rgba(0, 0, 0, 0.697);
+    padding: 50px 4px;
+    border-radius: 3px;
+    height: 80%;
+}
+
+.activeLink, .inActiveLink{
+    width: 100%;
+    display: block;
+    margin: -10px 0px;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+.activeLink{
+    /* font-weight: bold; */
+    color: rgb(240, 240, 240);
+    background-color: rgb(232,30,98);
+    
+}
+
+.inActiveLink{
+    color: rgb(233, 231, 231);
+   
+}
+.activeLink:hover{
+    color: chartreuse;
+    font-weight: bold
+}
+
+.inActiveLink:hover{
+    background-color:  rgba(98, 98, 98, 0.401);
+    font-weight: bold;
+}

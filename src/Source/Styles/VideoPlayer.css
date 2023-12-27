@@ -1,0 +1,58 @@
+.container {
+  /* height: 450px;
+  width: 800px; */
+  /* border: 5px solid red; */
+  position: relative;
+}
+
+
+
+
+
+    .title,
+    .logo {
+      position: absolute;
+      color: white;
+      z-index: 100;
+      display: block;
+      /* background-color: rgb(184, 230, 250); */
+      /* border: 1px solid white; */
+      
+    }
+    .logo {
+      width: 13%;
+      height: 50px;
+      bottom: 0;
+      left: 0;
+    }
+    .title {
+      width: 70%;
+      height: 30%;
+      top: 0;
+      left: 0;
+    }
+    /* .container:hover .logo {
+      display: block;
+    }
+    .container:hover .title {
+      display: block;
+    } */
+    .btm {
+      position: absolute;
+      width: 20%;
+      height: 15%;
+      /* background-color: blue; */
+      /* border: 1px solid white; */
+      top: 43%;
+      left: 56%;
+    }
+
+    .fullScreenBtm {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      /* border: 1px solid white; */
+      /* background-color: rgba(40, 219, 219, 0.832); */
+    }
