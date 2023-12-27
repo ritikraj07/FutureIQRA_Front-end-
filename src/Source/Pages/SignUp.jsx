@@ -299,7 +299,7 @@ export default function SignUp() {
                 />
               </InputGroup>
               <Button
-                loadingText="welcome to FutureIQRa"
+                loadingText="welcome to FutureIQRA"
                 isLoading={isLoading}
                 colorScheme="messenger"
                 variant="solid"
