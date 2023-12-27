@@ -60,7 +60,9 @@ export default function CourseDes() {
       >
         <Heading>
           Referal Rich
-          <span style={{color:'gold', marginLeft:'10px'}} >{coursetype == "vip1" ? "VIP1" : "VIP2"}</span>
+          <span style={{ color: "gold", marginLeft: "10px" }}>
+            {coursetype == "vip1" ? "VIP1" : "VIP2"}
+          </span>
         </Heading>
         <Text onClick={() => navigate("/q&a")} as={"button"}>
           Ask Us ?
@@ -71,7 +73,7 @@ export default function CourseDes() {
         w={["100%"]}
         height={["40vh", "50vh", "60vh"]}
         backgroundImage={
-          "https://www.gettingsmart.com/wp-content/uploads/2019/09/4f06b7b2-753e-48b3-bb8f-777ca2653210_30212411048_2a1d7200e2_b.jpg"
+          "https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYR6WK7gAVzTJFqb5yg5NAULQp_vO6o3bC62RUjfq-iIGjFBgMurRsTxb3r4R2QQ4upP8IB7XPmv9qUtPGNWEOwuvUMfBw=w1920-h907"
         }
         backgroundRepeat={"repeat-x"}
       >
@@ -107,15 +109,16 @@ export default function CourseDes() {
           return <CourseTemplate course={course} />;
         })}
 
-        {courses?.length == 0 && <Box>
-          <Heading color={'black'} >Comming Soon..</Heading>
-        </Box>}
+        {courses?.length == 0 && (
+          <Box>
+            <Heading color={"black"}>Comming Soon..</Heading>
+          </Box>
+        )}
       </Flex>
       {/*  */}
       {coursetype == "vip1" ? <Vip1Course /> : <Vip2Course />}
 
       {/* copy right */}
-      
     </Box>
   );
 }
