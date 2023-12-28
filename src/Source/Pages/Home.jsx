@@ -236,14 +236,14 @@ export default function Home() {
             w={"100%"}
             alignItems={"center"}
           >
-            <Button fontSize={20} size="sm">
+            <Button fontSize={20} size="sm" p={[5]}>
               <Text color={"#25D366"} mr={2}>
                 ₹
               </Text>
               {wallet}
             </Button>
 
-            <Button w="20%" colorScheme="whatsapp" p={5} size="sm">
+            <Button colorScheme="whatsapp" p={[5]}>
               Withdraw
             </Button>
           </Flex>
