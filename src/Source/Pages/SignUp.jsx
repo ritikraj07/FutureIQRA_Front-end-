@@ -12,6 +12,7 @@ import {
   InputRightAddon,
   Button,
   useToast,
+  InputRightElement,
 } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
@@ -19,13 +20,14 @@ import { Auth } from "../Services/firebase";
 import { useSelector, useDispatch } from "react-redux";
 import { GetRequest, PostRequest } from "../Services/ApiCall";
 import { setUser } from "../Redux/Reducers/UserReducers";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 export default function SignUp() {
   const url = import.meta.env.VITE_API_URL;
   let { refercode } = useParams() || "";
   // console.log(refercode)
   const [referCode, setReferCode] = useState(refercode);
-  // console.log('state', referCode)
+  const [show, setShow] = useState(false);
   let [phone, setphone] = useState("");
   const [user, setuser] = useState(null);
   const [otp, setOTP] = useState("");
@@ -39,7 +41,7 @@ export default function SignUp() {
   const toast = useToast();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+const handleClick = () => setShow(!show);
   const GetOTP = async () => {
     setOPTloading(true)
     if (!checkFields()) {
@@ -65,7 +67,7 @@ export default function SignUp() {
 
     phone = "+91" + phone;
 
-    console.log(name, phone, referCode, password, photo);
+    // console.log(name, phone, referCode, password, photo);
 
     try {
       const recaptcha = new RecaptchaVerifier(Auth, "recaptcha", {});
@@ -192,10 +194,10 @@ export default function SignUp() {
       backgroundColor={"#2658e6"}
       py={30}
       px={20}
-      pos={'relative'}
+      pos={"relative"}
     >
       <Image
-        pos={'absolute'}
+        pos={"absolute"}
         w={"80px"}
         top={[1, 5]}
         left={[1, 30]}
@@ -274,14 +276,24 @@ export default function SignUp() {
 
               <InputGroup size={"sm"}>
                 <Input
+                  minLength={6}
+                  maxLength={20}
                   required
-                  type="text"
+                  
                   disabled={isDisabled}
                   focusBorderColor="lime"
-                  placeholder="Create a 6 digit login password"
+                  placeholder="Enter Password"
                   errorBorderColor="red"
+                  type={show ? "text" : "password"}
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                <InputRightElement
+                  onClick={handleClick}
+                  cursor={"pointer"}
+                  width="4.5rem"
+                >
+                  {show ? <ViewIcon /> : <ViewOffIcon />}
+                </InputRightElement>
               </InputGroup>
 
               <InputGroup size={"sm"}>
@@ -294,12 +306,12 @@ export default function SignUp() {
                   onChange={(e) => setOTP(e.target.value)}
                 />
                 <InputRightAddon
+                  overflow={'hidden'}
                   children={
                     <Button
+                      w={'100%'}
                       onClick={() => {
-                        
                         GetOTP();
-                        
                       }}
                       isLoading={optloading}
                       color={"white"}

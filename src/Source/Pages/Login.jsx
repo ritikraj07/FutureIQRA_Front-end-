@@ -12,7 +12,9 @@ import {
   Button,
   useToast,
   Flex,
+  InputRightElement,
 } from "@chakra-ui/react";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { Auth } from "../Services/firebase";
@@ -24,7 +26,8 @@ import ForgotPassword from "../Components/ForgotPassword";
 export default function Login() {
   const url = import.meta.env.VITE_API_URL;
   let [phone, setphone] = useState("");
-
+  const [show, setShow] = useState(false);
+  const handleClick = () => setShow(!show);
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
@@ -63,7 +66,7 @@ export default function Login() {
 
   async function Login(event) {
     event.preventDefault();
-    setIsLoading(true)
+    setIsLoading(true);
     try {
       validField();
       let data = await GetRequest(`${url}user/login/${phone}/${password}`);
@@ -89,7 +92,7 @@ export default function Login() {
         duration: 3000,
       });
     }
-    setIsLoading(false)
+    setIsLoading(false);
   }
 
   return (
@@ -98,7 +101,7 @@ export default function Login() {
       backgroundColor={"#2658e6"}
       py={30}
       px={20}
-      pos={'relative'}
+      pos={"relative"}
     >
       <Image
         pos={"absolute"}
@@ -145,12 +148,19 @@ export default function Login() {
               <InputGroup size={"sm"}>
                 <Input
                   required
-                  type="text"
+                  type={show ? "text" : "password"}
                   focusBorderColor="lime"
                   placeholder="Enter Your Password"
                   errorBorderColor="red"
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                <InputRightElement
+                  onClick={handleClick}
+                  cursor={"pointer"}
+                  width="4.5rem"
+                >
+                  {show ? <ViewIcon /> : <ViewOffIcon />}
+                </InputRightElement>
               </InputGroup>
 
               <Button
@@ -179,7 +189,7 @@ export default function Login() {
               SignUp Now
             </Text>
 
-           <ForgotPassword />
+            <ForgotPassword />
           </Flex>
         </Box>
       </Box>

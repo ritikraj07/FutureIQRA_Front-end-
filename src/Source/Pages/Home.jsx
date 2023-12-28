@@ -277,7 +277,13 @@ export default function Home() {
           >
             <Box className="card">
               <Box className="front" bg="white">
-                <Heading color={"gold"}>VIP1</Heading>
+                <Image
+                  className="image"
+                  h={["270px"]}
+                  borderRadius={10}
+                  src="https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYSquu9KVDsP5EhTGxojhKCGfsXZEfk4TPmBS0dNj-Yof2gdvMBLa06dJRJNAESVFd5KvSiUYVAhyeSXQVQQZ6OS9QNddQ=w1960-h3484"
+                  alt="vip1"
+                />
               </Box>
               <Box className="back">
                 <p>VIP1</p>
@@ -292,7 +298,13 @@ export default function Home() {
           >
             <Box className="card">
               <Box className="front" bg="white">
-                <Heading color={"gold"}>VIP2</Heading>
+                <Image
+                  className="image"
+                  h={["270px"]}
+                  borderRadius={10}
+                  alt="vip2"
+                  src="https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYS8HuoXfs4Uj0e1Jy2yL1ulZJTzx3aP71eubuU5CR1xTVY3UDFjUuGbNTxhB4VkbYl48T5iCFt3Ru4AGAOrp2mxn6BU7w=w1920-h907"
+                />
               </Box>
               <Box className="back">
                 <p>VIP2</p>

@@ -138,7 +138,7 @@ export default function ReferAndEarn() {
             <List mb={2}>
               <ListItem>
                 <ListIcon as={CheckCircleIcon} color="green.500" />
-                Earn 100 on 5 valid share : {team.length < 6 ? team.length : 5}
+                Earn 100 on 5 valid refer : {team.length < 6 ? team.length : 5}
                 /5
               </ListItem>
             </List>
