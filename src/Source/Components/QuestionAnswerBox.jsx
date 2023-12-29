@@ -1,27 +1,29 @@
-import {useEffect, memo} from "react";
+import { useEffect, memo } from "react";
 
-import {
-  Box,
-  Text,  
-  Flex,
-  Avatar,
-  Heading,
-  useToast
-
-} from "@chakra-ui/react";
+import { Box, Text, Flex, Avatar, Heading, useToast } from "@chakra-ui/react";
 
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 import { PatchRequest } from "../Services/ApiCall";
 
-function QuestionAnswerBox({ question, index, EditLike}) {
+function QuestionAnswerBox({ question, index, EditLike }) {
   const url = import.meta.env.VITE_API_URL;
   const toast = useToast();
   // console.log("from question box==>", question);
 
+  // console.log(question?.user[0].name);
+  let name="",
+    photo="",
+    phone="";
+  if (question?.user[0]) {
+    name = question?.user[0]?.name;
+    photo = question?.user[0]?.image;
+    phone = question?.user[0]?.phone
+}
+   
   
+ 
+  // let name = question?.user[0].name;
 
-
-  let { name, photo, phone } = question?.user[0];
   // console.log('render qa box');
 
   function formatDate(inputDate) {
@@ -30,18 +32,15 @@ function QuestionAnswerBox({ question, index, EditLike}) {
     return date.toLocaleDateString("en-US", options);
   }
 
- 
-
-
   function Like() {
     PatchRequest(`${url}q&a/like/${question._id}`)
       .then((res) => {
         const { status, message } = res;
         console.log(res);
         if (status) {
-          let newQuestion = res.question
-          EditLike(index, newQuestion)
-          
+          let newQuestion = res.question;
+          EditLike(index, newQuestion);
+
           toast({
             title: message,
             status: "info",
@@ -74,7 +73,6 @@ function QuestionAnswerBox({ question, index, EditLike}) {
       px={["30px"]}
       mb={"10px"}
       w={"100%"}
-      
     >
       {/* user who asked question */}
       <Flex my={["10px"]} alignItems={"center"}>
@@ -133,6 +131,4 @@ function QuestionAnswerBox({ question, index, EditLike}) {
   );
 }
 
-
-
-export default memo(QuestionAnswerBox)
+export default memo(QuestionAnswerBox);
