@@ -53,7 +53,19 @@ export default function ReferAndEarn() {
           });
        }
      );
-   };
+  };
+  
+  console.log(team)
+  function GetActiveUser() {
+    let count = 0;
+    for (var i = 0; i < team.length; i++){
+      console.log(team[i].userType)
+      if (team[i]?.userType != "Basic") {
+        count++;
+      }
+    }
+    return count;
+  }
   return (
     <Box pb={[10]} bg="#2658e6">
       <Box
@@ -138,13 +150,13 @@ export default function ReferAndEarn() {
             <List mb={2}>
               <ListItem>
                 <ListIcon as={CheckCircleIcon} color="green.500" />
-                Earn 100 on 5 valid refer : {team.length < 6 ? team.length : 5}
+                Earn 100 on 5 valid refer : {GetActiveUser()}
                 /5
               </ListItem>
             </List>
 
             <Progress
-              value={20 * team.length}
+              value={20 * GetActiveUser()}
               borderRadius={20}
               colorScheme="whatsapp"
               hasStripe
