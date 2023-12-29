@@ -7,7 +7,7 @@ async function GetRequest(url) {
 }
 
 
-async function PostRequest(url, data) {
+async function PostRequest(url, data={}) {
     let token = JSON.parse(localStorage.getItem('token'))
     try {
         const response = await fetch(url, {
@@ -43,6 +43,8 @@ function GetDataFromToken(token) {
 
     let result = JSON.parse(jsonPayload);
     // console.log("auth", result);
+
+
     return result
 
 }

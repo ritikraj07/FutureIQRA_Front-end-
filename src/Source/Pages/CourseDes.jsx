@@ -120,7 +120,7 @@ export default function CourseDes() {
      opacity: isVisible ? "1" : "0",
    };
   return (
-    <Box minH={"100vh"} userSelect={"none"} bg="white">
+    <Flex flexDirection={['column']} justifyContent={'space-between'} minH={"100vh"} userSelect={"none"} bg="white">
       <Flex
         as="nav"
         align="center"
@@ -165,14 +165,14 @@ export default function CourseDes() {
           Ask Us ?
         </Text> */}
       </Flex>
-      <Button
+     {courses?.length !=0 && <Button
         bg={"blue.500"}
         color={"white"}
         style={buttonStyle}
         onClick={CourseDes}
       >
         Enroll Now
-      </Button>
+      </Button>}
       <Flex
         my={"50px"}
         gap={"10px"}
@@ -195,6 +195,6 @@ export default function CourseDes() {
       </Box>
 
       {/* copy right */}
-    </Box>
+    </Flex>
   );
 }

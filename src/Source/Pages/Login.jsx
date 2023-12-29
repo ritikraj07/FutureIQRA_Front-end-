@@ -80,7 +80,7 @@ export default function Login() {
         navigate("/");
       } else {
         toast({
-          title: "something went wrong",
+          title: data.data,
           status: "error",
           duration: 3000,
         });

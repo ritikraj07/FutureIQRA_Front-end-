@@ -72,6 +72,7 @@ export default function Report() {
       subject: reportDetali.subject,
     };
 
+    
     PostRequest(`${url}report`, data).then((res) => {
       // console.log(res)
       if (res.status) {
@@ -82,14 +83,14 @@ export default function Report() {
           });
           setReportDetail({ ...reportDetali, subject: "", report: "" });
       } else {
-        console.log("error", error);
+        console.log("error", res);
              toast({
                title: "Something went Wrong!",
                status: "error",
                duration: 3000,
              });
       }
-    })
+    }).catch((error)=>console.log(error))
     
     
     setLoading(false)
