@@ -25,6 +25,7 @@ import { useNavigate } from "react-router-dom";
 import Members from "../Components/Members";
 import { useSelector } from "react-redux";
 import { CheckCircleIcon } from "@chakra-ui/icons";
+import Navbar from "../Components/Navbar";
 export default function ReferAndEarn() {
   const Frontend_url = import.meta.env.VITE_API_URL_FRONTEND;
   const { name, phone, team, referCode, photo } = useSelector((state) => state.User);
@@ -68,39 +69,7 @@ export default function ReferAndEarn() {
   }
   return (
     <Box pb={[10]} bg="#2658e6">
-      <Box
-        // border={"1px solid red"}
-        
-        w={"100%"}
-        // h={"5%"}
-        px={[1, 10]}
-        // py={5}
-        display={"flex"}
-        alignItems={"center"}
-        justifyContent={"space-between"}
-      >
-        <Image
-          w={"80px"}
-          h="80px"
-          src="https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYR8GeqMZenKekmh_Y-RZIPMrFPE_ykV7e79-vDsCyqAEHh6HzMwigDyEpRBuBylupqLDCtQlwcCRS_uGn6MZLQia_0B=w1920-h907"
-          alt="FutureIQRA"
-        />
-        <Heading display={["none", "none", "block"]} color={"white"}>
-          Future IQRA
-        </Heading>
-
-        <Flex alignItems={"center"}>
-          <Avatar src={photo} />
-          <Box ml="3">
-            <Text color={"white"} fontWeight="bold">
-              {name}
-              {/* <Badge ml="1" colorScheme="green">
-                #23
-              </Badge> */}
-            </Text>
-          </Box>
-        </Flex>
-      </Box>
+     <Navbar />
 
       <Flex
         w={["98%", "95%", "90%"]}

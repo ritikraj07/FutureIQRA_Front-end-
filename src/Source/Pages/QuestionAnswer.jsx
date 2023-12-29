@@ -232,13 +232,14 @@ export default function QuestionAnswer() {
       flexDir={"column"}
       alignItems={"center"}
       // px={["1px", "10px", "20px", "30px", "40px"]}
-      bg="rgb(51,52,58)"
+      // bg="rgb(51,52,58)"
+      bg={"#2658e6"}
       minH={window.innerHeight}
       w={"100%"}
       overflow={"hidden"}
     >
       <QuestionBox />
-     <Navbar />
+      <Navbar />
 
       {/* left side box */}
       <Flex
