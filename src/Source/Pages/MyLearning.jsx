@@ -80,7 +80,7 @@ const NoContentBox = () => {
 
 
   return (
-    <Box>
+    <Box minH={'100vh'} h={'100%'} bg={'white'} >
       <Flex
         as="nav"
         align="center"

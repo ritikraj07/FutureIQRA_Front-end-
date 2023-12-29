@@ -62,17 +62,17 @@ export default function LeaderBoard() {
       </Flex>
 
       <Flex
-        bg={"white"}
+        // bg={"white"}
         p={['1px','2px','5px']}
         bgGradient="linear(to-b, white, #2658e6)"
-        justifyContent={["center", "center", "space-around"]}
-        alignItems={["center","center","center","start"]}
-        flexDir={["column", "column", "column", "row"]}
+        justifyContent={["center", "center", "center", "space-around"]}
+        alignItems={["center","center","center","center", "start"]}
+        flexDir={["column", "column", "column", "column", "row" ]}
       >
         {leaderboard.length > 2 && <TopLeaders leaderboard={leaderboard} />}
         <Box
-          w={["95%", "90%", "85%", "50%", "50%", "50%"]}
-          my={["40px", "30px", "30px", "0px"]}
+          w={["95%", "90%", "85%", "70%", "50%", "50%"]}
+          my={["40px", "30px", "30px", "20px", "1px"]}
           bg="#32085F"
           p={"10px"}
           borderRadius={"20px"}

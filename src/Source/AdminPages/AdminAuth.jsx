@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Navigate} from 'react-router-dom'
 import { GetDataFromToken } from '../Services/ApiCall';
 import { setUser } from '../Redux/Reducers/UserReducers';
+import UnauthorizedPage from '../Components/Unauthorized';
 export default function AdminAuth({ children }) {
     const isAdmin = useSelector((state) => state.User.isAdmin);
     let dispatch = useDispatch()
@@ -18,6 +19,8 @@ export default function AdminAuth({ children }) {
 
   if (isAdmin) {
     return <>{children}</>
+  } else {
+    return <UnauthorizedPage />
   }
   
   

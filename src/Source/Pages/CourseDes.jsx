@@ -46,7 +46,7 @@ export default function CourseDes() {
   }, []);
 
   return (
-    <Box userSelect={"none"}>
+    <Box userSelect={"none"} bg="white" >
       <Flex
         as="nav"
         align="center"

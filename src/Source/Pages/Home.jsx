@@ -134,7 +134,8 @@ export default function Home() {
       display={"flex"}
       flexDir={"column"}
       alignItems={"center"}
-      paddingBottom={[20]}
+      // paddingBottom={[10,20]}
+      height={'100%'}
     >
       {/* modal */}
       <Modal isOpen={isOpen} onClose={onClose}>

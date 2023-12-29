@@ -87,7 +87,7 @@ export default function WatchCourse() {
   }
 
   return (
-    <Box>
+    <Box minH={'100vh'} bg={'white'} >
       <Flex
         as="nav"
         align="center"

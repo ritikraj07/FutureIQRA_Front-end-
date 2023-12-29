@@ -231,7 +231,7 @@ export default function QuestionAnswer() {
       flexDir={"column"}
       alignItems={"center"}
       px={["1px", "10px", "20px", "30px", "40px"]}
-      bg="#33353B"
+      bg="rgb(51,52,58)"
       minH={window.innerHeight}
       w={"100%"}
       overflow={"hidden"}
@@ -239,11 +239,10 @@ export default function QuestionAnswer() {
       <QuestionBox />
       <Box
         // border={"1px solid red"}
-        w={"100%"}
-        // backgroundColor={"#2658e6"}
-
+        w={"106%"}
+        backgroundColor={"blue.500"}
         px={[1, 10]}
-        py={2}
+        py={["0", "2px"]}
         display={"flex"}
         alignItems={"center"}
         justifyContent={"space-between"}
@@ -257,7 +256,7 @@ export default function QuestionAnswer() {
 
         <Flex alignItems={"center"}>
           <Avatar src={photo} />
-          <Box ml="3">
+          <Box m={0} ml="3">
             <Text color={"white"} fontWeight="bold">
               {name}
             </Text>
@@ -292,7 +291,10 @@ export default function QuestionAnswer() {
             <Heading size={["xm", "md", "lg"]} mb={["20px"]} color={"white"}>
               Clear your doubts!
             </Heading>
-            <InputGroup bg={"white"} borderRadius={10}>
+            <InputGroup
+              bg={'white'}
+              borderRadius={10}
+            >
               <Input
                 focusBorderColor="lime"
                 placeholder="Type Search Words"
