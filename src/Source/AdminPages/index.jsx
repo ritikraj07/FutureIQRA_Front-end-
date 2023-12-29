@@ -20,7 +20,7 @@ export default function AdminRouter() {
   const navigate = useNavigate();
 
     return (
-      <Flex bg="white" minH={window.innerHeight}>
+      <Flex pos={"relative"} bg="white" minH={window.innerHeight}>
         <Flex
           bg={"#393E4F"}
           direction={"column"}
@@ -28,14 +28,13 @@ export default function AdminRouter() {
           w={["20%"]}
           px={["3px", "4px", "5px"]}
           py={["50px"]}
-          
           color={"white"}
           justifyContent={"flex-start"}
           alignItems={["center"]}
           display={["none", "block"]}
           // border={'1px solid red'}
         >
-          <Box height={'fit-content'}  className="navLinkContainer">
+          <Box height={"fit-content"} className="navLinkContainer">
             <NavLink
               className={({ isActive, isPending }) =>
                 isActive ? "activeLink" : "inActiveLink"
@@ -75,11 +74,11 @@ export default function AdminRouter() {
           </Box>
         </Flex>
 
-        <Box
+        {/* <Box
           zIndex={100}
           mt={"10px"}
           ml={"10px"}
-          pos={"fixed"}
+          pos={"absolute"}
           display={["block", "none"]}
         >
           <Menu>
@@ -108,7 +107,7 @@ export default function AdminRouter() {
               </MenuItem>
             </MenuList>
           </Menu>
-        </Box>
+        </Box> */}
 
         <Box
           w={"100%"}
@@ -125,7 +124,42 @@ export default function AdminRouter() {
               msOverflowStyle: "none", // Hide scrollbar for Internet Explorer and Edge
             },
           }}
+          pos={'relative'}
         >
+          <Box
+            zIndex={100}
+            mt={"10px"}
+            ml={"10px"}
+            pos={"absolute"}
+            display={["block", "none"]}
+          >
+            <Menu>
+              <MenuButton
+                as={IconButton}
+                aria-label="Options"
+                icon={<HamburgerIcon />}
+                variant="outline"
+                bg={"white"}
+              >
+                Menu
+              </MenuButton>
+              <MenuList>
+                <MenuItem onClick={() => navigate("/admin/dashboard")}>
+                  Dashboard
+                </MenuItem>
+                <MenuItem onClick={() => navigate("/admin/report")}>
+                  {" "}
+                  Report{" "}
+                </MenuItem>
+                <MenuItem onClick={() => navigate("/admin/q&a")}>
+                  Question{" "}
+                </MenuItem>
+                <MenuItem onClick={() => navigate("/admin/course")}>
+                  Course
+                </MenuItem>
+              </MenuList>
+            </Menu>
+          </Box>
           <Outlet />
         </Box>
       </Flex>
