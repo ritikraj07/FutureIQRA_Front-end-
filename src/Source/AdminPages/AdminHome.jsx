@@ -177,6 +177,17 @@ export default function AdminHome() {
     );
   }
 
+  function NoOfBasicUser() {
+    let basicUser = users.length;
+    if (userPlan?.VIP1) {
+      basicUser = basicUser - userPlan.VIP1
+    }
+    if (userPlan?.VIP2) {
+      basicUser = basicUser - userPlan.VIP2
+    }
+      return basicUser;
+  }
+
   return (
     <Box w="100%">
       <Flex
@@ -246,11 +257,7 @@ export default function AdminHome() {
               <Tr>
                 <Th>Number of Basic Users</Th>
                 <Th>
-                  {users.length - userPlan?.VIP1
-                    ? userPlan.VIP1
-                    : 0 - userPlan?.VIP2
-                    ? userPlan.VIP2
-                    : 0}
+                  <NoOfBasicUser />
                 </Th>
               </Tr>
               <Tr>
@@ -385,4 +392,4 @@ export default function AdminHome() {
 //        </CircularProgress>
 //      </Flex>
 //    </Box>
-//  </Grid>;
+//  </Grid>
