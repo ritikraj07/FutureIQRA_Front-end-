@@ -2,6 +2,7 @@ import {useState} from "react";
 import { Box, Heading, Flex, Input, Stack, Image, Textarea, Button, useToast } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import Navbar from "../Components/Navbar";
+import { PostRequest } from "../Services/ApiCall";
 
 export default function Report() {
   const url = import.meta.env.VITE_API_URL;
@@ -64,48 +65,32 @@ export default function Report() {
       return 
     }
     setLoading(true)
-    
 
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append(
-      "Authorization",
-      `Bearer ${JSON.parse(localStorage.getItem('token'))}`
-    );
-
-    var raw = JSON.stringify({
+    let data = {
       report: reportDetali.report,
       email: reportDetali.email,
       subject: reportDetali.subject,
-    });
-
-    var requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
     };
 
-    fetch(`http://localhost:8000/report/`, requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        console.log('report==>', result)
-
-        toast({
-          title: "Report Sended",
-          status: 'success',
-          duration:3000
-        })
-        setReportDetail({...reportDetali, subject:'', report:''})
-      })
-      .catch((error) => {
-        console.log("error", error)
-         toast({
-           title: "Something went Wrong!",
-           status: "error",
-           duration: 3000,
-         });
-      });
+    PostRequest(`${url}report`, data).then((res) => {
+      // console.log(res)
+      if (res.status) {
+          toast({
+            title: "Report Sended",
+            status: "success",
+            duration: 3000,
+          });
+          setReportDetail({ ...reportDetali, subject: "", report: "" });
+      } else {
+        console.log("error", error);
+             toast({
+               title: "Something went Wrong!",
+               status: "error",
+               duration: 3000,
+             });
+      }
+    })
+    
     
     setLoading(false)
   }

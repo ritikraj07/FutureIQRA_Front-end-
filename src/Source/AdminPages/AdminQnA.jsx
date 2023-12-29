@@ -104,7 +104,14 @@ export default function AdminQnA() {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", `Bearer ${token}`);
-    let { name, photo } = question?.user[0];
+      let name = "",
+        photo = "",
+        phone = "";
+      if (question?.user[0]) {
+        name = question?.user[0]?.name;
+        photo = question?.user[0]?.image;
+        phone = question?.user[0]?.phone;
+      }
 
     function formatDate(inputDate) {
       const options = { year: "numeric", month: "long", day: "numeric" };
@@ -164,13 +171,23 @@ export default function AdminQnA() {
       fetch(`${url}q&a/${question._id}`, requestOptions)
         .then((response) => response.json())
         .then((result) => {
-          // console.log(result)
-           toast({
-             title: "Question Deleted Successfully",
-             status: "info",
-             duration: 3000,
-           });
-          ResetQuestions(question._id)
+          console.log(result)
+          if (result.status) {
+                   toast({
+                     title: "Question Deleted Successfully",
+                     status: "info",
+                     duration: 3000,
+                   });
+                   ResetQuestions(question._id);
+          } else {
+             toast({
+               title: result.data,
+               status: "error",
+               duration: 3000,
+             });
+          }
+
+    
           
         })
         .catch((error) => {
