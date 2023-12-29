@@ -28,13 +28,14 @@ export default function AdminRouter() {
           w={["20%"]}
           px={["3px", "4px", "5px"]}
           py={["50px"]}
+          
           color={"white"}
           justifyContent={"flex-start"}
           alignItems={["center"]}
           display={["none", "block"]}
           // border={'1px solid red'}
         >
-          <Box className="navLinkContainer">
+          <Box height={'fit-content'}  className="navLinkContainer">
             <NavLink
               className={({ isActive, isPending }) =>
                 isActive ? "activeLink" : "inActiveLink"

@@ -111,6 +111,7 @@ export default function AdminHome() {
         m={2}
         borderRadius={5}
         cursor={"pointer"}
+       
         boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px;"}
       >
         <Modal isOpen={isOpen} onClose={onClose}>
