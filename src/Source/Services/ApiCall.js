@@ -78,6 +78,7 @@ async function DeleteRequest(url) {
                 'Authorization': `Bearer ${token}`
             }
         });
+        console.log(response, 'llllllll')
 
         const result = await response.json();
         // console.log('Success:', result);

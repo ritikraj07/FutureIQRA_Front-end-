@@ -30,7 +30,8 @@ import {
   Thead,
 } from "@chakra-ui/react";
 import { TriangleUpIcon, SearchIcon } from "@chakra-ui/icons";
-import { GetRequest, PatchRequest } from "../Services/ApiCall";
+import { DeleteRequest, GetRequest, PatchRequest } from "../Services/ApiCall";
+import ConfirmBtn from "./Component/ConfirmBtm";
 
 export default function AdminHome() {
   const url = import.meta.env.VITE_API_URL;
@@ -104,6 +105,26 @@ export default function AdminHome() {
       setThisUser({ ...user, [key]: value });
     }
 
+    function DeleteUser(id) {
+      
+      DeleteRequest(`${url}user/delete/id/${id}`)
+        .then((res) => {
+          console.log(res)
+          if (res?.status) {
+            toast({
+              title: 'Accound Deleted Successfully',
+              status:'info'
+          })
+          } else {
+            toast({
+              title: 'Something wend wrong',
+              status:'error'
+            })
+        }
+        })
+      onClose()
+    }
+
     return (
       <Box
         onClick={onOpen}
@@ -155,9 +176,11 @@ export default function AdminHome() {
             </ModalBody>
 
             <ModalFooter justifyContent={"space-around"}>
-              <Button colorScheme="blue" mr={3} onClick={onClose}>
-                Close
-              </Button>{" "}
+              {/* delete btm */}
+              <ConfirmBtn colorScheme="red" mr={3}
+                func={() => DeleteUser(user._id)} title="Delete User"
+                warn="Are you sure you want to delete this user" />
+               
               <Button variant="solid" colorScheme="teal" onClick={UpdateUser}>
                 Save
               </Button>
