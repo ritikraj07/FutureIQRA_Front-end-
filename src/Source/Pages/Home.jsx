@@ -258,6 +258,7 @@ export default function Home() {
           alignContent={"center"}
           alignItems={"center"}
           justifyContent={"center"}
+          paddingBottom={'100px'}
         >
           {/* <Card
             h={["270px"]}

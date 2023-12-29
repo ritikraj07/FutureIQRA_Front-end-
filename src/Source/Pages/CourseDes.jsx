@@ -59,7 +59,7 @@ export default function CourseDes() {
         zIndex="999"
       >
         <Heading>
-          Referal Rich
+          Future IQAR
           <span style={{ color: "gold", marginLeft: "10px" }}>
             {coursetype == "vip1" ? "VIP1" : "VIP2"}
           </span>

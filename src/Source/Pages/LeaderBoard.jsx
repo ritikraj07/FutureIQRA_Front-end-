@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { GetRequest } from "../Services/ApiCall";
 import { useSelector } from "react-redux";
 import Copyright from "../Components/CopyRight";
+import Navbar from "../Components/Navbar";
 
 export default function LeaderBoard() {
   const url = import.meta.env.VITE_API_URL;
@@ -50,16 +51,7 @@ export default function LeaderBoard() {
       backgroundColor={"#2658e6"}
       minH={'100vh'}
     >
-      <Flex alignItems={"center"}>
-        <ChevronLeftIcon
-          onClick={() => navigate("/")}
-          fontSize={"4xl"}
-          color={"white"}
-        />
-        <Heading color={"gold"} fontSize={"2xl"}>
-          LeaderBoard
-        </Heading>
-      </Flex>
+     <Navbar />
 
       <Flex
         // bg={"white"}

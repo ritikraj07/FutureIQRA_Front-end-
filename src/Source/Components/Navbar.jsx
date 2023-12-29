@@ -1,21 +1,38 @@
 import React from "react";
 
-import { Box, Image, Tab, TabList, Tabs, Flex } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Box, Image, Tab, TabList, Tabs, Flex, Avatar, Text } from "@chakra-ui/react";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 export default function Navbar() {
-    
+  const { name, photo } = useSelector((state) => state.User);
+    let navitage = useNavigate()
     return (
-      <Box>
-        <Flex px={5} py={2}>
-          <Link to={"/"}>
-            <Image
-              w={"120px"}
-              h="40px"
-              src="src\Source\Assets\referralrich.png"
-              alt="Referral Rich"
-            />
-          </Link>
-          
+      <Box
+        // border={"1px solid red"}
+        w={"100%"}
+        backgroundColor={"blue.500"}
+        px={[1, 10]}
+        py={["0", "2px"]}
+        display={"flex"}
+        alignItems={"center"}
+        justifyContent={"space-between"}
+      >
+        <Image
+          cursor={'pointer'}
+          w={"80px"}
+          h="80px"
+          src="https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYR8GeqMZenKekmh_Y-RZIPMrFPE_ykV7e79-vDsCyqAEHh6HzMwigDyEpRBuBylupqLDCtQlwcCRS_uGn6MZLQia_0B=w1920-h907"
+          alt="FutureIQRA"
+          onClick={()=>navitage('/')}
+        />
+
+        <Flex alignItems={"center"}>
+          <Avatar src={photo} />
+          <Box m={0} ml="3">
+            <Text color={"white"} fontWeight="bold">
+              {name}
+            </Text>
+          </Box>
         </Flex>
       </Box>
     );

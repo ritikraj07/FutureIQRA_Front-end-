@@ -1,6 +1,7 @@
 import {useState} from "react";
 import { Box, Heading, Flex, Input, Stack, Image, Textarea, Button, useToast } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
+import Navbar from "../Components/Navbar";
 
 export default function Report() {
   const url = import.meta.env.VITE_API_URL;
@@ -111,23 +112,15 @@ export default function Report() {
 
   
   return (
-    <Box
-      px={["10px", "20px", "30px", "100px", "250px"]}
-      py={["20px", "50px"]}
-      height={[
-        "inherit",
-        window.innerHeight,
-        window.innerHeight,
-        window.innerHeight,
-        window.innerHeight,
-      ]}
-      backgroundColor={"#2658e6"}
-    >
+    <Box backgroundColor={"#2658e6"}>
+      <Navbar />
       <Flex
+        my={["20px", "30px"]}
+        mx={"auto"}
         bg="white"
-        w={"100%"}
+        w={["95%", "90%", "70%"]}
         h={["inherit", "100%", "100%"]}
-        flexDir={["column", "row", "row", "row"]}
+        flexDir={["column", "column", "row", "row"]}
         px={["10px", "20px"]}
         py={["10px"]}
         alignItems={"center"}
@@ -139,13 +132,16 @@ export default function Report() {
           <Heading textAlign={"center"}>Let's talk about</Heading>
           <Heading textAlign={"center"}> everything!</Heading>
           <Flex w={"100%"} alignItems={"center"} justifyContent={"center"}>
-            <Image w="80%" src="src\Source\Assets\report.svg" />
+            <Image
+              w="80%"
+              src="https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYSVYLESd8Y-s4i6zFaGZwXZpScot1is1FWiQ_nt97mcnnymINdBT1wtGxXPw5KZiocMXQNUoboT04Gu4BhRw6AYTmB2Lg=w1920-h907"
+            />
           </Flex>
         </Box>
 
         {/* report input box */}
 
-        <Box w={["100%", "50%"]}>
+        <Box w={["100%","80%" ,"50%"]}>
           <Stack spacing={3} px={[1, 10]}>
             <Input
               placeholder="Your Name"
@@ -178,7 +174,10 @@ export default function Report() {
             <Button
               loadingText="Reporting..."
               isLoading={isLoading}
-              bg="#2658e6" color={"white"} onClick={ReportKro}>
+              bg="#2658e6"
+              color={"white"}
+              onClick={ReportKro}
+            >
               Submit
             </Button>
           </Stack>

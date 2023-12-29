@@ -74,6 +74,7 @@ function QuestionAnswerBox({ question, index, EditLike}) {
       px={["30px"]}
       mb={"10px"}
       w={"100%"}
+      
     >
       {/* user who asked question */}
       <Flex my={["10px"]} alignItems={"center"}>

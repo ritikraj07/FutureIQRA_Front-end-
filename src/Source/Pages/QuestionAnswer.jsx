@@ -27,6 +27,7 @@ import { SearchIcon } from "@chakra-ui/icons";
 import { useSelector } from "react-redux";
 import QuestionAnswerBox from "../Components/QuestionAnswerBox";
 import { GetRequest } from "../Services/ApiCall";
+import Navbar from "../Components/Navbar";
 
 export default function QuestionAnswer() {
     const url = import.meta.env.VITE_API_URL;
@@ -230,43 +231,19 @@ export default function QuestionAnswer() {
     <Flex
       flexDir={"column"}
       alignItems={"center"}
-      px={["1px", "10px", "20px", "30px", "40px"]}
+      // px={["1px", "10px", "20px", "30px", "40px"]}
       bg="rgb(51,52,58)"
       minH={window.innerHeight}
       w={"100%"}
       overflow={"hidden"}
     >
       <QuestionBox />
-      <Box
-        // border={"1px solid red"}
-        w={"106%"}
-        backgroundColor={"blue.500"}
-        px={[1, 10]}
-        py={["0", "2px"]}
-        display={"flex"}
-        alignItems={"center"}
-        justifyContent={"space-between"}
-      >
-        <Image
-          w={"80px"}
-          h="80px"
-          src="https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYR8GeqMZenKekmh_Y-RZIPMrFPE_ykV7e79-vDsCyqAEHh6HzMwigDyEpRBuBylupqLDCtQlwcCRS_uGn6MZLQia_0B=w1920-h907"
-          alt="FutureIQRA"
-        />
-
-        <Flex alignItems={"center"}>
-          <Avatar src={photo} />
-          <Box m={0} ml="3">
-            <Text color={"white"} fontWeight="bold">
-              {name}
-            </Text>
-          </Box>
-        </Flex>
-      </Box>
+     <Navbar />
 
       {/* left side box */}
       <Flex
         // border={"1px solid red"}
+
         w={"100%"}
         alignItems={["center", "center", "center", "flex-start"]}
         justifyContent={["center", "space-between"]}
@@ -274,6 +251,7 @@ export default function QuestionAnswer() {
       >
         <Box
           w={["95%", "90%", "90%", "70%"]}
+          mx={["1px", "10px", "20px", "30px", "40px"]}
           h="100vh"
           overflowY="scroll"
           sx={{
@@ -291,10 +269,7 @@ export default function QuestionAnswer() {
             <Heading size={["xm", "md", "lg"]} mb={["20px"]} color={"white"}>
               Clear your doubts!
             </Heading>
-            <InputGroup
-              bg={'white'}
-              borderRadius={10}
-            >
+            <InputGroup bg={"white"} borderRadius={10}>
               <Input
                 focusBorderColor="lime"
                 placeholder="Type Search Words"
