@@ -68,7 +68,7 @@ export default function CourseDes() {
           Ask Us ?
         </Text>
       </Flex>
-      <Box
+      {/* <Box
         pos={"relative"}
         w={["100%"]}
         height={["40vh", "50vh", "60vh"]}
@@ -98,7 +98,7 @@ export default function CourseDes() {
           </Text>
           <Text>Join us now!</Text>
         </Box>
-      </Box>
+      </Box> */}
       <Flex
         my={"50px"}
         gap={"10px"}
