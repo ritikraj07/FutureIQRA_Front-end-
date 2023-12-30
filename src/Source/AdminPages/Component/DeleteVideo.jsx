@@ -46,8 +46,10 @@ import VideoPlayer from "../../Components/VideoPlayer";
 import TextEditor from "./TextEditor";
 import { PatchRequest, PostRequest } from "../../Services/ApiCall";
 import ConfirmBtn from "./ConfirmBtm";
+import EditVideo from "./EditVideo";
+import { MdDeleteForever } from "react-icons/md";
 
-export default function DeleteVideo({ course }) {
+export default function DeleteVideo({ course}) {
   const url = import.meta.env.VITE_API_URL;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [videos, setVideos] = useState(course.videos);
@@ -80,41 +82,42 @@ const deleteVideoAtIndex = (indexToDelete) => {
   return (
     <>
       <Button onClick={onOpen} w={"100%"} colorScheme="purple">
-        Delete Video
+        Course Videos
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent maxW={"95%"}>
-          <ModalHeader >Delete Video: {course.name}</ModalHeader>
+          <ModalHeader>Delete Video: {course.name}</ModalHeader>
           <ModalCloseButton />
-                  <ModalBody>
-                      {videos?.map((video, i) => {
-                          return (
-                            <Flex
-                              key={video._id}
-                              alignItems="center"
-                              justifyContent="space-between"
-                              my={3}
-                              p={3}
-                              borderRadius={5}
-                              boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"
-                              bg="white"
-                            >
-                              <Text w={['80%']} noOfLines={1} fontWeight={"light"}>
-                                      {i+1}. {video.title}
-                              </Text>
-                                  <ConfirmBtn
-                                      
-                                      w={['20%']}
-                                      mx={"10px"}
-                                      color={"red"}
-                                func={() =>DeleteVid(video._id, i)}
-                                title="Delete"
-                                warn={`Are you sure you want to delete this video ${video.title}`}
-                              />
-                            </Flex>
-                          );
-                      })}
+          <ModalBody>
+            {videos?.map((video, i) => {
+              return (
+                <Flex
+                  key={video._id}
+                  alignItems="center"
+                  justifyContent="space-between"
+                  my={3}
+                  p={3}
+                  borderRadius={5}
+                  boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"
+                  bg="white"
+                >
+                  <Text w={["80%"]} noOfLines={1} fontWeight={"light"}>
+                    {i + 1}. {video.title}
+                  </Text>
+                  <EditVideo course={course} videos={videos} setVideos={setVideos} index={i} />
+                  <ConfirmBtn
+                    w={["10%"]}
+                    mx={"10px"}
+                    color={"red"}
+                    func={() => DeleteVid(video._id, i)}
+                    title=""
+                    leftIcon={<MdDeleteForever />}
+                    warn={`Are you sure you want to delete this video ${video.title}`}
+                  />
+                </Flex>
+              );
+            })}
           </ModalBody>
         </ModalContent>
       </Modal>
