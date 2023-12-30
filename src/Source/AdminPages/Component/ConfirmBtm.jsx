@@ -3,6 +3,7 @@ import { Button } from "@chakra-ui/react";
 
 const ConfirmBtn = ({
   func,
+  
   title = "Button",
   warn = "Are you sure you want to delete this?",
   ...args

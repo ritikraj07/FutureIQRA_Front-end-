@@ -49,6 +49,7 @@ import EditCourse from "./EditCourse";
 import { useNavigate } from "react-router-dom";
 import ConfirmBtn from "./ConfirmBtm";
 import { DeleteRequest } from "../../Services/ApiCall";
+import DeleteVideo from "./DeleteVideo";
 
 
 export default function CourseBox({ course, ResetCourse}) {
@@ -110,6 +111,7 @@ export default function CourseBox({ course, ResetCourse}) {
       <Stack spacing={1} my={3}>
         <AddVideo course={course} />
         {/* <Button onClick={()=>navigate(`/admin/course/${name}/${_id}`)} >Add Video</Button> */}
+        <DeleteVideo course={course} />
         <EditCourse course_={course} />
         <ConfirmBtn
           title="Delete"
