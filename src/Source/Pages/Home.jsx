@@ -32,6 +32,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {CheckIcon} from '@chakra-ui/icons'
 import { PatchRequest } from "../Services/ApiCall";
 import { setAvatar } from "../Redux/Reducers/UserReducers";
+import ReviewSlider from "../Components/Review";
 
 
 export default function Home() {
@@ -403,12 +404,13 @@ export default function Home() {
                 />
               </Box>
               <Box className="back">
-                <p>Contract Us</p>
+                <p>Contact Us</p>
               </Box>
             </Box>
           </Box>
         </SimpleGrid>
       </Flex>
+      {/* <ReviewSlider /> */}
     </Box>
   );
 }

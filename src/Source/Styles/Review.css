@@ -1,0 +1,26 @@
+.review-slider-container {
+  width: 100%;
+  overflow: hidden;
+  background-color: yellow;
+
+}
+
+.review-slide {
+  display: flex;
+  transition: margin-left 1s ease-in-out;
+  animation: slide-infinite 100s linear infinite;
+}
+
+.review-item {
+  flex: 0 0 100%;
+}
+
+@keyframes slide-infinite {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -300%; /* Adjust based on the number of reviews */
+  }
+}
+

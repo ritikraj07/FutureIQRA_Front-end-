@@ -19,6 +19,10 @@ import UnauthorizedPage from "../Components/Unauthorized.jsx";
 import MyLearning from "../Pages/MyLearning.jsx";
 import WatchCourse from "../Pages/WatchCourse.jsx";
 import AddVideo from "../AdminPages/AddVideo.jsx";
+import PrivacyPolicy from "../Components/PrivacyPolicy.jsx";
+import TermsAndConditions from "../Components/Terms&Conditions.jsx";
+import RefundsAndReturnsPolicy from "../Components/Refunds&ReturnsPolicy.jsx";
+import AboutUs from "../Components/About.jsx";
 
 export default function AllRoutes() {
   return (
@@ -28,6 +32,34 @@ export default function AllRoutes() {
         element={
           <Auth>
             <Home />
+          </Auth>
+        }
+      />
+      <Route
+        path="/about-us"
+      element={<AboutUs />} />
+      <Route
+        path="/privacy&policy"
+        element={
+          <Auth>
+            <PrivacyPolicy />
+          </Auth>
+        }
+      />
+      <Route
+        path="/terms&conditions"
+        element={
+          <Auth>
+            <TermsAndConditions />
+          </Auth>
+        }
+      />
+
+      <Route
+        path="/refunds&returns-policy"
+        element={
+          <Auth>
+            <RefundsAndReturnsPolicy />
           </Auth>
         }
       />
@@ -57,7 +89,7 @@ export default function AllRoutes() {
       />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
-      
+
       <Route path="/signup/:refercode" element={<SignUp />} />
       <Route
         path="/q&a"

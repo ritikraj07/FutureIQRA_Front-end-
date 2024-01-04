@@ -244,7 +244,7 @@ export default function QuestionAnswer() {
       {/* left side box */}
       <Flex
         // border={"1px solid red"}
-
+        id={'question-box'}
         w={"100%"}
         alignItems={["center", "center", "center", "flex-start"]}
         justifyContent={["center", "space-between"]}
