@@ -4,8 +4,11 @@ import { Box, Flex, Button } from "@chakra-ui/react";
 import AllRoutes from './Source/Router/AllRoutes';
 import Copyright from './Source/Components/CopyRight';
 import Footer from './Source/Components/Footer';
+import { useSelector } from 'react-redux';
 
 function App() {  
+  let isLoggedIn = useSelector((state) => state.User.isLoggedIn);
+  // console.log(isLoggedIn);
 document.addEventListener('contextmenu', (event) => {
   event.preventDefault();
 });
@@ -17,7 +20,7 @@ document.addEventListener('contextmenu', (event) => {
       justifyContent={"space-between"}
     >
       <AllRoutes />
-      <Footer />
+      {isLoggedIn && <Footer />}
       <Copyright />
    
     </Flex>

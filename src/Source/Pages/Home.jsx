@@ -27,11 +27,11 @@ import {
   useToast
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, } from "react-redux";
 
 import {CheckIcon} from '@chakra-ui/icons'
 import { PatchRequest } from "../Services/ApiCall";
-import { setAvatar } from "../Redux/Reducers/UserReducers";
+import { setAvatar, setLogout } from "../Redux/Reducers/UserReducers";
 import ReviewSlider from "../Components/Review";
 
 
@@ -204,7 +204,9 @@ export default function Home() {
               <MenuItem
                 onClick={() => {
                   localStorage.clear();
-                  navigate("/login");
+                  dispatch(setLogout())
+                  navigate("/login", { replace: true });
+                  
                 }}
               >
                 Log Out

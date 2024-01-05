@@ -111,7 +111,7 @@ export default function Footer() {
             cursor={"pointer"}
             _hover={{ color: "blue.500" }}
           >
-            +91 7485930242
+            +91 8002946815
           </Text>
         </Flex>
 

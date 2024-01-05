@@ -38,11 +38,14 @@ const UserSlice = createSlice({
         },
         setAvatar: (state, action) => {
             state.photo = action.payload
+        },
+        setLogout: (state, action) => {
+            state.isLoggedIn = false;
         }
     }
 })
 
 
-export const { setUser, setAvatar } = UserSlice.actions
+export const { setUser, setAvatar, setLogout } = UserSlice.actions
 
 export default UserSlice.reducer
