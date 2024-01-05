@@ -21,9 +21,14 @@ export default function Footer() {
     );
   }
   return (
-    <Flex bg={"black"} p={"10px"} justifyContent={"space-evenly"}>
+    <Flex
+      flexDir={["column", "row"]}
+      bg={"black"}
+      p={"10px"}
+      justifyContent={"space-evenly"}
+    >
       {/* useful links */}
-      <Box>
+      <Box my={"15px"}>
         <Text mb={"10px"} color={"white"}>
           USEFUL LINKS
         </Text>
@@ -51,11 +56,11 @@ export default function Footer() {
           }}
           text={"Contact Us"}
         />
-        <MyText onClick={() => navigate("/about-us")} text={'About Us'} />
+        <MyText onClick={() => navigate("/about-us")} text={"About Us"} />
       </Box>
 
       {/* legal links */}
-      <Box>
+      <Box my={"15px"}>
         <Text mb={"10px"} color={"white"}>
           LEGAL LINKS
         </Text>
@@ -80,7 +85,7 @@ export default function Footer() {
       </Box>
 
       {/* Contact */}
-      <Box>
+      <Box my={"15px"}>
         <Text mb={"10px"} color={"white"}>
           CONTACT
         </Text>
@@ -119,7 +124,7 @@ export default function Footer() {
             cursor={"pointer"}
             _hover={{ color: "blue.500" }}
           >
-            dilshanalam674@gmail.com
+            future.iqra.helpline@gmail.com
           </Text>
         </Flex>
       </Box>

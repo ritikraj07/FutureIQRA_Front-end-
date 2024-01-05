@@ -26,7 +26,7 @@ const ReturnsRefundsPolicy = () => {
         <Text>
           If you encounter any issues or have concerns about the content or
           functionality, please reach out to our support team at
-          dilshanalam674@gmail.com for assistance.
+          future.iqra.helpline@gmail.com for assistance.
         </Text>
       </Box>
 
@@ -46,7 +46,7 @@ const ReturnsRefundsPolicy = () => {
           4. Contact Information
         </Heading>
         <Text>
-          <strong>Email:</strong> dilshanalam674@gmail.com
+          <strong>Email:</strong> future.iqra.helpline@gmail.com
           <br />
           <strong>Address:</strong> District Purnea, State Bihar, Country India,
           P/O Amari Kukroon, P/S Dhamdaha, Pin Code 854205

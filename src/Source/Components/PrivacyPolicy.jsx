@@ -4,7 +4,7 @@ import { Box, Heading, Text, UnorderedList, ListItem } from "@chakra-ui/react";
 const PrivacyPolicy = () => {
   return (
     <Box bg={"white"}>
-      <Box m={'10px 50px'} >
+      <Box m={"10px 50px"}>
         <Heading as="h1" mb={4}>
           Privacy Policy for FutureIQRA.in
         </Heading>
@@ -20,7 +20,7 @@ const PrivacyPolicy = () => {
             <ListItem>Name</ListItem>
             <ListItem>Email Address</ListItem>
             <ListItem>Phone Number</ListItem>
-            
+
             <ListItem>
               Other relevant details required for course purchase and user
               engagement.
@@ -63,7 +63,7 @@ const PrivacyPolicy = () => {
             For inquiries or concerns regarding this Privacy Policy, contact us
             at:
             <br />
-            Email: dilshanalam674@gmail.com
+            Email: future.iqra.helpline@gmail.com
             <br />
             Address: District Purnea, State Bihar, Country India, P/O Amari
             Kukroon, P/S Dhamdaha, Pin Code 854205

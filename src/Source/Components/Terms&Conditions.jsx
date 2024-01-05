@@ -61,7 +61,7 @@ const TermsAndConditions = () => {
         <Text>
           For inquiries or concerns regarding these Terms and Conditions:
           <br />
-          Email: dilshanalam674@gmail.com
+          Email: future.iqra.helpline@gmail.com
           <br />
           Address: District Purnea, State Bihar, Country India, P/O Amari
           Kukroon, P/S Dhamdaha, Pin Code 854205
