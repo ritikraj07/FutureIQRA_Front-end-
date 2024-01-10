@@ -96,7 +96,7 @@ export default function ReferAndEarn() {
             Hey,{" "}
             <span style={{ color: "gold", fontWeight: "bold" }}> {name}</span>
           </Text>
-          <Text color={"black"} fontSize={["xl", "2xl", "3xl", "4xl"]}>
+          <Text color={"black"} my={['10px']} fontSize={["xl", ]}>
             Share with your friends and Start earning
           </Text>
           <Flex color="white">

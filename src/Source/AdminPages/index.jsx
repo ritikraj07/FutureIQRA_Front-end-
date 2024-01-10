@@ -15,9 +15,18 @@ import {
 import {HamburgerIcon} from '@chakra-ui/icons'
 import { MdSpaceDashboard, MdReport, MdQuestionAnswer } from "react-icons/md";
 import { SiCoursera } from "react-icons/si";
+import { TiHome } from "react-icons/ti";
 
 export default function AdminRouter() {
   const navigate = useNavigate();
+
+  const iStyle = {
+    marginRight: '5px'
+  }
+  const nStyle = {
+    display: "flex",
+    alignItems: "center",
+  }
 
     return (
       <Flex pos={"relative"} bg="white" minH={window.innerHeight}>
@@ -39,8 +48,21 @@ export default function AdminRouter() {
               className={({ isActive, isPending }) =>
                 isActive ? "activeLink" : "inActiveLink"
               }
-              to={"/admin/dashboard"}
+              to={"/"}
+              style={nStyle}
             >
+              <TiHome style={iStyle} />
+              Home
+            </NavLink>
+            <br></br>
+            <NavLink
+              className={({ isActive, isPending }) =>
+                isActive ? "activeLink" : "inActiveLink"
+              }
+              to={"/admin/dashboard"}
+              style={nStyle}
+            >
+              <MdSpaceDashboard style={iStyle} />
               Dashboard
             </NavLink>
             <br></br>
@@ -49,7 +71,9 @@ export default function AdminRouter() {
                 isActive ? "activeLink" : "inActiveLink"
               }
               to={"/admin/report"}
+              style={nStyle}
             >
+              <MdReport style={iStyle} />
               Report
             </NavLink>
             <br></br>
@@ -58,7 +82,9 @@ export default function AdminRouter() {
                 isActive ? "activeLink" : "inActiveLink"
               }
               to={"/admin/q&a"}
+              style={nStyle}
             >
+              <MdQuestionAnswer style={iStyle} />
               Question
             </NavLink>
             <br></br>
@@ -67,7 +93,9 @@ export default function AdminRouter() {
                 isActive ? "activeLink" : "inActiveLink"
               }
               to={"/admin/course"}
+              style={nStyle}
             >
+              <SiCoursera style={iStyle} />
               Course
             </NavLink>
             <br></br>
@@ -124,7 +152,7 @@ export default function AdminRouter() {
               msOverflowStyle: "none", // Hide scrollbar for Internet Explorer and Edge
             },
           }}
-          pos={'relative'}
+          pos={"relative"}
         >
           <Box
             zIndex={100}
@@ -144,17 +172,23 @@ export default function AdminRouter() {
                 Menu
               </MenuButton>
               <MenuList>
+                <MenuItem onClick={() => navigate("/")}>
+                  <TiHome style={iStyle} />
+                  Home
+                </MenuItem>
                 <MenuItem onClick={() => navigate("/admin/dashboard")}>
-                  Dashboard
+                  <MdSpaceDashboard style={iStyle} /> Dashboard
                 </MenuItem>
                 <MenuItem onClick={() => navigate("/admin/report")}>
-                  {" "}
+                  <MdReport style={iStyle} />
                   Report{" "}
                 </MenuItem>
                 <MenuItem onClick={() => navigate("/admin/q&a")}>
+                  <MdQuestionAnswer style={iStyle} />
                   Question{" "}
                 </MenuItem>
                 <MenuItem onClick={() => navigate("/admin/course")}>
+                  <SiCoursera style={iStyle} />
                   Course
                 </MenuItem>
               </MenuList>
