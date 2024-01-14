@@ -79,6 +79,7 @@ export default function Login() {
         dispatch(setUser(userdata));
         navigate("/");
       } else {
+        console.log(data)
         toast({
           title: data.data,
           status: "error",
@@ -91,6 +92,7 @@ export default function Login() {
         status: "error",
         duration: 3000,
       });
+      console.log(data)
     }
     setIsLoading(false);
   }

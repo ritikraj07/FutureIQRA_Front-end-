@@ -48,36 +48,32 @@ export default function VideoPlayer({videoId}) {
     }
   };
   return (
+    <AspectRatio ratio={16 / 9}>
+      <Box
+        h={["180px", "270px", "360px", "450px"]}
+        w={["320px", "480px", "640px", "800px"]}
+        className="container"
+        onContextMenu={handleRightClick}
+        ref={containerRef}
+      >
+        <div className="title"></div>
+        <Box className="btm"></Box>
+        <iframe
+          // title="DailyMotion Video"
+          width="100%"
+          height="100%"
+          // src={`https://www.dailymotion.com/embed/video/${videoId}`}
+          // https://dai.ly/k6UIxIXCNuFgFhzKREh
+          // https://dai.ly/k35pm5f5HU1gjgzKOBS
 
-        <AspectRatio ratio={16 / 9}>
-          <Box
-            h={["180px", "270px", "360px", "450px"]}
-            w={["320px", "480px", "640px", "800px"]}
-            className="container"
-            onContextMenu={handleRightClick}
-            ref={containerRef}
-          >
-            <div className="title"></div>
-            <Box className="btm"></Box>
-            <iframe
-              title="DailyMotion Video"
-              width="100%"
-              height="100%"
-              src={`https://www.dailymotion.com/embed/video/${videoId}`}
-              // https://dai.ly/k6UIxIXCNuFgFhzKREh
-              // https://dai.ly/k35pm5f5HU1gjgzKOBS
-
-              allowFullScreen
-              ref={containerRef}
-            ></iframe>
-            <button
-              className="fullScreenBtm"
-              onClick={toggleFullScreen}
-            ></button>
-            <div className="logo"></div>
-          </Box>
-        </AspectRatio>
-      
+          src={`https://geo.dailymotion.com/player/xnnoq.html?video=${videoId}&playlist=none`}
+          allowFullScreen
+          ref={containerRef}
+        ></iframe>
+        <button className="fullScreenBtm" onClick={toggleFullScreen}></button>
+        <div className="logo"></div>
+      </Box>
+    </AspectRatio>
   );
 }
 
