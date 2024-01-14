@@ -85,16 +85,17 @@ export default function CourseDes() {
   function SearchCourse() {
     if (query.length == 0) return;
     
-    GetRequest(`${url}course/search?name=${query}`).then((res) => {
-      
+    GetRequest(
+      `${url}course/search?name=${query}&coursetype=${coursetype}`
+    ).then((res) => {
       if (res.status) {
-        if (res.data.length>0) {
+        if (res.data.length > 0) {
           setCourses(res.data);
         } else {
           toast({
-            title: 'No course found',
-            status:'info'
-          })
+            title: "No course found",
+            status: "info",
+          });
         }
       } else {
         toast({
