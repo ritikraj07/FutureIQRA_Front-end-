@@ -136,7 +136,7 @@ export default function Home() {
       flexDir={"column"}
       alignItems={"center"}
       // paddingBottom={[10,20]}
-      height={'100%'}
+      height={"100%"}
     >
       {/* modal */}
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -178,8 +178,8 @@ export default function Home() {
         <Image
           w={"100px"}
           h="100px"
-          src="https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYR8GeqMZenKekmh_Y-RZIPMrFPE_ykV7e79-vDsCyqAEHh6HzMwigDyEpRBuBylupqLDCtQlwcCRS_uGn6MZLQia_0B=w1920-h907"
-          alt="FutureIQRA"
+          src="src\Source\Assets\favicon_io\android-chrome-512x512.png"
+          alt="Future IQRA"
         />
 
         <Heading display={["none", "none", "block"]} color={"white"}>
@@ -204,9 +204,8 @@ export default function Home() {
               <MenuItem
                 onClick={() => {
                   localStorage.clear();
-                  dispatch(setLogout())
+                  dispatch(setLogout());
                   navigate("/login", { replace: true });
-                  
                 }}
               >
                 Log Out
@@ -261,7 +260,7 @@ export default function Home() {
           alignContent={"center"}
           alignItems={"center"}
           justifyContent={"center"}
-          paddingBottom={'100px'}
+          paddingBottom={"100px"}
         >
           {/* <Card
             h={["270px"]}

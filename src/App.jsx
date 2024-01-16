@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import AllRoutes from "./Source/Router/AllRoutes";
 import Copyright from "./Source/Components/CopyRight";
 import Footer from "./Source/Components/Footer";
@@ -13,6 +13,7 @@ function App() {
   });
   return (
     <Flex minH={"100vh"} flexDir={"column"} justifyContent={"space-between"}>
+      
       <Helmet>
         <title>Future IQRA</title>
         <meta
@@ -23,13 +24,13 @@ function App() {
           rel="canonical"
           type="image/png"
           sizes="512x512"
-          href="/src/Source/Assets/favicon_io/android-chrome-512x512.png"
+          href="https://www.futureiqra.in"
         />
         <link
           rel="shortcut icon"
           type="image/png"
           sizes="512x512"
-          href="/src/Source/Assets/favicon_io/android-chrome-512x512.png"
+          href="src\Source\Assets\favicon_io\android-chrome-512x512.png"
         />
         <link
           rel="icon"

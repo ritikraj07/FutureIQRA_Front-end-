@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import {
   Box,
   Text,
@@ -22,6 +23,7 @@ import { useDispatch } from "react-redux";
 import { GetRequest } from "../Services/ApiCall";
 import { setUser } from "../Redux/Reducers/UserReducers";
 import ForgotPassword from "../Components/ForgotPassword";
+import { Helmet } from "react-helmet";
 
 export default function Login() {
   const url = import.meta.env.VITE_API_URL;
@@ -111,10 +113,69 @@ export default function Login() {
         top={[1, 5]}
         left={[1, 30]}
         h="80px"
-        src="https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYR8GeqMZenKekmh_Y-RZIPMrFPE_ykV7e79-vDsCyqAEHh6HzMwigDyEpRBuBylupqLDCtQlwcCRS_uGn6MZLQia_0B=w1920-h907"
-        alt="FutureIQRA"
+        src="src\Source\Assets\favicon_io\android-chrome-512x512.png"
+        alt="Future IQRA"
       />
       <Box w={"100%"} display={"flex"} flexDir={"column"} alignItems={"center"}>
+        <metadata>
+          <Helmet>
+            <title>Future IQRA</title>
+            <meta
+              name="description"
+              content="Explore transformative learning at futureIQRA.in – a platform by Ritik Raj and Abdul Barik. Innovative, tech-driven education with limitless possibilities."
+            />
+            <link
+              rel="canonical"
+              type="image/png"
+              sizes="512x512"
+              href="https://www.futureiqra.in"
+            />
+            <link
+              rel="shortcut icon"
+              type="image/png"
+              sizes="512x512"
+              href="src\Source\Assets\favicon_io\android-chrome-512x512.png"
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="512x512"
+              href="/src/Source/Assets/favicon_io/android-chrome-512x512.png"
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="192x192"
+              href="/src/Source/Assets/favicon_io/android-chrome-192x192.png"
+            />
+            <link
+              rel="apple-touch-icon"
+              sizes="180x180"
+              href="/src/Source/Assets/favicon_io/apple-touch-icon.png"
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="32x32"
+              href="/src/Source/Assets/favicon_io/favicon-32x32.png"
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="16x16"
+              href="/src/Source/Assets/favicon_io/favicon-16x16.png"
+            />
+            <link
+              rel="manifest"
+              href="/src/Source/Assets/favicon_io/site.webmanifest"
+            />
+          </Helmet>
+        </metadata>
+        <Heading opacity={0} pos={'fixed'} >
+          Explore transformative learning at futureIQRA.in – a platform by Ritik
+          Raj and Abdul Barik. Innovative, tech-driven education with limitless
+          possibilities.
+        </Heading>
         <Heading color={"white"}>Welcome</Heading>
         <Text color={"white"}>Do Refer Be Rich</Text>
 
