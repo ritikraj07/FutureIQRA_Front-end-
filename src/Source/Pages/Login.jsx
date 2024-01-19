@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 import {
   Box,
   Text,
@@ -23,7 +22,6 @@ import { useDispatch } from "react-redux";
 import { GetRequest } from "../Services/ApiCall";
 import { setUser } from "../Redux/Reducers/UserReducers";
 import ForgotPassword from "../Components/ForgotPassword";
-import { Helmet } from "react-helmet";
 
 export default function Login() {
   const url = import.meta.env.VITE_API_URL;
@@ -88,6 +86,7 @@ export default function Login() {
           duration: 3000,
         });
       }
+      setIsLoading(false);
     } catch (error) {
       toast({
         title: "something went wrong",
@@ -95,6 +94,7 @@ export default function Login() {
         duration: 3000,
       });
       console.log(data)
+      setIsLoading(false);
     }
     setIsLoading(false);
   }
@@ -113,69 +113,10 @@ export default function Login() {
         top={[1, 5]}
         left={[1, 30]}
         h="80px"
-        src="src\Source\Assets\favicon_io\android-chrome-512x512.png"
+        src="https://lh3.googleusercontent.com/fife/AGXqzDn3Voj6hLNDoifJr3clj2pjt9obdj3dvbrXhmiVl59IDGvJ-ykZyfT0O015fLC1wO-PmmbHKr7uuV8Ng8WsymahoFzC4jvaYZ2-leFnQuQrbsD8QGoHcp9ctMrLADVoo4yBe1U9bvODg5uhZ5KL8jbNKR1OXNH3FkpsD8wCrQcllXuz2ooHa73bFroYYs-hH6PztvZao5ZObqoDy0AYUDi_UIdZnLj0nEcWRU6v1qrJESPH54b30KnAtDEevxL7qudlj88bvQm-qmR6gdzRop4P97neUg7PjOsRUbvg20ms8Lp4gNe9J-LwCjR2xt-Dkz4TMZ_8HR8eYW81l6jDN7UZ5d2Ut55muUTfSqsCqDNy1zxQOsLb3nRgqZjBhppV1846ENvdN3vR4nykQ4UU5EvZuI7XRK2PROs0hoDu485xnet70zk_CrilKeBCfudxExJGVe1QnqihTXk1kuUWMvkCQVOVKs5-hK66JFL9ZH0hSaTyFwlHnR6sbxcUCT7ZygyKMC-CPbU2eaUeKdwtXOlwPmXlE0Nf2czosPjYwc51SxVD72HUZpxEvdp4JIn0jlWYlQ0oy7g6-bi_jySaDwC7tpewPIKCaLuTr-8vp-X-8k6jzEY8Y3ZfUeQ3-ggApUY6E7h5y6nBBd-xj7QKVq9Bs5nU_H7zm5N1uSeVwds-d07WHtSWZfB9vS0HYdyld21kEAY5dlX-HPpcpbwauQlGl-lD3BnL0bHJHj_KG0MW0FijRy1iEOy0VuQ6kEg9A1wv6zOkSd7wfig084bRztFw48kV4tMrGuaDyWMaxTOY4XXL6SPul9FR6KtPKWClGXXJ_8gKz526b3pWREMxiBw5sPaTc05ige9YP6W3Xz8ZJBUQw3Rehc9s3TFeLYINHBNc4KvVnIQskVXJ-IMMeVd9aFTpy2sLX6R803-7s5Icw8kOPVWXuULTDgpIjx1sX6gS1FOFD99sduRAntelcLfkxQbplP0BSNJyfxLxNCzoEpneY61zlo4B3Zv02U2cWu4gbCC2dVRGAKUIW7vFIZbRsB5zaUUCyL7Z5yW0sbsPITk3-9I-x_VkOrwbvGHlFlQBj1rpf62KMWdUW1B_loIaDhXw2SIvXK-jkpkvu-iXMRB7n-YC_IYuWv6fj79FoROnl2cz6kA_Plk1rUgj53ABiDdAlvH-E2a6SYDxDpkROp2frYJ4Z6jhR09tnko-dRwues2vZowdTGZWl6BxYp161V4xKNpFtTsBZOoHkPgg8UzsN42dywyuYHJldUvbOFL3JvQN6c8jsJD9KZkjE79RLYDRO8qzC85yp4El0S6R0O6WfupCuc24z9MZ_w9ZqSUcSAHESClGumF0Upt_QQRSc2m0VOjEjWcIfdBWrJLMDp0p4wBJwn0fcS_ualtXZIMVwJkeYTfQXTr0IoGRc-DqhU6YQAagWi26jZPOl9InRrlGf_qfEtvvNfti9Q6YJBaLlRObIlNsPyd2KjjHc44tr8V8Ud9RAggsgPcYdyZqNpUd457kyS4UryDK7MXfMbFyAzIOolavuddXWCHGsbnCUL2gSr17=w1920-h907"
         alt="Future IQRA"
       />
       <Box w={"100%"} display={"flex"} flexDir={"column"} alignItems={"center"}>
-        <metadata>
-          <Helmet>
-            <title>Future IQRA</title>
-            <meta
-              name="description"
-              content="Explore transformative learning at futureIQRA.in – a platform by Ritik Raj and Abdul Barik. Innovative, tech-driven education with limitless possibilities."
-            />
-            <link
-              rel="canonical"
-              type="image/png"
-              sizes="512x512"
-              href="https://www.futureiqra.in"
-            />
-            <link
-              rel="shortcut icon"
-              type="image/png"
-              sizes="512x512"
-              href="src\Source\Assets\favicon_io\android-chrome-512x512.png"
-            />
-            <link
-              rel="icon"
-              type="image/png"
-              sizes="512x512"
-              href="/src/Source/Assets/favicon_io/android-chrome-512x512.png"
-            />
-            <link
-              rel="icon"
-              type="image/png"
-              sizes="192x192"
-              href="/src/Source/Assets/favicon_io/android-chrome-192x192.png"
-            />
-            <link
-              rel="apple-touch-icon"
-              sizes="180x180"
-              href="/src/Source/Assets/favicon_io/apple-touch-icon.png"
-            />
-            <link
-              rel="icon"
-              type="image/png"
-              sizes="32x32"
-              href="/src/Source/Assets/favicon_io/favicon-32x32.png"
-            />
-            <link
-              rel="icon"
-              type="image/png"
-              sizes="16x16"
-              href="/src/Source/Assets/favicon_io/favicon-16x16.png"
-            />
-            <link
-              rel="manifest"
-              href="/src/Source/Assets/favicon_io/site.webmanifest"
-            />
-          </Helmet>
-        </metadata>
-        <Heading opacity={0} pos={'fixed'} >
-          Explore transformative learning at futureIQRA.in – a platform by Ritik
-          Raj and Abdul Barik. Innovative, tech-driven education with limitless
-          possibilities.
-        </Heading>
         <Heading color={"white"}>Welcome</Heading>
         <Text color={"white"}>Do Refer Be Rich</Text>
 
