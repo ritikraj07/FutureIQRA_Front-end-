@@ -41,13 +41,16 @@ const Vip1Course = () => {
       if (res.status) {
         window.open(res.results.payment_url, "_blank");
       } else {
+        console.log(res)
         toast({
           status: "info",
           title: "Something went wrong",
           description: "Please Try Again",
         });
       }
-    });
+    }).catch((error) => {
+      console.log('error form vip1cours buycourse postrequest', error)
+    })
 
     setLoading(false)
   }
