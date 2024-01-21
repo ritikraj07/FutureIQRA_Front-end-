@@ -27,7 +27,7 @@ export default function ThankYou() {
 
     PostRequest(`${url}payment/order/status/${orderId}`)
       .then((res) => {
-        console.log("console form order status", res);
+        // console.log("console form order status", res);
         if (res?.status) {
           if (res.results) {
             let amount = res.results?.txn_amount;
@@ -65,7 +65,30 @@ export default function ThankYou() {
   }
 
   function MentionData(paymentData) {
-      console.log('log fomr MentionData', paymentData)
+    let payData = {
+      transactionId: paymentData.txn_id,
+      orderId: paymentData.order_id,
+      merchant: {
+        id: paymentData.merchant_id,
+        name: paymentData.merchant_name,
+        vpa: paymentData.merchant_vpa,
+      },
+      transactionDate: paymentData.txn_date,
+      amount: paymentData.txn_amount,
+      product: paymentData.product_name,
+      customer_email: paymentData.customer_email,
+      bank: {
+        orderId: paymentData.bank_orderid,
+        utrNumber: paymentData.utr_number,
+      },
+      paymentMode: paymentData.payment_mode,
+      status: paymentData.status,
+      expireTime: expireTime,
+    };
+    PostRequest(`${url}user/add-payment-history`, payData)
+      .then((res) => {
+      console.log(res)
+    })
   }
 
   return (
