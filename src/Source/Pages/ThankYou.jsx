@@ -32,6 +32,7 @@ export default function ThankYou() {
    
     PostRequest(`${url}payment/order/status/${orderId}`)
       .then((res) => {
+        console.log('console form order status', res)
         if (res?.status) {
           if (res.status?.results) {
             let amount = res.status.results?.txn_amount;
