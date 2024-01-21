@@ -32,7 +32,9 @@ const Vip1Course = () => {
       amount: 1,
       note: "Pay For VIP1 Course",
       product_name: "VIP1 Subscription",
-      email: email,  
+      email: email, 
+      name: name,
+      phone: phone
       
     };
 
