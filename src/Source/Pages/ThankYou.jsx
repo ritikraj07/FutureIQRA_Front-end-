@@ -29,10 +29,10 @@ export default function ThankYou() {
       .then((res) => {
         console.log("console form order status", res);
         if (res?.status) {
-          if (res.status?.results) {
-            let amount = res.status.results?.txn_amount;
+          if (res.results) {
+            let amount = res.results?.txn_amount;
             let expireTime = calculateExpirationTime(
-              res.status.results.txn_date
+              res.results.txn_date
             );
             if (amount == 499) {
               setCourseType("VIP1");
@@ -43,7 +43,7 @@ export default function ThankYou() {
               setState("success");
               setExpireTime(expireTime);
             }
-            MentionData(res.status.results);
+            MentionData(res.results);
           } else {
             console.log(res);
             setState("fail");
@@ -64,7 +64,9 @@ export default function ThankYou() {
       });
   }
 
-  function MentionData(paymentData) {}
+  function MentionData(paymentData) {
+      console.log('log fomr MentionData', paymentData)
+  }
 
   return (
     <Box minW={"100vh"} minH={"100vh"} bg={"white"}>
