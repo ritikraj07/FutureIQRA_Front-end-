@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 import { PostRequest } from "../Services/ApiCall";
 import { useState } from "react";
 import BuyCouse from "./BuyCouse";
-import GenerateOrderId from "../Services/OrderId";
+
 
 const Vip1Course = () => {
     const url = import.meta.env.VITE_API_URL;
@@ -27,12 +27,13 @@ const Vip1Course = () => {
   function BuyCourse(e) {
     e.preventDefault();
     setLoading(true)
-    let orderId = GenerateOrderId()
+    
     let courseData = {
       amount: 1,
       note: "Pay For VIP1 Course",
       product_name: "VIP1 Subscription",
-      email: email,     
+      email: email,  
+      
     };
 
     PostRequest(`${url}payment/api/proxy`, courseData).then((res) => {
