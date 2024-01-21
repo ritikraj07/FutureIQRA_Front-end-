@@ -47,7 +47,7 @@ const Vip1Course = () => {
         toast({
           status: "info",
           title: "Something went wrong",
-          description: "Please Try Again",
+          description: res.message?res.message:"Please Try Again",
         });
       }
     }).catch((error) => {

@@ -13,7 +13,7 @@ export default function ThankYou() {
   const url = import.meta.env.VITE_API_URL;
   const { name, _id } = useSelector((state) => state.User);
   const toast = useToast();
-  const navigate = useNavigate();
+  
   const {orderId } = useParams();
   const [state, setState] = useState("processing");
   const [courseType, setCourseType] = useState("");
@@ -109,6 +109,7 @@ export default function ThankYou() {
 }
 
 function SuccessfullPayment({ name, courseType, expireTime }) {
+  const navigate = useNavigate();
   return (
     <Box
       display={"flex"}
