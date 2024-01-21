@@ -14,25 +14,20 @@ export default function ThankYou() {
   const { name, _id } = useSelector((state) => state.User);
   const toast = useToast();
   const navigate = useNavigate();
-  const { userId, orderId } = useParams();
+  const {orderId } = useParams();
   const [state, setState] = useState("processing");
   const [courseType, setCourseType] = useState("");
   const [expireTime, setExpireTime] = useState("");
-    useEffect(() => {
-      
-    if (_id != userId) {
-      setState("unauthorized");
-    } else {
-      CheckStatus();
-    }
+  useEffect(() => {
+    CheckStatus();
   }, []);
 
   function CheckStatus() {
     setState("processing");
-   
+
     PostRequest(`${url}payment/order/status/${orderId}`)
       .then((res) => {
-        console.log('console form order status', res)
+        console.log("console form order status", res);
         if (res?.status) {
           if (res.status?.results) {
             let amount = res.status.results?.txn_amount;
@@ -69,9 +64,7 @@ export default function ThankYou() {
       });
   }
 
-    function MentionData(paymentData) {
-      
-  }
+  function MentionData(paymentData) {}
 
   return (
     <Box minW={"100vh"} minH={"100vh"} bg={"white"}>

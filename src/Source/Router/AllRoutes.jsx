@@ -37,7 +37,7 @@ export default function AllRoutes() {
         }
       />
       <Route
-        path="/thank-you/:orderId/:userId"
+        path="/thank-you/:orderId"
         element={
 
           <Auth>
