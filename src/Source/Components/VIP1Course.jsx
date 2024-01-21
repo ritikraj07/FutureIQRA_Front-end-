@@ -7,10 +7,54 @@ import {
   Text,
   Button,
   Flex,
+  useToast
 } from "@chakra-ui/react";
 import { MdCheckCircle } from "react-icons/md";
+import { useSelector } from "react-redux";
+import { PostRequest } from "../Services/ApiCall";
+import { useState } from "react";
+import BuyCouse from "./BuyCouse";
+import GenerateOrderId from "../Services/OrderId";
 
 const Vip1Course = () => {
+  const token = import.meta.env.VITE_API_PAYMENT_TOKEN;
+  const toast = useToast()
+  let [isLoading, setLoading] = useState(false);
+  let [email, setEmail] = useState("");
+  const { name, phone, _id } = useSelector((store) => store.User);
+
+  function BuyCourse(e) {
+    e.preventDefault();
+    setLoading(true)
+    let orderId = GenerateOrderId()
+    let courseData = {
+      token: token,
+      order_id: orderId,
+      txn_amount: 1,
+      txn_note: "Pay For VIP1 Course",
+      product_name: "VIP1 Subscription",
+      customer_name: name,
+      customer_mobile: phone,
+      customer_email: email,
+      callback_url: `https://www.futureiqra.in/thank-you/${orderId}/${_id}`,
+    };
+
+    PostRequest("https://allapi.in/order/create", courseData).then((res) => {
+      console.log('res from vip1 Course')
+      if (res.status) {
+        window.open(res.results.payment_url, "_blank", "width=600,height=400");
+      } else {
+        toast({
+          status: 'info',
+          title: 'Something went wrong',
+          description:'Please Try Again'
+        })
+      }
+    });
+
+    setLoading(false)
+  }
+
   return (
     <Flex
       flexDir={["column"]}
@@ -41,7 +85,7 @@ const Vip1Course = () => {
         </ListItem>
         <ListItem display={"flex"} alignItems={"center"}>
           <ListIcon as={MdCheckCircle} color="green.500" />
-          <Text style={{color:'white'}} >
+          <Text style={{ color: "white" }}>
             Get a 1-month subscription for just{" "}
             <span style={{ margin: "0 4px", textDecoration: "line-through" }}>
               ₹799
@@ -50,17 +94,15 @@ const Vip1Course = () => {
           </Text>
         </ListItem>
       </List>
-      <Button
-        _hover={{ color: "blue.500", bg: "white" }}
-        alignSelf={"flex-end"}
-        m={"14px auto"}
-        borderRadius={"0"}
-        color={"white"}
-        bg={"blue.500"}
-        variant="solid"
-      >
-        Buy Now
-      </Button>
+
+      <BuyCouse
+        title={"Subscription for VIP1"}
+        onSubmit={BuyCourse}
+        phone={phone}
+        name={name}
+        setEmail={setEmail}
+        isLoading={isLoading}
+      />
     </Flex>
   );
 };

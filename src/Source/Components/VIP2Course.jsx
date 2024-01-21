@@ -7,10 +7,51 @@ import {
   Text,
   Button,
   Flex,
+  useToast,
 } from "@chakra-ui/react";
 import { MdCheckCircle } from "react-icons/md";
+import { useSelector } from "react-redux";
+import { PostRequest } from "../Services/ApiCall";
+import { useState } from "react";
+import BuyCouse from "./BuyCouse";
+import GenerateOrderId from "../Services/OrderId";
 
 const Vip2Course = () => {
+  const toast = useToast();
+  let [isLoading, setLoading] = useState(false);
+  let [email, setEmail] = useState("");
+  const { name, phone } = useSelector((store) => store.User);
+
+  function BuyCourse(e) {
+    e.preventDefault();
+    setLoading(true);
+    let courseData = {
+      token: "26f053-f56883-5d3c09-2d6cda-1f472c",
+      order_id: GenerateOrderId(),
+      txn_amount: 1,
+      txn_note: "Pay For VIP1 Course",
+      product_name: "VIP1 Subscription",
+      customer_name: name,
+      customer_mobile: phone,
+      customer_email: email,
+      callback_url: "https://www.futureiqra.in/my-learning",
+    };
+
+    PostRequest("https://allapi.in/order/create", courseData).then((res) => {
+      console.log("res from vip1 Course");
+      if (res.status) {
+        window.open(res.results.payment_url, "_blank", "width=600,height=400");
+      } else {
+        toast({
+          status: "info",
+          title: "Something went wrong",
+          description: "Please Try Again Later",
+        });
+      }
+    });
+
+    setLoading(false);
+  }
   return (
     <Flex
       flexDir={["column"]}
@@ -51,17 +92,15 @@ const Vip2Course = () => {
           </Text>
         </ListItem>
       </List>
-      <Button
-        _hover={{ color: "blue.500", bg: "white" }}
-        alignSelf={"flex-end"}
-        m={"14px auto"}
-        borderRadius={"0"}
-        color={"white"}
-        bg={"blue.500"}
-        variant="solid"
-      >
-        Buy Now
-      </Button>
+
+      <BuyCouse
+        title={"Subscription for VIP2"}
+        onSubmit={BuyCourse}
+        phone={phone}
+        name={name}
+        setEmail={setEmail}
+        isLoading={isLoading}
+      />
     </Flex>
   );
 };

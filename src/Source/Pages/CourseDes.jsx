@@ -195,7 +195,7 @@ export default function CourseDes() {
         {coursetype == "vip1" ? <Vip1Course /> : <Vip2Course />}
       </Box>
 
-      {/* copy right */}
+      
     </Flex>
   );
 }

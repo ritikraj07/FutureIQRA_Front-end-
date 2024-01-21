@@ -23,6 +23,7 @@ import PrivacyPolicy from "../Components/PrivacyPolicy.jsx";
 import TermsAndConditions from "../Components/Terms&Conditions.jsx";
 import RefundsAndReturnsPolicy from "../Components/Refunds&ReturnsPolicy.jsx";
 import AboutUs from "../Components/About.jsx";
+import ThankYou from "../Pages/ThankYou.jsx";
 
 export default function AllRoutes() {
   return (
@@ -34,6 +35,15 @@ export default function AllRoutes() {
             <Home />
           </Auth>
         }
+      />
+      <Route
+        path="/thank-you/:orderId/:userId"
+        element={
+
+          <Auth>
+            <ThankYou />
+          </Auth>
+         }
       />
       <Route
         path="/about-us"
