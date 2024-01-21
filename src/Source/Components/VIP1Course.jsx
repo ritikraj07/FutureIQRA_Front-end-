@@ -18,7 +18,7 @@ import GenerateOrderId from "../Services/OrderId";
 
 const Vip1Course = () => {
     const url = import.meta.env.VITE_API_URL;
-  const token = import.meta.env.VITE_API_PAYMENT_TOKEN;
+  
   const toast = useToast()
   let [isLoading, setLoading] = useState(false);
   let [email, setEmail] = useState("");
@@ -29,21 +29,16 @@ const Vip1Course = () => {
     setLoading(true)
     let orderId = GenerateOrderId()
     let courseData = {
-      token: token,
-      order_id: orderId,
-      txn_amount: 1,
-      txn_note: "Pay For VIP1 Course",
+      amount: 1,
+      note: "Pay For VIP1 Course",
       product_name: "VIP1 Subscription",
-      customer_name: name,
-      customer_mobile: phone,
-      customer_email: email,
-      callback_url: `https://www.futureiqra.in/thank-you/${orderId}/${_id}`,
+      email: email,     
     };
 
     PostRequest(`${url}payment/api/proxy`, courseData).then((res) => {
-      console.log("res from vip1 Course", res);
+      
       if (res.status) {
-        window.open(res.results.payment_url, "_blank", "width=600,height=400");
+        window.open(res.results.payment_url, "_blank");
       } else {
         toast({
           status: "info",

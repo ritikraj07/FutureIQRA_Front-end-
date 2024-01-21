@@ -10,7 +10,7 @@ import UnauthorizedPage from "../Components/Unauthorized";
 import calculateExpirationTime from "../Services/TimeServices";
 
 export default function ThankYou() {
-  const token = import.meta.env.VITE_API_PAYMENT_TOKEN;
+  const url = import.meta.env.VITE_API_URL;
   const { name, _id } = useSelector((state) => state.User);
   const toast = useToast();
   const navigate = useNavigate();
@@ -29,11 +29,8 @@ export default function ThankYou() {
 
   function CheckStatus() {
     setState("processing");
-    let data = {
-      token: token,
-      order_id: orderId,
-    };
-    PostRequest("https://allapi.in/order/status", data)
+   
+    PostRequest(`${url}payment/order/status/${orderId}`)
       .then((res) => {
         if (res?.status) {
           if (res.status?.results) {
@@ -67,7 +64,7 @@ export default function ThankYou() {
           title: "Something went wrong",
           status: "error",
         });
-          setState('fail')
+        setState("fail");
       });
   }
 
