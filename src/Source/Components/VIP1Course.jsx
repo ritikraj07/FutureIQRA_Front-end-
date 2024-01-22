@@ -54,17 +54,16 @@ const Vip1Course = () => {
       .catch((error) => {
         console.log("error form vip1cours buycourse postrequest", error);
       });
-console.log('1')
-    setTimeout(() => {
-      console.log('2')
-      GetRequest(`${url}payment/status`).then((res) => {
-        console.log(res)
-        if (res.status) {
-          navigate('/thank-you/1234567890')
-        }
-      });
-    }, 30000);
 
+    // setTimeout(() => {
+    //   GetRequest(`${url}payment/status`).then((res) => {
+    //     console.log(res)
+    //     if (res.status) {
+    //       navigate('/thank-you/1234567890')
+    //     }
+    //   });
+    // }, 30000);
+    
 
     setLoading(false);
   }
