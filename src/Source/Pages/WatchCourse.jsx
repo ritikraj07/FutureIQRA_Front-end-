@@ -39,19 +39,16 @@ export default function WatchCourse() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const toast = useToast();
-  // if (videos.length > 0) {
-  //     setVideo(videos[0])
-  // }
 
-  // add video number in params
-  // reset video number on change video
-
-  // console.log(videos[video_no]?.url);
 
   useEffect(() => {
+   
     GetRequest(`${url}course/search?id=${course_id}`).then((res) => {
       if (res.status) {
         // console.log(res.data);
+        if (res.data.coursetype !== userType) {
+          navigate("/unauthorized");
+        }
         dispatch(setCourse(res.data));
       } else {
         toast({
