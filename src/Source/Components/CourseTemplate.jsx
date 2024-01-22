@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import VideoPlayer from "./VideoPlayer";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCourse } from "../Redux/Reducers/CourseReducers";
 
 export default function CourseTemplate({ course, watch = false }) {
