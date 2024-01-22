@@ -30,20 +30,13 @@ export default function ThankYou() {
         // console.log("console form order status", res);
         if (res?.status) {
           if (res.results) {
-            let amount = res.results?.txn_amount;
             let expireTime = calculateExpirationTime(
               res.results.txn_date
             );
-            if (amount == 499) {
-              setCourseType("VIP1");
+              setCourseType(res.results.product_name);
               setState("success");
               setExpireTime(expireTime);
-            } else {
-              setCourseType("VIP2");
-              setState("success");
-              setExpireTime(expireTime);
-            }
-            MentionData(res.results);
+            MentionData(res.results, expireTime);
           } else {
             console.log(res);
             setState("fail");
@@ -64,7 +57,7 @@ export default function ThankYou() {
       });
   }
 
-  function MentionData(paymentData) {
+  function MentionData(paymentData, expireTime) {
     let payData = {
       transactionId: paymentData.txn_id,
       orderId: paymentData.order_id,
@@ -86,10 +79,10 @@ export default function ThankYou() {
       expireTime: expireTime,
       phone: paymentData.customer_mobile,
     };
-    PostRequest(`${url}user/add-payment-history`, payData)
-      .then((res) => {
-      console.log(res)
-    })
+    console.log(payData);
+    PostRequest(`${url}user/add-payment-history`, payData).then((res) => {
+      console.log(res);
+    });
   }
 
   return (
