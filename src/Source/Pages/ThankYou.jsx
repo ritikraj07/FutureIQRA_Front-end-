@@ -22,7 +22,7 @@ export default function ThankYou() {
   useEffect(() => {
     console.log('console from useEffect in thank you page')
      setTimeout(function () {
-       location.reload();
+       
        CheckStatus();
      }, 3000);
   }, []);
