@@ -10,6 +10,7 @@ import UnauthorizedPage from "../Components/Unauthorized";
 import calculateExpirationTime from "../Services/TimeServices";
 
 export default function ThankYou() {
+  console.log("13");
   const url = import.meta.env.VITE_API_URL;
   
   const [name, setName] = useState('')
@@ -19,11 +20,13 @@ export default function ThankYou() {
   const [state, setState] = useState("processing");
   const [courseType, setCourseType] = useState("");
   const [expireTime, setExpireTime] = useState("");
+  console.log("22")
 useEffect(() => {
   console.log("console from useEffect in thank you page");
   CheckStatus();
   reloadPage();
 }, []);
+  console.log("28");
 
 function reloadPage() {
   let isLoaded = JSON.parse(localStorage.getItem("load"));
@@ -37,6 +40,7 @@ function reloadPage() {
 
 
   function CheckStatus() {
+    console.log("42");
     setState("processing");
 
     PostRequest(`${url}payment/order/status/${orderId}`)

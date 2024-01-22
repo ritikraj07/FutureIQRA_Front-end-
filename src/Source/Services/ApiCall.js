@@ -9,6 +9,9 @@ async function GetRequest(url) {
 
 async function PostRequest(url, data={}) {
     let token = JSON.parse(localStorage.getItem('token'))
+    if (!token) {
+        console.log('token now found ', token)
+    }
     try {
         const response = await fetch(url, {
             method: "POST", // or 'PUT'
@@ -23,7 +26,7 @@ async function PostRequest(url, data={}) {
         // console.log("Success:", result);
         return result
     } catch (error) {
-        // console.error("Error:", error);
+        console.error("Error:", error);
     }
 }
 
