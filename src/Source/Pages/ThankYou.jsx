@@ -19,13 +19,22 @@ export default function ThankYou() {
   const [state, setState] = useState("processing");
   const [courseType, setCourseType] = useState("");
   const [expireTime, setExpireTime] = useState("");
-  useEffect(() => {
-    console.log('console from useEffect in thank you page')
-     setTimeout(function () {
-       
-       CheckStatus();
-     }, 3000);
-  }, []);
+useEffect(() => {
+  console.log("console from useEffect in thank you page");
+  CheckStatus();
+  reloadPage();
+}, []);
+
+function reloadPage() {
+  let isLoaded = JSON.parse(localStorage.getItem("load"));
+  if (!isLoaded) {
+    localStorage.setItem("load", JSON.stringify(true)); // Use JSON.stringify(true)
+    setTimeout(function () {
+      location.reload();
+    }, 3000);
+  }
+}
+
 
   function CheckStatus() {
     setState("processing");
