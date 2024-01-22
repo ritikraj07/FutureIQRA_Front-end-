@@ -7,54 +7,66 @@ import {
   Text,
   Button,
   Flex,
-  useToast
+  useToast,
 } from "@chakra-ui/react";
 import { MdCheckCircle } from "react-icons/md";
 import { useSelector } from "react-redux";
-import { PostRequest } from "../Services/ApiCall";
+import { GetRequest, PostRequest } from "../Services/ApiCall";
 import { useState } from "react";
 import BuyCouse from "./BuyCouse";
-
+import { useNavigate } from "react-router-dom";
 
 const Vip1Course = () => {
-    const url = import.meta.env.VITE_API_URL;
-  
-  const toast = useToast()
+  const url = import.meta.env.VITE_API_URL;
+  const navigate =useNavigate()
+  const toast = useToast();
   let [isLoading, setLoading] = useState(false);
   let [email, setEmail] = useState("");
-  const { name, phone} = useSelector((store) => store.User);
+  const { name, phone } = useSelector((store) => store.User);
 
   function BuyCourse(e) {
     e.preventDefault();
-    setLoading(true)
-    
+    setLoading(true);
+
     let courseData = {
       amount: 1,
       note: "Pay For VIP1 Course",
       product_name: "VIP1",
-      email: email, 
+      email: email,
       name: name,
-      phone: phone
-      
+      phone: phone,
     };
 
-    PostRequest(`${url}payment/api/proxy`, courseData).then((res) => {
-      console.log("form vip1cours buycourse postrequest", res);
-      if (res.status) {
-        window.open(res.results.payment_url);
-      } else {
+    PostRequest(`${url}payment/api/proxy`, courseData)
+      .then((res) => {
+        console.log("form vip1cours buycourse postrequest", res);
+        if (res.status) {
+          window.open(res.results.payment_url);
+        } else {
+          console.log(res);
+          toast({
+            status: "info",
+            title: "Something went wrong",
+            description: res.message ? res.message : "Please Try Again",
+          });
+        }
+      })
+      .catch((error) => {
+        console.log("error form vip1cours buycourse postrequest", error);
+      });
+console.log('1')
+    setTimeout(() => {
+      console.log('2')
+      GetRequest(`${url}payment/status`).then((res) => {
         console.log(res)
-        toast({
-          status: "info",
-          title: "Something went wrong",
-          description: res.message?res.message:"Please Try Again",
-        });
-      }
-    }).catch((error) => {
-      console.log('error form vip1cours buycourse postrequest', error)
-    })
+        if (res.status) {
+          navigate('/thank-you/1234567890')
+        }
+      });
+    }, 30000);
 
-    setLoading(false)
+
+    setLoading(false);
   }
 
   return (
