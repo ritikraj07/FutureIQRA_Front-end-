@@ -36,18 +36,8 @@ export default function AllRoutes() {
           </Auth>
         }
       />
-      <Route
-        path="/thank-you/:orderId"
-        element={
-
-          <Auth>
-            <ThankYou />
-          </Auth>
-         }
-      />
-      <Route
-        path="/about-us"
-      element={<AboutUs />} />
+      <Route path="/thank-you/:orderId" element={<ThankYou />} />
+      <Route path="/about-us" element={<AboutUs />} />
       <Route
         path="/privacy&policy"
         element={

@@ -11,7 +11,8 @@ import calculateExpirationTime from "../Services/TimeServices";
 
 export default function ThankYou() {
   const url = import.meta.env.VITE_API_URL;
-  const { name, _id } = useSelector((state) => state.User);
+  
+  const [name, setName] = useState('')
   const toast = useToast();
   
   const {orderId } = useParams();
@@ -33,6 +34,7 @@ export default function ThankYou() {
             let expireTime = calculateExpirationTime(
               res.results.txn_date
             );
+            setName(res.results.customer_name)
               setCourseType(res.results.product_name);
               setState("success");
               setExpireTime(expireTime);
