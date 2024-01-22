@@ -31,7 +31,7 @@ const Vip1Course = () => {
     let courseData = {
       amount: 1,
       note: "Pay For VIP1 Course",
-      product_name: "VIP1 Subscription",
+      product_name: "VIP1",
       email: email, 
       name: name,
       phone: phone

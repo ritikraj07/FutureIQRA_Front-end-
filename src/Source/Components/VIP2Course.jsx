@@ -29,7 +29,7 @@ const Vip2Course = () => {
     let courseData = {
       amount: 1,
       note: "Pay For VIP2 Course",
-      product_name: "VIP2 Subscription",
+      product_name: "VIP2",
       email: email,
       name: name,
       phone: phone,

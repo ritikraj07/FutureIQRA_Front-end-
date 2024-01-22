@@ -84,6 +84,7 @@ export default function ThankYou() {
       paymentMode: paymentData.payment_mode,
       status: paymentData.status,
       expireTime: expireTime,
+      phone: paymentData.customer_mobile,
     };
     PostRequest(`${url}user/add-payment-history`, payData)
       .then((res) => {
