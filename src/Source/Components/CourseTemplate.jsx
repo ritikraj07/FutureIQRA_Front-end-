@@ -111,7 +111,7 @@ export default function CourseTemplate({ course, watch = false }) {
           </UnorderedList>
         </Flex>
 
-        {!watch || userType == course.coursetype ? (
+        {(!watch || !(userType == course.coursetype)) ? (
           <Flex alignItems={"center"} fontSize={"large"}>
             <Text mr={"15px"}>
               ₹{(course?.discount * course?.price) / 100}{" "}
