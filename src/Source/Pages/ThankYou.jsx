@@ -20,7 +20,7 @@ export default function ThankYou() {
   const [courseType, setCourseType] = useState("");
   const [expireTime, setExpireTime] = useState("");
   useEffect(() => {
-    
+    console.log('console from useEffect in thank you page')
      setTimeout(function () {
        location.reload();
        CheckStatus();
