@@ -19,6 +19,7 @@ import { setCourse } from "../Redux/Reducers/CourseReducers";
 export default function CourseTemplate({ course, watch = false }) {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const { userType } = useSelector((store) => store.User);
   function extractMonthAndYear(dateString) {
     const date = new Date(dateString);
     const options = { year: "numeric", month: "long" };
@@ -110,7 +111,7 @@ export default function CourseTemplate({ course, watch = false }) {
           </UnorderedList>
         </Flex>
 
-        {!watch ? (
+        {!watch || userType == course.coursetype ? (
           <Flex alignItems={"center"} fontSize={"large"}>
             <Text mr={"15px"}>
               ₹{(course?.discount * course?.price) / 100}{" "}
