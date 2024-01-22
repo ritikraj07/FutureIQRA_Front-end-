@@ -20,7 +20,11 @@ export default function ThankYou() {
   const [courseType, setCourseType] = useState("");
   const [expireTime, setExpireTime] = useState("");
   useEffect(() => {
-    CheckStatus();
+    
+     setTimeout(function () {
+       location.reload();
+       CheckStatus();
+     }, 3000);
   }, []);
 
   function CheckStatus() {
