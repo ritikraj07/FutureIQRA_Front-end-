@@ -22,7 +22,7 @@ const Vip1Course = () => {
   const toast = useToast()
   let [isLoading, setLoading] = useState(false);
   let [email, setEmail] = useState("");
-  const { name, phone, _id } = useSelector((store) => store.User);
+  const { name, phone} = useSelector((store) => store.User);
 
   function BuyCourse(e) {
     e.preventDefault();

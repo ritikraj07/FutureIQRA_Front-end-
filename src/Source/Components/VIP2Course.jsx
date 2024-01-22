@@ -17,6 +17,7 @@ import BuyCouse from "./BuyCouse";
 import GenerateOrderId from "../Services/OrderId";
 
 const Vip2Course = () => {
+  const url = import.meta.env.VITE_API_URL;
   const toast = useToast();
   let [isLoading, setLoading] = useState(false);
   let [email, setEmail] = useState("");
@@ -26,29 +27,33 @@ const Vip2Course = () => {
     e.preventDefault();
     setLoading(true);
     let courseData = {
-      token: "26f053-f56883-5d3c09-2d6cda-1f472c",
-      order_id: GenerateOrderId(),
-      txn_amount: 1,
-      txn_note: "Pay For VIP1 Course",
-      product_name: "VIP1 Subscription",
-      customer_name: name,
-      customer_mobile: phone,
-      customer_email: email,
-      callback_url: "https://www.futureiqra.in/my-learning",
+      amount: 1,
+      note: "Pay For VIP2 Course",
+      product_name: "VIP2 Subscription",
+      email: email,
+      name: name,
+      phone: phone,
     };
 
-    PostRequest("https://allapi.in/order/create", courseData).then((res) => {
-      console.log("res from vip1 Course");
-      if (res.status) {
-        window.open(res.results.payment_url, "_blank", "width=600,height=400");
-      } else {
-        toast({
-          status: "info",
-          title: "Something went wrong",
-          description: "Please Try Again Later",
-        });
-      }
-    });
+    PostRequest(`${url}payment/api/proxy`, courseData)
+      .then((res) => {
+        console.log("res from vip1 Course", res);
+        if (res.status) {
+          window.open(res.results.payment_url, "_blank");
+          //  "width=600,height=400";
+        } else {
+          console.log(res);
+          toast({
+            status: "info",
+            title: "Something went wrong",
+            description: res.message ? res.message : "Please Try Again",
+          });
+        }
+      })
+      .catch((error) => {
+        console.log("error form vip1cours buycourse postrequest", error);
+      });
+
 
     setLoading(false);
   }
