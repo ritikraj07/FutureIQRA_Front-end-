@@ -17,8 +17,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCourse } from "../Redux/Reducers/CourseReducers";
 
 export default function CourseTemplate({ course, watch = false }) {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { userType } = useSelector((store) => store.User);
   function extractMonthAndYear(dateString) {
     const date = new Date(dateString);
@@ -27,8 +27,8 @@ export default function CourseTemplate({ course, watch = false }) {
     return monthYear;
   }
   function Navigation() {
-    dispatch(setCourse(course))
-    navigate(`/my-learning/${course.name}/${course._id}/0`)
+    dispatch(setCourse(course));
+    navigate(`/my-learning/${course.name}/${course._id}/0`);
   }
   return (
     <Flex
@@ -111,16 +111,7 @@ export default function CourseTemplate({ course, watch = false }) {
           </UnorderedList>
         </Flex>
 
-        {(!watch || !(userType == course.coursetype)) ? (
-          <Flex alignItems={"center"} fontSize={"large"}>
-            <Text mr={"15px"}>
-              ₹{(course?.discount * course?.price) / 100}{" "}
-            </Text>
-            <Text as={"del"} color={"grey"}>
-              ₹{course?.price}
-            </Text>
-          </Flex>
-        ) : (
+        {watch || userType == course.coursetype ? (
           <Button
             color={"white"}
             bg="blue.400"
@@ -129,6 +120,15 @@ export default function CourseTemplate({ course, watch = false }) {
           >
             Start Learning
           </Button>
+        ) : (
+          <Flex alignItems={"center"} fontSize={"large"}>
+            <Text mr={"15px"}>
+              ₹{(course?.discount * course?.price) / 100}{" "}
+            </Text>
+            <Text as={"del"} color={"grey"}>
+              ₹{course?.price}
+            </Text>
+          </Flex>
         )}
       </Box>
     </Flex>
