@@ -29,7 +29,7 @@ const Vip1Course = () => {
     setLoading(true);
 
     let courseData = {
-      amount: 1,
+      amount: 499,
       note: "Pay For VIP1 Course",
       product_name: "VIP1",
       email: email,
@@ -39,9 +39,10 @@ const Vip1Course = () => {
 
     PostRequest(`${url}payment/api/proxy`, courseData)
       .then((res) => {
-        console.log("form vip1cours buycourse postrequest", res);
+        // console.log("form vip1cours buycourse postrequest", res);
         if (res.status) {
-          window.open(res.results.payment_url);
+          // window.open(res.results.payment_url);
+          window.location.href=`${res.results.payment_url}`
         } else {
           console.log(res);
           toast({
@@ -54,15 +55,6 @@ const Vip1Course = () => {
       .catch((error) => {
         console.log("error form vip1cours buycourse postrequest", error);
       });
-
-    // setTimeout(() => {
-    //   GetRequest(`${url}payment/status`).then((res) => {
-    //     console.log(res)
-    //     if (res.status) {
-    //       navigate('/thank-you/1234567890')
-    //     }
-    //   });
-    // }, 30000);
     
 
     setLoading(false);

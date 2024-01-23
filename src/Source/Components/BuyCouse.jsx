@@ -99,16 +99,16 @@ export default function BuyCouse({ title, name, phone, onSubmit, setEmail, isLoa
                   <Text fontSize="small" color="gray.600">
                     By checking this box, you confirm that you have read and
                     agree to our{" "}
-                    <Link to="/terms-and-conditions" style={{ color: "teal" }}>
+                    <Link to="/terms&conditions" style={{ color: "teal" }}>
                       Terms & Conditions
                     </Link>
                     ,{" "}
-                    <Link to="/privacy-and-policy" style={{ color: "teal" }}>
+                    <Link to="/privacy&policy" style={{ color: "teal" }}>
                       Privacy Policy
                     </Link>
                     , and{" "}
                     <Link
-                      to="/refunds-and-returns-policy"
+                      to="/refunds&returns-policy"
                       style={{ color: "teal" }}
                     >
                       Refund & Return Policy

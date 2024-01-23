@@ -161,26 +161,27 @@ export default function AdminReports() {
               </ModalHeader>
               <ModalCloseButton />
               <ModalBody>
-                <table>
+                <table style={{ width: "100%" }}>
                   <tbody>
-                    <tr style={{ width: "100px" }}>
-                      <th style={{ textAlign: "left" }}>Report By </th>
-                      <td>: {report.name}</td>
+                    <tr>
+                      <th style={{ textAlign: "left", width: "20%" }}>
+                        Report By
+                      </th>
+                      <td style={{ paddingLeft: "10px" }}>: {report.name}</td>
                     </tr>
                     <tr>
                       <th style={{ textAlign: "left" }}>Date</th>
-                      <td>
-                        <Text>: {formatReadableDate(report.createdAt)}</Text>
+                      <td style={{ paddingLeft: "10px" }}>
+                        : <Text>{formatReadableDate(report.createdAt)}</Text>
                       </td>
                     </tr>
                     <tr>
                       <th style={{ textAlign: "left" }}>Mail ID</th>
-                      <td>: {report.email}</td>
+                      <td style={{ paddingLeft: "10px" }}>: {report.email}</td>
                     </tr>
-
                     <tr>
                       <th style={{ textAlign: "left" }}>Report</th>
-                      <td>: {report.report}</td>
+                      <td style={{ paddingLeft: "10px" }}>: {report.report}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -212,9 +213,11 @@ export default function AdminReports() {
           </Flex>
         </Th>
         <Td>
-          <Text noOfLines={1} onClick={onOpen}>{report.report}</Text>
+          <Text fontWeight={"medium"} noOfLines={1} onClick={onOpen}>
+            {report.report.split(" ").slice(0, 10).join(" ")}
+          </Text>
         </Td>
-        <Td noOfLines={1} >{formatReadableDate(report.createdAt)}</Td>
+        <Td noOfLines={1}>{formatReadableDate(report.createdAt)}</Td>
       </Tr>
     );
   };

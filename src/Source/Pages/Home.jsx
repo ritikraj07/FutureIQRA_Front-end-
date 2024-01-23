@@ -33,6 +33,7 @@ import {CheckIcon} from '@chakra-ui/icons'
 import { PatchRequest } from "../Services/ApiCall";
 import { setAvatar, setLogout } from "../Redux/Reducers/UserReducers";
 import ReviewSlider from "../Components/Review";
+import WithDraw from "../Components/WithDraw";
 
 
 export default function Home() {
@@ -238,6 +239,7 @@ export default function Home() {
             justifyContent={"space-between"}
             w={"100%"}
             alignItems={"center"}
+            
           >
             <Button fontSize={20} size="sm" p={[5]}>
               <Text color={"#25D366"} mr={2}>
@@ -246,9 +248,7 @@ export default function Home() {
               {wallet}
             </Button>
 
-            <Button colorScheme="whatsapp" p={[5]}>
-              Withdraw
-            </Button>
+            <WithDraw amount={wallet} />
           </Flex>
         </Box>
 

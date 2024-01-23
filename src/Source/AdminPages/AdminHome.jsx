@@ -37,6 +37,7 @@ export default function AdminHome() {
   const url = import.meta.env.VITE_API_URL;
   const [users, setUser] = useState([]);
   const [userPlan, setUserPlan] = useState();
+  const [userId, setUserId] = useState('')
   const toast = useToast();
   useEffect(() => {
     GetAllUsers();
@@ -212,6 +213,19 @@ export default function AdminHome() {
       return basicUser;
   }
 
+  
+  function SearchUser() {
+    if (!userId) {
+      toast({
+        title:'Enter User Id'
+      })
+      return
+    }
+    let searchUser = users.filter((user) => user._id === userId)
+    
+  }
+
+
   return (
     <Box w="100%">
       <Flex
@@ -225,7 +239,7 @@ export default function AdminHome() {
         <Heading textAlign={"start"} color="white">
           Dashboard
         </Heading>
-        {/* <InputGroup
+        <InputGroup
           bg={"white"}
           borderRadius={10}
           w={["80%", "60%", "30%"]}
@@ -233,16 +247,18 @@ export default function AdminHome() {
         >
           <Input
             focusBorderColor="lime"
-            placeholder="Type Search Words"
+            placeholder="User Id"
             _placeholder={{ opacity: 1, color: "black" }}
+            onChange={(e)=>setUserId(e.target.value)}
           />
           <InputRightElement
             pointerEvents="auto"
             cursor={"pointer"}
+            onClick={SearchUser}
             children={<SearchIcon color="black" />}
           />
         </InputGroup>
-        <Select bg="white" placeholder="Filter" w={["80%", "60%", "20% "]}>
+        {/* <Select bg="white" placeholder="Filter" w={["80%", "60%", "20% "]}>
           <option> New Reports First</option>
           <option> Old Reports First</option>
         </Select> */}

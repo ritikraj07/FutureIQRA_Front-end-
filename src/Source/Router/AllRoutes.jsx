@@ -32,35 +32,42 @@ export default function AllRoutes() {
         path="/*"
         element={
           <Auth>
-            <Home />
+          <Home />
           </Auth>
         }
       />
-      <Route path="/thank-you/:orderId" element={<ThankYou />} />
+      <Route
+        path="/thank-you/:orderId"
+        element={
+          <Auth>
+            <ThankYou />
+          </Auth>
+        }
+      />
       <Route path="/about-us" element={<AboutUs />} />
       <Route
         path="/privacy&policy"
         element={
-          <Auth>
-            <PrivacyPolicy />
-          </Auth>
+          // <Auth>
+          <PrivacyPolicy />
+          // </Auth>
         }
       />
       <Route
         path="/terms&conditions"
         element={
-          <Auth>
-            <TermsAndConditions />
-          </Auth>
+          // <Auth>
+          <TermsAndConditions />
+          // </Auth>
         }
       />
 
       <Route
         path="/refunds&returns-policy"
         element={
-          <Auth>
-            <RefundsAndReturnsPolicy />
-          </Auth>
+          // <Auth>
+          <RefundsAndReturnsPolicy />
+          // </Auth>
         }
       />
       <Route

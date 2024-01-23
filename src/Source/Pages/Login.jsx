@@ -80,6 +80,7 @@ export default function Login() {
         navigate("/");
       } else {
         console.log(data)
+        setIsLoading(false);
         toast({
           title: data.data,
           status: "error",
@@ -88,6 +89,7 @@ export default function Login() {
       }
       setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
       toast({
         title: "something went wrong",
         status: "error",

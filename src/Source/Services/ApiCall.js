@@ -10,7 +10,7 @@ async function GetRequest(url) {
 async function PostRequest(url, data={}) {
     let token = JSON.parse(localStorage.getItem('token'))
     if (!token) {
-        console.log('token now found ', token)
+        console.log('token not found ', token)
     }
     try {
         const response = await fetch(url, {

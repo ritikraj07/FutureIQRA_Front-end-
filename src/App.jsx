@@ -63,7 +63,7 @@ function App() {
         />
       </Helmet>
       <AllRoutes />
-      {isLoggedIn && <Footer />}
+      <Footer />
       <Copyright />
     </Flex>
   );
