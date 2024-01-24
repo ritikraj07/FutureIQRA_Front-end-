@@ -1,26 +1,67 @@
-.review-slider-container {
+#app {
+  height: 100%;
+}
+
+.swiper {
   width: 100%;
-  overflow: hidden;
-  background-color: yellow;
-
+  height: 100%;
 }
 
-.review-slide {
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
   display: flex;
-  transition: margin-left 1s ease-in-out;
-  animation: slide-infinite 100s linear infinite;
+  justify-content: center;
+  align-items: center;
 }
 
-.review-item {
-  flex: 0 0 100%;
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-@keyframes slide-infinite {
-  0% {
-    margin-left: 0;
-  }
-  100% {
-    margin-left: -300%; /* Adjust based on the number of reviews */
-  }
+.swiper {
+  width: 100%;
+  height: 300px;
+  margin: 20px auto;
+}
+.append-buttons {
+  text-align: center;
+  margin-top: 20px;
 }
 
+.append-buttons button {
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid #007aff;
+  color: #007aff;
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin: 0 10px;
+  font-size: 13px;
+}
+
+.swiperSlideCard {
+  background-color: rgb(230, 35, 110);
+  width: 100%;
+  height: 100%;
+  padding: 35px 10px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  
+  align-items: center;
+  justify-content: start;
+}
+
+
+.mySwiper {
+  width: 90%;
+  border-radius: 10px;
+}

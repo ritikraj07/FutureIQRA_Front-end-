@@ -11,7 +11,8 @@ const User = {
     isLoggedIn: false,
     isAdmin: false,
     referCode: "",
-    userType: 'Basic'
+    userType: 'Basic',
+    paymentHistory: []
 }
 
 
@@ -20,8 +21,8 @@ const UserSlice = createSlice({
     initialState: User,
     reducers: {
         setUser: (state, action) => {
-            // console.log('Action====>',action)
-            let { name, phone, image, team, rank, _id, wallet, isAdmin, referCode, userType } = action.payload
+            console.log('Action====>',action)
+            let { name, phone, image, team, rank, _id, wallet, paymentHistory, isAdmin, referCode, userType } = action.payload
             state.name = name
             state.wallet = wallet,
                 state.team = team,
@@ -32,7 +33,8 @@ const UserSlice = createSlice({
                 state.isAdmin = isAdmin,
                 state._id = _id,
                 state.referCode = referCode,
-                state.userType = userType
+                state.userType = userType,
+                state.paymentHistory = paymentHistory || []
 
             // console.log('current state',current(state))
         },

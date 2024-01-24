@@ -3,6 +3,9 @@ import {} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoMdCall, IoMdMail } from "react-icons/io";
+import { IoLogoYoutube } from "react-icons/io5";
+import { SiTelegram } from "react-icons/si";
+import { FaInstagramSquare } from "react-icons/fa";
 
 export default function Footer() {
   let navigate = useNavigate();
@@ -20,6 +23,8 @@ export default function Footer() {
       </Text>
     );
   }
+
+  const socialIconStyle = {};
   return (
     <Flex
       flexDir={["column", "row"]}
@@ -126,6 +131,25 @@ export default function Footer() {
           >
             future.iqra.helpline@gmail.com
           </Text>
+        </Flex>
+      </Box>
+
+      <Box>
+        <Text mb={"10px"} color={"white"}>
+          Social Links
+        </Text>
+        <Flex flexDir={['row','column', 'column','row']} alignItems={['center', 'start', 'start','center']} gap={4}>
+          <a href="https://youtube.com/@FutureIqra?si=lZXtJRhvQqUVfH15">
+            <IoLogoYoutube size={30} color="#FF0000" />{" "}
+            
+          </a>
+          <a href="https://t.me/futureiqra">
+            <SiTelegram size={30} color="#0088cc" /> {/* Telegram blue color */}
+          </a>
+          <a href="https://www.instagram.com/futureiqra?utm_source=qr&igsh=YXNqMm8yb2NmbHp0">
+            <FaInstagramSquare size={30} color="#bc2a8d" />{" "}
+            
+          </a>
         </Flex>
       </Box>
     </Flex>

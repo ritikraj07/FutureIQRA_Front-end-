@@ -34,6 +34,7 @@ import { PatchRequest } from "../Services/ApiCall";
 import { setAvatar, setLogout } from "../Redux/Reducers/UserReducers";
 import ReviewSlider from "../Components/Review";
 import WithDraw from "../Components/WithDraw";
+import PaymentHistoryModal from "../Components/PaymentHistroy";
 
 
 export default function Home() {
@@ -41,7 +42,7 @@ export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast()
   const dispatch = useDispatch()
-  const { name, phone, photo, rank, wallet, _id, isAdmin } = useSelector(
+  const { name, phone, photo, rank, wallet, _id, isAdmin, paymentHistory } = useSelector(
     (state) => state.User
   );
 
@@ -202,6 +203,10 @@ export default function Home() {
                   Admin Dashboard
                 </MenuItem>
               )}
+
+              <MenuItem>
+                <PaymentHistoryModal paymentHistory={paymentHistory} />
+              </MenuItem>
               <MenuItem
                 onClick={() => {
                   localStorage.clear();
@@ -262,17 +267,7 @@ export default function Home() {
           justifyContent={"center"}
           paddingBottom={"100px"}
         >
-          {/* <Card
-            h={["270px"]}
-            boxShadow={"rgba(0, 0, 0, 35) 0px 5px 15px"}
-            borderRadius={10}
-            alignItems={"center"}
-            justifyContent={"center"}
-            cursor={"pointer"}
-            onClick={() => navigate("course/vip1")}
-          >
-            <Heading color={"gold"}>VIP 1</Heading>
-          </Card> */}
+        
 
           <Box
             className="card-container"
@@ -411,7 +406,7 @@ export default function Home() {
           </Box>
         </SimpleGrid>
       </Flex>
-      {/* <ReviewSlider /> */}
+      <ReviewSlider />
     </Box>
   );
 }
