@@ -74,7 +74,7 @@ export default function Login() {
       if (data.status) {
         let userdata = data.data;
 
-        // console.log("use==>", data);
+        console.log("user==>", data);
         localStorage.setItem("token", JSON.stringify(data.token));
         dispatch(setUser(userdata));
         navigate("/");
@@ -95,7 +95,7 @@ export default function Login() {
         status: "error",
         duration: 3000,
       });
-      console.log(data)
+      
       setIsLoading(false);
     }
     setIsLoading(false);

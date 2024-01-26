@@ -180,7 +180,7 @@ export default function Home() {
         <Image
           w={"100px"}
           h="100px"
-          src="https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYR8GeqMZenKekmh_Y-RZIPMrFPE_ykV7e79-vDsCyqAEHh6HzMwigDyEpRBuBylupqLDCtQlwcCRS_uGn6MZLQia_0B=w1920-h907"
+          src="src\Source\Assets\futureIQRAicon.png"
           alt="Future IQRA"
         />
 
@@ -244,7 +244,6 @@ export default function Home() {
             justifyContent={"space-between"}
             w={"100%"}
             alignItems={"center"}
-            
           >
             <Button fontSize={20} size="sm" p={[5]}>
               <Text color={"#25D366"} mr={2}>
@@ -267,8 +266,6 @@ export default function Home() {
           justifyContent={"center"}
           paddingBottom={"100px"}
         >
-        
-
           <Box
             className="card-container"
             onClick={() => navigate("/course/vip1")}
@@ -322,7 +319,7 @@ export default function Home() {
                   className="image"
                   h={["270px"]}
                   borderRadius={10}
-                  src="https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYStbNUHwtsQRs8p4Fne2lbugtMDZ6DovH3Un4ebbG86gzwoG8XOe3SxlnOhNa60Gnm8um8fjWOivttpvlVE-QAaC0Gw5A=w1920-h907"
+                  src="src\Source\Assets\referearn.png"
                 />
               </Box>
               <Box className="back">
@@ -342,7 +339,7 @@ export default function Home() {
                   className="image"
                   h={["270px"]}
                   borderRadius={10}
-                  src="https://lh3.googleusercontent.com/fife/AGXqzDnFLXli3EU63-kuIfBrwTG2iOjlK1EZ22uzCJVk0ZW328NjKJN7oawk0PMkMN8sm1aKphboZKfP4Z9Sb_X6meksGTqRteXhEAH3x6GIKvI7oWw39PN29klvyNywhyrgvbLEy6Sw5JYSHQGTHmS5S2aaBKvdz87ShvZZ0DUjHHKLwzZ8i72ZcljMLCPN64Cf6PY7boBeDxjULFVjLGgYKRzCkk9qWietuxppZT4msbo1WmGgXklukcfmmJ1wuWk32Ot4gHVHAhkcEIbGkiJllAcwCWQTffkNnHmSmK_hGtw5otOHlvIdWuSf_TTqpbXklMnWJIsNGi1StXzTiCvBRjuXU7JJLopYGKXbA8XrUc77DtvyGy1MA6c1VsRNjBmofXZYENDeQmCpOAH1UcCRXCS9-O4OJF9SB2diFH4jwwV_QM8baqtvjZ-4jST7lOSCzkhHpkN2dv9xPZP-EMDnu5lfQPlAClEtj4Z4tk4zLwFBwkKx8bWMTcvb6snSD6TU12ohUgyMmitU8WuBw_huKOBzUv2EKomKRx4YY_lWaUOiqNKG6a11EfORmH-j496YYvKXxvQsOzWWPv2oETr_p4hQXDf9VkCPozqDeZyt7QcQsJIIhyzF6k-EDhiFAwsA-jUB6XvxCJKCOROwqnWENsaDSKc9wxy5qrxoOWSvQLAQwYnVcHtjMIZHv54I2IWx2uDn0JE903bjkj2ULYGo7bcbe87LYtAI_CdWC2Nun7K8awN1WC2pD4zJPIG3SfLjRYbUwXwaVt8siIRY_9pcugszrBbPPZTdjVC0r2HacspdPDzj8lHEybk5DkQbwGmJ9Emn-T7qR75pcCKsouBqQwvw3ZWT9wAW_WT0u_OU3Vt4PBvr8m50SAn1zFSOmZ6sXcG-QZlZB8mcJEiGdY-pm1NKa5UCUabaYbYoC03gmpihSIRjtcLfUpvE6QAy13162kvu-u6iwQA2bOun6Av2-TQuk7Nur-R6bfD_R_9L5nmj0hcttCI_WGeTy_yY6X3VpLKCBSXwsXCwSNinLvEf4o42S8Vml-lpcrmVrJMRhJrq-QB58_8-BuwaJxekI267mD3rbskEUfPmbzDM-D7z2ALjIn84SES36MtD8QeSgdqoMM6S_HT0_BnfArF3EzzBxyprcCeZ6Ztu51abJ1FDFRA2-9jYyiRH2ASlxviwYTw0I_ebLdNqV4h7GeFdZp4qqYf56b2l1HXnnRsiwQjzm9V3YSyiCr5VEIKbO5P8ON42IUYeLZGB5YZtk8bkTQgcx5hvqSxBYZR9sAHbu2ikMOmnBj1d-rGUi_0aqlEsHINeJNieZI4Kkc8DnOxbXvkexHLL6SgJ04IC_mZWc8rVM-GXwomwzQDF8UIDPIZqOZwQzldnLdtMoxyY1Cs7eaJwdSvMhVjva3CnC8gJDLjtRY8KneOa_jFPv5v0h6lAVjqtSb6JlbNdZlm5VHJuTwdYbd0NbuxX26Ab2xVYC4NE_LdB6oSmOP0VXyBfLYRQde9KHKG6E00PYwaJkYri6ruLR5yPKu67HvLcwiRnlDT0sN0FWGbPJfvN=w1165-h907"
+                  src="src\Source\Assets\leaderboard.jpg"
                 />
               </Box>
               <Box className="back">
@@ -350,20 +347,6 @@ export default function Home() {
               </Box>
             </Box>
           </Box>
-
-          {/* <Card
-            h={["270px"]}
-            boxShadow={"rgba(0, 0, 0, 35) 0px 5px 15px"}
-            borderRadius={10}
-            cursor={"pointer"}
-            onClick={() => navigate("/q&a")}
-          >
-            <Image
-              h={["270px"]}
-              borderRadius={10}
-              src="src\Source\Assets\qna.png"
-            />
-          </Card> */}
 
           <Box
             className="card-container"
@@ -376,7 +359,7 @@ export default function Home() {
                   className="image"
                   h={["270px"]}
                   borderRadius={10}
-                  src="https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYTLQJOP5Kg306L-ENUB4gGM4ASedxHbyOx3NsHkCXwd-LzqnLsBJeDRMaDUNyjL6RbuDMO9mV_Zi6a-AhR3uOLy8WFTfw=w1920-h907"
+                  src="src\Source\Assets\qna.png"
                 />
               </Box>
               <Box className="back">
@@ -396,7 +379,7 @@ export default function Home() {
                   className="image"
                   h={["270px"]}
                   borderRadius={10}
-                  src="https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYSCZFKGhe0xx-bgEs-0uRLt2PnupYkV5hdwfECM0fIcDNoaUMItrBcnlmxBsuYaCP_vZ7yrqDj_FX1IEnDrpWP0fJ3bTg=w1920-h907"
+                  src="src\Source\Assets\contact.png"
                 />
               </Box>
               <Box className="back">

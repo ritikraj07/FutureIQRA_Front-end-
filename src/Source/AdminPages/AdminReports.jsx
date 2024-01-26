@@ -155,7 +155,7 @@ export default function AdminReports() {
         <Th w={["30%"]}>
           <Modal onClose={onClose} isOpen={isOpen}>
             <ModalOverlay />
-            <ModalContent>
+            <ModalContent minW={["90%", "80%", "70%"]}>
               <ModalHeader>
                 <b>Subject: </b> {report.subject}
               </ModalHeader>
@@ -172,7 +172,7 @@ export default function AdminReports() {
                     <tr>
                       <th style={{ textAlign: "left" }}>Date</th>
                       <td style={{ paddingLeft: "10px" }}>
-                        : <Text>{formatReadableDate(report.createdAt)}</Text>
+                        : {formatReadableDate(report.createdAt)}
                       </td>
                     </tr>
                     <tr>
@@ -180,7 +180,9 @@ export default function AdminReports() {
                       <td style={{ paddingLeft: "10px" }}>: {report.email}</td>
                     </tr>
                     <tr>
-                      <th style={{ textAlign: "left" }}>Report</th>
+                      <th style={{ textAlign: "start", verticalAlign: "top" }}>
+                        Report
+                      </th>
                       <td style={{ paddingLeft: "10px" }}>: {report.report}</td>
                     </tr>
                   </tbody>

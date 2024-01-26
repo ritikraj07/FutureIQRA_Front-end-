@@ -28,7 +28,7 @@ import { PostRequest } from "../Services/ApiCall";
 export default function WithDraw({ amount }) {
   const url = import.meta.env.VITE_API_URL;
   const toast = useToast();
-  const { name, _id } = useSelector((state) => state.User);
+  const { name, _id, userType } = useSelector((state) => state.User);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [data, setData] = useState({ upi: "", amount: amount, email: "" });
 
@@ -69,7 +69,15 @@ export default function WithDraw({ amount }) {
     <>
       <Button
         colorScheme="whatsapp"
-        onClick={onOpen}
+        onClick={() => {
+          if (userType === "Basic") {
+            alert(
+              "Please upgrade your plan to VIP1 or VIP2 for withdrawal."
+            )
+          } else {
+            onOpen()
+          }
+        }}
         fontSize={16}
         size="sm"
         p={[5]}

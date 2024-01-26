@@ -5,47 +5,36 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { FaPaperPlane } from "react-icons/fa";
 import { FaExclamationCircle } from "react-icons/fa";
-import { PostRequest } from "../Services/ApiCall";
+import { GetRequest, PostRequest } from "../Services/ApiCall";
 import UnauthorizedPage from "../Components/Unauthorized";
-import calculateExpirationTime from "../Services/TimeServices";
 
 export default function ThankYou() {
   const url = import.meta.env.VITE_API_URL;
-  const [name, setName] = useState('')
+  const { name } = useSelector((state) => state.User);
   const toast = useToast();
-  const {orderId } = useParams();
+  const { orderId } = useParams();
   const [state, setState] = useState("processing");
   const [courseType, setCourseType] = useState("");
   const [expireTime, setExpireTime] = useState("");
-  
-useEffect(() => {
-  CheckStatus();
-}, []);
-  
 
-
+  useEffect(() => {
+    CheckStatus();
+  }, []);
 
   function CheckStatus() {
-    
     setState("processing");
 
-    PostRequest(`${url}payment/order/status/${orderId}`)
+    GetRequest(`${url}payment/status/${orderId}`)
       .then((res) => {
-        // console.log("console form order status", res);
+        console.log("console form order status", res);
         if (res?.status) {
-          if (res.results) {
-            let expireTime = calculateExpirationTime(
-              res.results.txn_date
-            );
-            setName(res.results.customer_name)
-              setCourseType(res.results.product_name);
-              setState("success");
-              setExpireTime(expireTime);
-            MentionData(res.results, expireTime);
+          if (res.data) {            
+            setCourseType(res.data.product_name);
+            setState("success");
+            setExpireTime(res.data.expireTime);
           } else {
             console.log(res);
             setState("fail");
-            MentionData(res.status.results);
           }
         } else {
           console.log(res);
@@ -60,34 +49,6 @@ useEffect(() => {
         });
         setState("fail");
       });
-  }
-
-  function MentionData(paymentData, expireTime) {
-    let payData = {
-      transactionId: paymentData.txn_id,
-      orderId: paymentData.order_id,
-      merchant: {
-        id: paymentData.merchant_id,
-        name: paymentData.merchant_name,
-        vpa: paymentData.merchant_vpa,
-      },
-      transactionDate: paymentData.txn_date,
-      amount: paymentData.txn_amount,
-      product: paymentData.product_name,
-      customer_email: paymentData.customer_email,
-      bank: {
-        orderId: paymentData.bank_orderid,
-        utrNumber: paymentData.utr_number,
-      },
-      paymentMode: paymentData.payment_mode,
-      status: paymentData.status,
-      expireTime: expireTime,
-      phone: paymentData.customer_mobile,
-    };
-    console.log(payData);
-    PostRequest(`${url}user/add-payment-history`, payData).then((res) => {
-      console.log(res);
-    });
   }
 
   return (

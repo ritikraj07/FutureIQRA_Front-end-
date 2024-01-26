@@ -27,7 +27,7 @@ const Vip2Course = () => {
     e.preventDefault();
     setLoading(true);
     let courseData = {
-      amount: 999,
+      amount: 1, // change later
       note: "Pay For VIP2 Course",
       product_name: "VIP2",
       email: email,

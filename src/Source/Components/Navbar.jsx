@@ -31,7 +31,7 @@ export default function Navbar({ ...args }) {
         cursor={"pointer"}
         w={"80px"}
         h="80px"
-        src="https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYR8GeqMZenKekmh_Y-RZIPMrFPE_ykV7e79-vDsCyqAEHh6HzMwigDyEpRBuBylupqLDCtQlwcCRS_uGn6MZLQia_0B=w1920-h907"
+        src="src\Source\Assets\futureIQRAicon.png"
         alt="FutureIQRA"
         onClick={() => navitage("/")}
       />

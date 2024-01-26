@@ -1,9 +1,13 @@
 
 async function GetRequest(url) {
-    let data = await fetch(url)
-    data = await data.json()
-    // console.log("GetRequest", data)
-    return data
+    try {
+        let data = await fetch(url)
+        data = await data.json()
+        // console.log("GetRequest", data)
+        return data
+     } catch (error) {
+        console.log("error from getRequest", error)
+    }
 }
 
 

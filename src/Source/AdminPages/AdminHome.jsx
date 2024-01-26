@@ -37,7 +37,8 @@ export default function AdminHome() {
   const url = import.meta.env.VITE_API_URL;
   const [users, setUser] = useState([]);
   const [userPlan, setUserPlan] = useState();
-  const [userId, setUserId] = useState('')
+  const [userId, setUserId] = useState("");
+  const [isMember, setisMember] = useState({member:{}, isUser:false})
   const toast = useToast();
   useEffect(() => {
     GetAllUsers();
@@ -52,10 +53,9 @@ export default function AdminHome() {
       } else {
         toast({
           title: res.message,
-          status: 'error',
+          status: "error",
           duration: 3000,
-          
-        })
+        });
       }
     });
   }
@@ -102,38 +102,36 @@ export default function AdminHome() {
     }
 
     function HandleChange(key, value) {
-      console.log(key, value);
+      // console.log(key, value);
       setThisUser({ ...user, [key]: value });
     }
 
     function DeleteUser(id) {
-      
-      DeleteRequest(`${url}user/delete/id/${id}`)
-        .then((res) => {
-          console.log(res)
-          if (res?.status) {
-            toast({
-              title: 'Accound Deleted Successfully',
-              status:'info'
-          })
-          } else {
-            toast({
-              title: 'Something wend wrong',
-              status:'error'
-            })
+      DeleteRequest(`${url}user/delete/id/${id}`).then((res) => {
+        console.log(res);
+        if (res?.status) {
+          toast({
+            title: "Accound Deleted Successfully",
+            status: "info",
+          });
+        } else {
+          toast({
+            title: "Something wend wrong",
+            status: "error",
+          });
         }
-        })
-      onClose()
+      });
+      onClose();
     }
 
     return (
       <Box
+        id={member._id}
         onClick={onOpen}
         w={["300px"]}
         m={2}
         borderRadius={5}
         cursor={"pointer"}
-       
         boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px;"}
       >
         <Modal isOpen={isOpen} onClose={onClose}>
@@ -178,10 +176,14 @@ export default function AdminHome() {
 
             <ModalFooter justifyContent={"space-around"}>
               {/* delete btm */}
-              <ConfirmBtn colorScheme="red" mr={3}
-                func={() => DeleteUser(user._id)} title="Delete User"
-                warn="Are you sure you want to delete this user" />
-               
+              <ConfirmBtn
+                colorScheme="red"
+                mr={3}
+                func={() => DeleteUser(user._id)}
+                title="Delete User"
+                warn="Are you sure you want to delete this user"
+              />
+
               <Button variant="solid" colorScheme="teal" onClick={UpdateUser}>
                 Save
               </Button>
@@ -205,26 +207,30 @@ export default function AdminHome() {
   function NoOfBasicUser() {
     let basicUser = users.length;
     if (userPlan?.VIP1) {
-      basicUser = basicUser - userPlan.VIP1
+      basicUser = basicUser - userPlan.VIP1;
     }
     if (userPlan?.VIP2) {
-      basicUser = basicUser - userPlan.VIP2
+      basicUser = basicUser - userPlan.VIP2;
     }
-      return basicUser;
+    return basicUser;
   }
 
-  
   function SearchUser() {
     if (!userId) {
       toast({
-        title:'Enter User Id'
-      })
-      return
+        title: "Enter User Id",
+      });
+      
+      return;
     }
-    let searchUser = users.filter((user) => user._id === userId)
-    
+    let searchUser = users.filter((user) => user._id === userId);
+    if (searchUser.length == 1) {
+      // console.log(searchUser)
+      setisMember({member:searchUser[0], isUser: true})
+    } else {
+      setisMember({ ...isMember, isUser: false });
+    }
   }
-
 
   return (
     <Box w="100%">
@@ -249,7 +255,7 @@ export default function AdminHome() {
             focusBorderColor="lime"
             placeholder="User Id"
             _placeholder={{ opacity: 1, color: "black" }}
-            onChange={(e)=>setUserId(e.target.value)}
+            onChange={(e) => setUserId(e.target.value)}
           />
           <InputRightElement
             pointerEvents="auto"
@@ -280,8 +286,8 @@ export default function AdminHome() {
       >
         <Box
           boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"}
-          w={['100%', '90%']}
-          m={'5px auto'}
+          w={["100%", "90%"]}
+          m={"5px auto"}
         >
           <Heading textAlign={"center"}>User Data</Heading>
           <Table>
@@ -309,6 +315,7 @@ export default function AdminHome() {
         </Box>
 
         <Flex flexWrap={"wrap"} justifyContent={"center"}>
+        {isMember.isUser && <UserBox member={isMember.member} />}
           {users?.map((user) => {
             return <UserBox key={user._id} member={user} />;
           })}
@@ -317,119 +324,3 @@ export default function AdminHome() {
     </Box>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//  <Grid
-//    templateRows="repeat(2, 1fr)"
-//    templateColumns={[
-//      "repeat(1,1fr)",
-//      "repeat(1,1fr)",
-//      "repeat(2,1fr)",
-//      "repeat(2,1fr)",
-//      "repeat(3, 1fr)",
-//    ]}
-//    gap={2}
-//  >
-//    {/* box for items */}
-//    <Flex
-//      flexDir={"column"}
-//      boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px"}
-//      w={"250px"}
-//      p={["10px"]}
-//      alignItems={"center"}
-//      justifyContent={"center"}
-//      m={["10px"]}
-//    >
-//      <Flex align={"center"} justifyContent={"space-between"}>
-//        <Text color={"gold"} fontWeight={"bold"}>
-//          VIP1
-//        </Text>
-//        <TriangleUpIcon color={"whatsapp.600"} />
-//      </Flex>
-//      <Flex justifyContent={"center"}>
-//        <CircularProgress
-//          value={(userPlan?.VIP1 / users?.length) * 100}
-//          color="green"
-//          //   border={"1px solid black"}
-//          size={["100px"]}
-//          thickness={["10px"]}
-//        >
-//          <CircularProgressLabel>{userPlan?.VIP1}</CircularProgressLabel>
-//        </CircularProgress>
-//      </Flex>
-//    </Flex>
-
-//    {/* box for items */}
-//    <Box
-//      boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px"}
-//      w={"250px"}
-//      p={["10px"]}
-//      alignItems={"center"}
-//      justifyContent={"center"}
-//      m={["10px"]}
-//    >
-//      <Flex align={"center"} justifyContent={"space-between"}>
-//        <Text color={"gold"} fontWeight={"bold"}>
-//          VIP2
-//        </Text>
-//        <TriangleUpIcon color={"blue"} />
-//      </Flex>
-//      <Flex justifyContent={"center"}>
-//        <CircularProgress
-//          value={(userPlan?.VIP2 / users?.length) * 100 || 0}
-//          color="blue"
-//          //   border={"1px solid black"}
-//          size={["100px"]}
-//          thickness={["10px"]}
-//        >
-//          <CircularProgressLabel>{userPlan?.VIP2 || 0}</CircularProgressLabel>
-//        </CircularProgress>
-//      </Flex>
-//    </Box>
-//    {/* box for items */}
-//    <Box
-//      boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px"}
-//      w={"250px"}
-//      p={["10px"]}
-//      alignItems={"center"}
-//      justifyContent={"center"}
-//      m={["10px"]}
-//    >
-//      <Flex align={"center"} justifyContent={"space-between"}>
-//        <Text color={"gold"} fontWeight={"bold"}>
-//          Total Users
-//        </Text>
-//        <TriangleUpIcon color={"black"} />
-//      </Flex>
-//      <Flex justifyContent={"center"}>
-//        <CircularProgress
-//          value={100}
-//          color="black"
-//          //   border={"1px solid black"}
-//          size={["100px"]}
-//          thickness={["10px"]}
-//        >
-//          <CircularProgressLabel>{users.length}</CircularProgressLabel>
-//        </CircularProgress>
-//      </Flex>
-//    </Box>
-//  </Grid>
