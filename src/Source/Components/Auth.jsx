@@ -17,10 +17,10 @@ export default function Auth({ children }) {
 
   // console.log("1");
   useEffect(() => {
-    // console.log("2", token)
+    // console.log("20 auth file", )
     token = JSON.parse(localStorage.getItem("token"));
     if (token) {
-      // let result = GetDataFromToken(token)
+      
       PostRequest(`${url}user/token`)
         .then((result) => {
           if (result?.status) {

@@ -36,5 +36,23 @@ function formatReadableDate(dateString) {
 }
 
 
+function FormateDDMMYYYY(inputDate) {
+    const date = new Date(inputDate);
 
-export {formatReadableDate}
+    // Get the next month
+    date.setMonth(date.getMonth() + 1);
+
+    // Extract date, month, and year
+    const day = date.getDate();
+    const month = date.toLocaleString('default', { month: 'long' });
+    const year = date.getFullYear();
+
+    // Combine the values into a formatted string
+    const formattedDate = `${day} ${month} ${year}`;
+    return formattedDate;
+}
+
+
+
+
+export { formatReadableDate, FormateDDMMYYYY }

@@ -22,34 +22,41 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { PostRequest } from "../Services/ApiCall";
+import { setWallet } from "../Redux/Reducers/UserReducers";
 
 export default function WithDraw({ amount }) {
   const url = import.meta.env.VITE_API_URL;
   const toast = useToast();
+  const [isLoading, setIsLoading] = useState(false)
   const { name, _id, userType } = useSelector((state) => state.User);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [data, setData] = useState({ upi: "", amount: amount, email: "" });
+  const dispatch = useDispatch()
+
 
   function Submit(event) {
     event.preventDefault();
-    let message = `I am writing to request a withdrawal of ${data.amount} from my account.
-        Current balance is ${amount}
-        My account ID is ${_id},
-         and my name is ${name}.`;
+    setIsLoading(true)
+  
     let request = {
-      report: message,
       email: data.email,
-      subject: `Withdrawal Request`,
+      upi_Id: data.email,
+      amount: data.amount
+
     };
 
-    PostRequest(`${url}report`, request)
+    PostRequest(`${url}withdraw`, request)
       .then((res) => {
+        setIsLoading(false)
         // console.log(res)
+        dispatch(setWallet(res.data.amount))
         if (res.status) {
+
+          onClose()
           toast({
-            title: "Report Sended",
+            title: "Withdrawal Requested😊",
             status: "success",
             duration: 3000,
           });
@@ -62,7 +69,16 @@ export default function WithDraw({ amount }) {
           });
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setIsLoading(false);
+        toast({
+          title: "Something went Wrong!",
+          status: "error",
+          duration: 3000,
+        });
+        console.log(error)
+      });
+    setIsLoading(false);
   }
 
   return (
@@ -164,7 +180,7 @@ export default function WithDraw({ amount }) {
               </Stack>
 
               <Flex w="100%" justifyContent="center">
-                <Button type="submit" colorScheme="whatsapp">
+                <Button isLoading={isLoading} type="submit" colorScheme="whatsapp">
                   Request Withdrawal
                 </Button>
               </Flex>

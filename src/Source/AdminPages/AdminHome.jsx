@@ -108,7 +108,7 @@ export default function AdminHome() {
 
     function DeleteUser(id) {
       DeleteRequest(`${url}user/delete/id/${id}`).then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res?.status) {
           toast({
             title: "Accound Deleted Successfully",
@@ -253,7 +253,7 @@ export default function AdminHome() {
         >
           <Input
             focusBorderColor="lime"
-            placeholder="User Id"
+            placeholder="Search..."
             _placeholder={{ opacity: 1, color: "black" }}
             onChange={(e) => setUserId(e.target.value)}
           />

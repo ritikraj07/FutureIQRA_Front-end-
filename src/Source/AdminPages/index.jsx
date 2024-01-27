@@ -16,6 +16,7 @@ import {HamburgerIcon} from '@chakra-ui/icons'
 import { MdSpaceDashboard, MdReport, MdQuestionAnswer } from "react-icons/md";
 import { SiCoursera } from "react-icons/si";
 import { TiHome } from "react-icons/ti";
+import { FaRupeeSign } from "react-icons/fa";
 
 export default function AdminRouter() {
   const navigate = useNavigate();
@@ -99,43 +100,19 @@ export default function AdminRouter() {
               Course
             </NavLink>
             <br></br>
+            <NavLink
+              className={({ isActive, isPending }) =>
+                isActive ? "activeLink" : "inActiveLink"
+              }
+              to={"/admin/withdraw"}
+              style={nStyle}
+            >
+              <FaRupeeSign style={iStyle} />
+              Withdraw
+            </NavLink>
+            <br></br>
           </Box>
         </Flex>
-
-        {/* <Box
-          zIndex={100}
-          mt={"10px"}
-          ml={"10px"}
-          pos={"absolute"}
-          display={["block", "none"]}
-        >
-          <Menu>
-            <MenuButton
-              as={IconButton}
-              aria-label="Options"
-              icon={<HamburgerIcon />}
-              variant="outline"
-              bg={"white"}
-            >
-              Menu
-            </MenuButton>
-            <MenuList>
-              <MenuItem onClick={() => navigate("/admin/dashboard")}>
-                Dashboard
-              </MenuItem>
-              <MenuItem onClick={() => navigate("/admin/report")}>
-                {" "}
-                Report{" "}
-              </MenuItem>
-              <MenuItem onClick={() => navigate("/admin/q&a")}>
-                Question{" "}
-              </MenuItem>
-              <MenuItem onClick={() => navigate("/admin/course")}>
-                Course
-              </MenuItem>
-            </MenuList>
-          </Menu>
-        </Box> */}
 
         <Box
           w={"100%"}
@@ -190,6 +167,11 @@ export default function AdminRouter() {
                 <MenuItem onClick={() => navigate("/admin/course")}>
                   <SiCoursera style={iStyle} />
                   Course
+                </MenuItem>
+                <MenuItem onClick={() => navigate("/admin/withdraw")}>
+                  <FaRupeeSign style={iStyle} />
+                  
+                  Withdraw
                 </MenuItem>
               </MenuList>
             </Menu>

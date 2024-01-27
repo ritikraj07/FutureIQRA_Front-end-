@@ -7,7 +7,10 @@ import { FaPaperPlane } from "react-icons/fa";
 import { FaExclamationCircle } from "react-icons/fa";
 import { GetRequest, PostRequest } from "../Services/ApiCall";
 import { Link as RouterLink } from "react-router-dom";
+import { FaRegSadTear } from "react-icons/fa";
+
 import UnauthorizedPage from "../Components/Unauthorized";
+import { FormateDDMMYYYY } from "../Services/DateRelated";
 
 export default function ThankYou() {
   const url = import.meta.env.VITE_API_URL;
@@ -15,8 +18,8 @@ export default function ThankYou() {
   const toast = useToast();
   const { orderId } = useParams();
   const [state, setState] = useState("processing");
-  const [courseType, setCourseType] = useState("");
-  const [expireTime, setExpireTime] = useState("");
+  const [paymentData, setPaymentData] = useState()
+  
 
   useEffect(() => {
     CheckStatus();
@@ -28,16 +31,10 @@ export default function ThankYou() {
     GetRequest(`${url}payment/order-status/${orderId}`)
       
       .then((res) => {
-        // console.log("console form order status", res);
+        console.log("console form order status", res)
         if (res?.status) {
-          if (res.data) {            
-            setCourseType(res.data.product_name);
-            setState(res.data.status);
-            setExpireTime(res.data.expireTime);
-          } else {
-            console.log(res);
-            setState("fail");
-          }
+          setPaymentData(res?.data)
+          setState(res.data.status)
         } else {
           console.log(res);
           setState("unauthorized");
@@ -49,7 +46,7 @@ export default function ThankYou() {
           title: "Something went wrong",
           status: "error",
         });
-        setState("fail");
+        setState("unauthorized");
       });
   }
 
@@ -61,12 +58,13 @@ export default function ThankYou() {
       {state == "Success" && (
         <SuccessfullPayment
           name={name}
-          courseType={courseType}
-          expireTime={expireTime}
+          courseType={paymentData.product}
+          expireTime={FormateDDMMYYYY(paymentData.expireTime)}
         />
       )}
       {state === "Failed" && <FailedTransactionComponent />}
-      {state==='Pending' && <PendingTransactionComponent />}
+      {state === 'Pending' && <PendingTransactionComponent />}
+      {state==='Expire' && <ExpiredTransactionComponent product={paymentData.product} /> }
     </Box>
   );
 }
@@ -211,3 +209,48 @@ const PendingTransactionComponent = () => (
     </Box>
   </Box>
 );
+
+const ExpiredTransactionComponent = ({ product }) => {
+  const navigate = useNavigate();
+  product = product.toString().toLowerCase();
+
+  return (
+    <Box
+      display="flex"
+      flexDir="column"
+      alignItems="center"
+      justifyContent="center"
+      h="100vh"
+      bg="#f7f7f7" // Adjust the background color as needed
+    >
+      <Box
+        p={8}
+        bg="white"
+        borderRadius="lg"
+        boxShadow="md"
+        textAlign="center"
+        maxW="400px"
+      >
+        <FaRegSadTear style={{margin:'auto'}} color="#e74c3c" size={50} />
+        <Text fontSize="lg" fontWeight="bold" mt={4} mb={2}>
+          Subscription Expired
+        </Text>
+        <Text fontSize="md" color="gray.600" mb={4}>
+          Oops! The subscription for {product} has expired.
+        </Text>
+        <Button
+          colorScheme="whatsapp"
+          onClick={() => navigate(`/course/${product}`)}
+          mr={2}
+          mb={2}
+
+        >
+          Renew Subscription
+        </Button>
+        <Button colorScheme="purple" onClick={() => navigate("/")}>
+          Explore More Courses
+        </Button>
+      </Box>
+    </Box>
+  );
+};

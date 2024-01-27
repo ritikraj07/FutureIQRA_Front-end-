@@ -24,6 +24,7 @@ import TermsAndConditions from "../Components/Terms&Conditions.jsx";
 import RefundsAndReturnsPolicy from "../Components/Refunds&ReturnsPolicy.jsx";
 import AboutUs from "../Components/About.jsx";
 import ThankYou from "../Pages/ThankYou.jsx";
+import AdminWithdraw from "../AdminPages/AdminWithdraw.jsx";
 
 export default function AllRoutes() {
   return (
@@ -170,6 +171,14 @@ export default function AllRoutes() {
           element={
             <AdminAuth>
               <AdminCourse />{" "}
+            </AdminAuth>
+          }
+        />
+        <Route
+          path="withdraw"
+          element={
+            <AdminAuth>
+              <AdminWithdraw />
             </AdminAuth>
           }
         />

@@ -35,6 +35,7 @@ import { setAvatar, setLogout } from "../Redux/Reducers/UserReducers";
 import ReviewSlider from "../Components/Review";
 import WithDraw from "../Components/WithDraw";
 import PaymentHistoryModal from "../Components/PaymentHistroy";
+import WithdrawHistoryModal from "../Components/WithdrawHistory";
 
 
 export default function Home() {
@@ -42,10 +43,17 @@ export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast()
   const dispatch = useDispatch()
-  const { name, phone, photo, rank, wallet, _id, isAdmin, paymentHistory } = useSelector(
-    (state) => state.User
-  );
-  console.log(paymentHistory)
+  const {
+    name,
+    phone,
+    photo,
+    withdrawHistory,
+    wallet,
+    _id,
+    isAdmin,
+    paymentHistory,
+  } = useSelector((state) => state.User);
+  console.log(withdrawHistory);
 
   let avatars = [
     "https://6570556c9c603163391e8ba0--joyful-kheer-008761.netlify.app/Avatar/avatar1.jpg",
@@ -207,6 +215,9 @@ export default function Home() {
 
               <MenuItem>
                 <PaymentHistoryModal paymentHistory={paymentHistory} />
+              </MenuItem>
+              <MenuItem>
+                <WithdrawHistoryModal withdrawHistory={withdrawHistory} />
               </MenuItem>
               <MenuItem
                 onClick={() => {
@@ -384,7 +395,7 @@ export default function Home() {
                   className="image"
                   h={["270px"]}
                   borderRadius={10}
-                  src="src\Source\Assets\contact.png"
+                  src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/contact.png"
                 />
               </Box>
               <Box className="back">
