@@ -24,7 +24,8 @@ export default function ThankYou() {
   function CheckStatus() {
     setState("processing");
 
-    GetRequest(`${url}payment/status/${orderId}`)
+    GetRequest(`${url}payment/order-status/${orderId}`)
+      
       .then((res) => {
         console.log("console form order status", res);
         if (res?.status) {
