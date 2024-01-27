@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet";
 
 function App() {
   let isLoggedIn = useSelector((state) => state.User.isLoggedIn);
-  // console.log(isLoggedIn);
+
   document.addEventListener("contextmenu", (event) => {
     event.preventDefault();
   });

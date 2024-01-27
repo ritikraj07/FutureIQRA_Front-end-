@@ -35,6 +35,7 @@ export default function BuyCouse({ title, name, phone, onSubmit, setEmail, isLoa
         bg={"blue.500"}
         variant="solid"
         onClick={onOpen}
+        isLoading={isLoading}
       >
         Buy Now
       </Button>
