@@ -24,6 +24,7 @@ export default function Auth({ children }) {
       PostRequest(`${url}user/token`)
         .then((result) => {
           if (result?.status) {
+            // console.log(result)
             dispatch(setUser(result?.data))
           } else {
             console.log(result)

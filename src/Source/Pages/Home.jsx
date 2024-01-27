@@ -45,6 +45,7 @@ export default function Home() {
   const { name, phone, photo, rank, wallet, _id, isAdmin, paymentHistory } = useSelector(
     (state) => state.User
   );
+  console.log(paymentHistory)
 
   let avatars = [
     "https://6570556c9c603163391e8ba0--joyful-kheer-008761.netlify.app/Avatar/avatar1.jpg",
@@ -180,7 +181,7 @@ export default function Home() {
         <Image
           w={"100px"}
           h="100px"
-          src="src\Source\Assets\futureIQRAicon.png"
+          src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/favicon_io/android-chrome-512x512.png"
           alt="Future IQRA"
         />
 
@@ -276,13 +277,15 @@ export default function Home() {
                 <Image
                   className="image"
                   h={["270px"]}
+                  w={"100%"}
                   borderRadius={10}
-                  src="https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYSquu9KVDsP5EhTGxojhKCGfsXZEfk4TPmBS0dNj-Yof2gdvMBLa06dJRJNAESVFd5KvSiUYVAhyeSXQVQQZ6OS9QNddQ=w1960-h3484"
+                  src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/vip1.jpg"
                   alt="vip1"
                 />
               </Box>
               <Box className="back">
-                <p>VIP1</p>
+                <p>Daily Life Hacks</p>
+                <p>Tips and Tricks</p>
               </Box>
             </Box>
           </Box>
@@ -297,13 +300,15 @@ export default function Home() {
                 <Image
                   className="image"
                   h={["270px"]}
+                  w={"100%"}
                   borderRadius={10}
                   alt="vip2"
-                  src="https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYS8HuoXfs4Uj0e1Jy2yL1ulZJTzx3aP71eubuU5CR1xTVY3UDFjUuGbNTxhB4VkbYl48T5iCFt3Ru4AGAOrp2mxn6BU7w=w1920-h907"
+                  src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/vip2.jpg"
                 />
               </Box>
               <Box className="back">
-                <p>VIP2</p>
+                <p>Professional Skill Development</p>
+                <p>Program</p>
               </Box>
             </Box>
           </Box>
@@ -319,7 +324,7 @@ export default function Home() {
                   className="image"
                   h={["270px"]}
                   borderRadius={10}
-                  src="src\Source\Assets\referearn.png"
+                  src="https://65b52090c23cc3b62429bb24--joyful-kheer-008761.netlify.app/Accets/referearn.png"
                 />
               </Box>
               <Box className="back">
@@ -339,7 +344,7 @@ export default function Home() {
                   className="image"
                   h={["270px"]}
                   borderRadius={10}
-                  src="src\Source\Assets\leaderboard.jpg"
+                  src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/leaderboard.jpg"
                 />
               </Box>
               <Box className="back">
@@ -359,7 +364,7 @@ export default function Home() {
                   className="image"
                   h={["270px"]}
                   borderRadius={10}
-                  src="src\Source\Assets\qna.png"
+                  src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/qna.png"
                 />
               </Box>
               <Box className="back">

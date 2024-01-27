@@ -29,10 +29,13 @@ const PaymentHistoryModal = ({ paymentHistory }) => {
   const onClose = () => setIsOpen(false);
  const [isSmallerThan600] = useMediaQuery("(max-width: 600px)");
   function StatusColor(status) {
+    
     if (status === "Success") {
       return "#61E461"; // Green
     } else if (status === "Failed") {
       return "#FF0000"; // Red
+    } else if (status === "Expire") {
+      return "silver"; // Silver
     } else {
       return "#FFAA00"; // Yellow
     }
@@ -40,12 +43,20 @@ const PaymentHistoryModal = ({ paymentHistory }) => {
 
   return (
     <>
-      <Text fontWeight={"normal"} onClick={() => setIsOpen(true)}>Payment History</Text>
+      <Text fontWeight={"normal"} onClick={() => setIsOpen(true)}>
+        Payment History
+      </Text>
 
       <Modal isOpen={isOpen} onClose={onClose} size="xl">
         <ModalOverlay />
         <ModalContent maxW={{ base: "96%", sm: "95%", md: "80%" }}>
           <ModalHeader>Payment History</ModalHeader>
+          <Stack ml={10} spacing={2} direction="row" mb={4}>
+            <Badge colorScheme="green">Success</Badge>
+            <Badge colorScheme="red">Failed</Badge>
+            <Badge colorScheme="yellow">Pending</Badge>
+            <Badge bg="silver" colorScheme="silver">Expire</Badge>
+          </Stack>
           <ModalCloseButton />
           <ModalBody>
             <Flex overflowX="auto">
@@ -53,12 +64,11 @@ const PaymentHistoryModal = ({ paymentHistory }) => {
                 <Thead>
                   <Tr>
                     <Th>Order ID</Th>
-                    <Th>
-                      {isSmallerThan600? <FaRupeeSign /> :'Amount'}
-                    </Th>
+                    <Th>{isSmallerThan600 ? <FaRupeeSign /> : "Amount"}</Th>
                     <Th>Mode</Th>
                     <Th>Date</Th>
                     <Th>Product</Th>
+                    <Th>Expire Date</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
@@ -93,6 +103,12 @@ const PaymentHistoryModal = ({ paymentHistory }) => {
                         fontSize={{ base: "xs", sm: "sm", md: "md" }}
                       >
                         {payment.product}
+                      </Td>
+                      <Td
+                        color={"white"}
+                        fontSize={{ base: "xs", sm: "sm", md: "md" }}
+                      >
+                        {payment.expireTime}
                       </Td>
                     </Tr>
                   ))}

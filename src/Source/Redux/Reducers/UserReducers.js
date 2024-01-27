@@ -21,7 +21,7 @@ const UserSlice = createSlice({
     initialState: User,
     reducers: {
         setUser: (state, action) => {
-            // console.log('Action====>',action)
+            console.log('Action====>',action)
             let { name, phone, image, team, rank, _id, wallet, paymentHistory, isAdmin, referCode, userType } = action.payload
             state.name = name
             state.wallet = wallet,

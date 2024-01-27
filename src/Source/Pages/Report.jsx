@@ -120,14 +120,14 @@ export default function Report() {
           <Flex w={"100%"} alignItems={"center"} justifyContent={"center"}>
             <Image
               w="80%"
-              src="https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYSVYLESd8Y-s4i6zFaGZwXZpScot1is1FWiQ_nt97mcnnymINdBT1wtGxXPw5KZiocMXQNUoboT04Gu4BhRw6AYTmB2Lg=w1920-h907"
+              src="https://65b52090c23cc3b62429bb24--joyful-kheer-008761.netlify.app/Accets/report.svg"
             />
           </Flex>
         </Box>
 
         {/* report input box */}
 
-        <Box w={["100%","80%" ,"50%"]}>
+        <Box w={["100%", "80%", "50%"]}>
           <Stack spacing={3} px={[1, 10]}>
             <Input
               placeholder="Your Name"

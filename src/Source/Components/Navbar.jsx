@@ -31,7 +31,7 @@ export default function Navbar({ ...args }) {
         cursor={"pointer"}
         w={"80px"}
         h="80px"
-        src="src\Source\Assets\futureIQRAicon.png"
+        src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/favicon_io/android-chrome-512x512.png"
         alt="FutureIQRA"
         onClick={() => navitage("/")}
       />
