@@ -2,7 +2,7 @@ import {useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate} from 'react-router-dom'
 import { setUser } from '../Redux/Reducers/UserReducers';
-import { PostRequest } from '../Services/ApiCall';
+import { GetDataFromToken, PostRequest } from '../Services/ApiCall';
 import { useToast } from '@chakra-ui/react';
 
 
@@ -10,16 +10,15 @@ import { useToast } from '@chakra-ui/react';
 export default function Auth({ children }) {
   const url = import.meta.env.VITE_API_URL;
   let token = JSON.parse(localStorage.getItem("token"));
-  const loggedin = useSelector((state) => state.User.isLoggedIn) 
-  
+  const loggedin = useSelector((state) => state.User.isLoggedIn) || token
   const dispatch = useDispatch()
   const toast = useToast();
   const navigate = useNavigate()
 
   // console.log("1");
   useEffect(() => {
-    console.log("useEffect 20 auth file", )
-    
+    // console.log("20 auth file", )
+    token = JSON.parse(localStorage.getItem("token"));
     if (token) {
       
       PostRequest(`${url}user/token`)
