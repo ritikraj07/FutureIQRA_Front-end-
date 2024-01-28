@@ -29,7 +29,7 @@ const Vip1Course = () => {
     setLoading(true);
 
     let courseData = {
-      amount: 1, //change later
+      amount: 499, //change later
       note: "Pay For VIP1 Course",
       product_name: "VIP1",
       email: email,
