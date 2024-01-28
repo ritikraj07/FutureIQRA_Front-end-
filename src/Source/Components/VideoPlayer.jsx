@@ -18,7 +18,7 @@ export default function VideoPlayer({videoId}) {
   const containerRef = useRef(null);
 
   const handleRightClick = (event) => {
-    console.log("Right-clicked inside the container");
+    // console.log("Right-clicked inside the container");
     event.preventDefault(); // Prevent the default right-click context menu
   };
 

@@ -31,7 +31,7 @@ export default function ThankYou() {
     GetRequest(`${url}payment/order-status/${orderId}`)
       
       .then((res) => {
-        console.log("console form order status", res)
+        // console.log("console form order status", res)
         if (res?.status) {
           setPaymentData(res?.data)
           setState(res.data.status)

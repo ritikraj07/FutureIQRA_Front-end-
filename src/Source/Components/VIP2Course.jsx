@@ -37,7 +37,7 @@ const Vip2Course = () => {
 
     PostRequest(`${url}payment/api/proxy`, courseData)
       .then((res) => {
-        console.log("res from vip1 Course", res);
+        // console.log("res from vip1 Course", res);
         if (res.status) {
           window.open(res.results.payment_url, "_blank");
           //  "width=600,height=400";

@@ -171,7 +171,7 @@ export default function AdminQnA() {
       fetch(`${url}q&a/${question._id}`, requestOptions)
         .then((response) => response.json())
         .then((result) => {
-          console.log(result)
+          // console.log(result)
           if (result.status) {
                    toast({
                      title: "Question Deleted Successfully",

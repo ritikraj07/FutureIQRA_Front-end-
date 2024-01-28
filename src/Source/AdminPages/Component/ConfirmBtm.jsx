@@ -11,7 +11,7 @@ const ConfirmBtn = ({
   
   const handleConfirm = () => {
     const confirmed = window.confirm(warn);
-    console.log(confirmed);
+    // console.log(confirmed);
     if (confirmed) {
       // Perform the delete action here
       // console.log("Deleting...", func);

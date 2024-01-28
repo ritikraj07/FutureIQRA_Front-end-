@@ -65,7 +65,7 @@ const deleteVideoAtIndex = (indexToDelete) => {
         
         PatchRequest(`${url}course/delete-video`, { courseId: course._id, videoId: id })
             .then((res) => {
-                console.log(res)
+                // console.log(res)
                 if (res.status) {
                     toast({
                         title: 'Video Delete Successfull',

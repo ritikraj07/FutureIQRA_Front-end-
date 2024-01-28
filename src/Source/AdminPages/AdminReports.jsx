@@ -93,7 +93,7 @@ export default function AdminReports() {
     fetch(`${url}report/delete`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        console.log(result, deleting_ids);
+        // console.log(result, deleting_ids);
         let new_reports = reports.filter((e) => !deleting_ids.includes(e._id));
         setReports(new_reports);
       })

@@ -75,7 +75,7 @@ export default function EditVideo({ course, videos, index, setVideos }) {
       updatedData: video,
     })
         .then((res) => {
-          console.log(res)
+          // console.log(res)
             if (res.status) {
             editVideoInState()
           toast({

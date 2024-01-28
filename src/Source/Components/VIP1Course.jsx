@@ -39,7 +39,7 @@ const Vip1Course = () => {
 
     PostRequest(`${url}payment/api/proxy`, courseData)
       .then((res) => {
-        console.log("form vip1cours buycourse postrequest", res);
+        // console.log("form vip1cours buycourse postrequest", res);
         if (res.status) {
           // window.open(res.results.payment_url);
           window.location.href=`${res.results.payment_url}`

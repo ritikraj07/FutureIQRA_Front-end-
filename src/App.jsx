@@ -1,4 +1,4 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Text,Box } from "@chakra-ui/react";
 import AllRoutes from "./Source/Router/AllRoutes";
 import Copyright from "./Source/Components/CopyRight";
 import Footer from "./Source/Components/Footer";
@@ -12,7 +12,7 @@ function App() {
     event.preventDefault();
   });
   return (
-    <Flex minH={"100vh"} flexDir={"column"} justifyContent={"space-between"}>
+    <Flex minH={"100vh"} flexDir={"column"} justifyContent={"end"}>
       <Helmet>
         <title>Future IQRA</title>
         <meta
@@ -62,8 +62,10 @@ function App() {
         />
       </Helmet>
       <AllRoutes />
-      <Footer />
-      <Copyright />
+      <Box>
+        <Footer />
+        <Copyright />
+      </Box>
     </Flex>
   );
 }

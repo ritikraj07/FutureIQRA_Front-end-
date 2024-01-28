@@ -10,7 +10,7 @@ const UnauthorizedPage = () => {
   };
 
   return (
-    <Box h={['95vh']} p={10} textAlign="center">
+    <Box bg={'white'} h={['95vh']} p={10} textAlign="center">
       <Heading as="h1" fontSize="3xl" mb={4}>
         Unauthorized Access
       </Heading>
