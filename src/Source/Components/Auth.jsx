@@ -17,16 +17,17 @@ export default function Auth({ children }) {
 
   // console.log("1");
   useEffect(() => {
-    // console.log("20 auth file", )
-    token = JSON.parse(localStorage.getItem("token"));
+    console.log("20 auth file", )
+    
     if (token) {
-      
+      console.log('token hai')
       PostRequest(`${url}user/token`)
         .then((result) => {
           if (result?.status) {
             // console.log(result)
             dispatch(setUser(result?.data))
-          } else {
+          }
+          else {
             console.log(result)
             
             toast({
@@ -42,7 +43,7 @@ export default function Auth({ children }) {
   }, [])
 
 
-  // console.log('=== >', loggedin)
+  console.log('=== >', loggedin)
     
 
   return loggedin ? (
