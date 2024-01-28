@@ -17,7 +17,7 @@ function App() {
         <title>Future IQRA</title>
         <meta
           name="description"
-          content="Explore transformative learning at futureIQRA.in – a platform by Ritik Raj and Abdul Barik. Innovative, tech-driven education with limitless possibilities."
+          content="Unlock your potential with our Professional Skill Development Program, tailored for career growth. Navigate daily life effortlessly with our insightful Life Hack Tips and Tricks. Join us in the pursuit of excellence, mastering skills for success and simplifying everyday challenges."
         />
         <link
           rel="canonical"
