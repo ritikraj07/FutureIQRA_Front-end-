@@ -56,11 +56,11 @@ export default function ReferAndEarn() {
      );
   };
   
-  console.log(team)
+  // console.log(team)
   function GetActiveUser() {
     let count = 0;
     for (var i = 0; i < team.length; i++){
-      console.log(team[i].userType)
+      // console.log(team[i].userType)
       if (team[i]?.userType != "Basic") {
         count++;
       }

@@ -36,7 +36,7 @@ import { PatchRequest } from "../Services/ApiCall";
 import { AdminChangeWithdrawStatus } from "../Redux/Reducers/AdminReducers";
 export default function AdminWithdraw() {
   let {docs} = useSelector((state) => state.Admin.WithdrawData)
-  console.log(docs)
+  // console.log(docs)
 
 
     return (
@@ -132,7 +132,7 @@ function WithdrawControler({ withdraw, index }) {
     let newStatus = e.target.value
     PatchRequest(`${url}withdraw/`, { _id: withdraw._id, status: newStatus })
       .then((res) => {
-        console.log(res)
+        // console.log(res)
         if (res.status) {
           dispatch(AdminChangeWithdrawStatus(res.data))
         } else {

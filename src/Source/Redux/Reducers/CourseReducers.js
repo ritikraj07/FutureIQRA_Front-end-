@@ -8,7 +8,7 @@ const Course = {
     videos: [],
     discount: 0,
     intro: '',
-    coursetype:''
+    coursetype: ''
 }
 
 
@@ -17,7 +17,7 @@ const CourseSlice = createSlice({
     initialState: Course,
     reducers: {
         setCourse: (state, action) => {
-            let {coursetype, name, instructor, price, description, videos, intro, duration } = action.payload
+            let { coursetype, name, instructor, price, description, videos, intro, duration } = action.payload
             state.name = name,
                 state.instructor = instructor,
                 state.price = price,
@@ -25,12 +25,12 @@ const CourseSlice = createSlice({
                 state.coursetype = coursetype,
                 state.description = description,
                 state.intro = intro,
-                state.duration = duration            
+                state.duration = duration
             // console.log('current state',current(state))
         },
 
-        
-       
+
+
     }
 })
 

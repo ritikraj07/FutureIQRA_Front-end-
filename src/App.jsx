@@ -2,11 +2,11 @@ import { Flex, Text } from "@chakra-ui/react";
 import AllRoutes from "./Source/Router/AllRoutes";
 import Copyright from "./Source/Components/CopyRight";
 import Footer from "./Source/Components/Footer";
-import { useSelector } from "react-redux";
+
 import { Helmet } from "react-helmet";
 
 function App() {
-  let isLoggedIn = useSelector((state) => state.User.isLoggedIn);
+  
 
   document.addEventListener("contextmenu", (event) => {
     event.preventDefault();

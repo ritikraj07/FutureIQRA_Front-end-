@@ -53,7 +53,7 @@ export default function Home() {
     isAdmin,
     paymentHistory,
   } = useSelector((state) => state.User);
-  console.log(withdrawHistory);
+  // console.log(withdrawHistory);
 
   let avatars = [
     "https://6570556c9c603163391e8ba0--joyful-kheer-008761.netlify.app/Avatar/avatar1.jpg",

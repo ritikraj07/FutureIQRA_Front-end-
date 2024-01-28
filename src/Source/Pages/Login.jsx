@@ -74,7 +74,7 @@ export default function Login() {
       if (data.status) {
         let userdata = data.data;
 
-        console.log("user==>", data);
+        // console.log("user==>", data);
         localStorage.setItem("token", JSON.stringify(data.token));
         dispatch(setUser(userdata));
         navigate("/");
