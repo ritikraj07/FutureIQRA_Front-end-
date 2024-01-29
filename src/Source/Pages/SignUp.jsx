@@ -317,7 +317,7 @@ const handleClick = () => setShow(!show);
                       bg={"transparent"}
                       _hover={{}}
                     >
-                      Get OPT
+                      Get OTP
                     </Button>
                   }
                   bg={"#2658e6"}
