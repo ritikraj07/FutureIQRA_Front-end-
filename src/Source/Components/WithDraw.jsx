@@ -42,7 +42,7 @@ export default function WithDraw({ amount }) {
   
     let request = {
       email: data.email,
-      upi_Id: data.email,
+      upi_Id: data.upi,
       amount: data.amount
 
     };
