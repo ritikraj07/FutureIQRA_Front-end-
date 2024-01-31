@@ -30,6 +30,19 @@ export default function CourseTemplate({ course, watch = false }) {
     dispatch(setCourse(course));
     navigate(`/my-learning/${course.name}/${course._id}/0`);
   }
+
+  function isSubscribed() {
+    if (watch) {
+      return true
+    }
+    if (userType === 'VIP1' && course.coursetype === 'VIP1') {
+      return true
+    }
+    if (userType === 'VIP2') {
+      return true
+    }
+    return false
+  }
   return (
     <Flex
       userSelect={"none"}
@@ -111,7 +124,7 @@ export default function CourseTemplate({ course, watch = false }) {
           </UnorderedList>
         </Flex>
 
-        {watch || userType == course.coursetype ? (
+        {isSubscribed()?(
           <Button
             color={"white"}
             bg="blue.400"

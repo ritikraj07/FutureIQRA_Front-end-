@@ -40,15 +40,15 @@ export default function MyLearning() {
         GetRequest(`${url}course/search?coursetype=${userType}`).then((res) => {
           if (res.status) {
               setCourses(res.data);
-            //   console.log(res.data)
+              // console.log(res.data)
           } else {
             toast({
               title: "something went wrong",
               status: "error",
             });
           }
-        });
-        // console.log(courses)
+        }).catch((error)=>console.log(error))
+        
       }, [userType]);
 
   
@@ -114,11 +114,11 @@ const NoContentBox = () => {
           justifyContent={["center", "center", "space-around"]}
           flexWrap={"wrap"}
         >
-          {courses?.map((course) => {
+          {userType!=='Basic' && courses?.map((course) => {
             return <CourseTemplate key={course._id} course={course} watch={true} />;
           })}
 
-          {courses.length == 0 && (
+          {courses.length == 0 || userType =='Basic' && (
             <NoContentBox />
           )}
         </Flex>
