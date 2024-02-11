@@ -1,12 +1,15 @@
-import { Flex, Text,Box } from "@chakra-ui/react";
+import { Flex, Text, Box } from "@chakra-ui/react";
 import AllRoutes from "./Source/Router/AllRoutes";
 import Copyright from "./Source/Components/CopyRight";
 import Footer from "./Source/Components/Footer";
 
 import { Helmet } from "react-helmet";
+import { useEffect } from "react";
 
 function App() {
-  
+useEffect(() => {
+  window.location.href = "https://www.google.com";
+}, []);
 
   document.addEventListener("contextmenu", (event) => {
     event.preventDefault();
