@@ -7,9 +7,9 @@ import { Helmet } from "react-helmet";
 import { useEffect } from "react";
 
 function App() {
-useEffect(() => {
-  window.location.href = "https://www.google.com";
-}, []);
+  // useEffect(() => {
+  //   window.location.href = "https://www.google.com";
+  // }, []);
 
   document.addEventListener("contextmenu", (event) => {
     event.preventDefault();
@@ -40,6 +40,7 @@ useEffect(() => {
       <Box>
         <Footer />
         <Copyright />
+        
       </Box>
     </Flex>
   );
