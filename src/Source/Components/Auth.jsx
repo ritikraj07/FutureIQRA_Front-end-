@@ -49,13 +49,13 @@ export default function Auth({ children }) {
     <>
       {isLoading ? (
         <div style={{ position: 'fixed', width: '50vh', height: '50vh', top: '45%', left: '45%' }}>
-          <ReactLoading
+          {/* <ReactLoading
             type={"bars"}
             color={"white"}
             height={"100px"}
             width={"100px"}
 
-          />
+          /> */}
         </div>
       ) : loggedin ? (
         <> {children} </>
