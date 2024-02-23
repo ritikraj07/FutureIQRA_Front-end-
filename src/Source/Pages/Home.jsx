@@ -1,5 +1,5 @@
-import { } from "react";
-import '../Styles/Card.css'
+import {} from "react";
+import "../Styles/Card.css";
 import {
   Box,
   Text,
@@ -24,12 +24,12 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  useToast
+  useToast,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch, } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-import {CheckIcon} from '@chakra-ui/icons'
+import { CheckIcon } from "@chakra-ui/icons";
 import { PatchRequest } from "../Services/ApiCall";
 import { setAvatar, setLogout } from "../Redux/Reducers/UserReducers";
 import ReviewSlider from "../Components/Review";
@@ -37,12 +37,11 @@ import WithDraw from "../Components/WithDraw";
 import PaymentHistoryModal from "../Components/PaymentHistroy";
 import WithdrawHistoryModal from "../Components/WithdrawHistory";
 
-
 export default function Home() {
   const url = import.meta.env.VITE_API_URL;
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const toast = useToast()
-  const dispatch = useDispatch()
+  const toast = useToast();
+  const dispatch = useDispatch();
   const {
     name,
     phone,
@@ -66,41 +65,36 @@ export default function Home() {
 
   const navigate = useNavigate();
 
-
-
-  
-  function CreateAvater({ avatar}) {
-    
+  function CreateAvater({ avatar }) {
     function UpdateAvatar() {
-      
-      PatchRequest(`${url}user/update-photo`, { image:avatar, _id })
+      PatchRequest(`${url}user/update-photo`, { image: avatar, _id })
         .then((res) => {
           // console.log(res)
           if (res.status) {
-            dispatch(setAvatar(avatar))
-            localStorage.setItem('token', JSON.stringify(res.token))
+            dispatch(setAvatar(avatar));
+            localStorage.setItem("token", JSON.stringify(res.token));
             toast({
-              status: 'success',
-              title: 'Avatar Updated',
-              duration:3000
+              status: "success",
+              title: "Avatar Updated",
+              duration: 3000,
             });
           } else {
             toast({
-              title: 'Something went wrong',
-              status: 'error',
-              duration: 3000
-            })
+              title: "Something went wrong",
+              status: "error",
+              duration: 3000,
+            });
           }
-          
-        }).catch((error) => {
-          console.log(error)
+        })
+        .catch((error) => {
+          console.log(error);
           toast({
             title: "Something went wrong",
             status: "error",
             duration: 3000,
-            description: error.message
+            description: error.message,
           });
-      })
+        });
     }
 
     return (
@@ -136,8 +130,7 @@ export default function Home() {
         )}
       </Box>
     );
- }
-  
+  }
 
   return (
     <Box
@@ -204,9 +197,9 @@ export default function Home() {
             </MenuButton>
             <MenuList>
               <MenuItem onClick={onOpen}>Change Avatar</MenuItem>
-              <MenuItem onClick={() => navigate("/my-learning")}>
+              {/* <MenuItem onClick={() => navigate("/my-learning")}>
                 My Learning
-              </MenuItem>
+              </MenuItem> */}
               {isAdmin && (
                 <MenuItem onClick={() => navigate("/admin/dashboard")}>
                   Admin Dashboard
