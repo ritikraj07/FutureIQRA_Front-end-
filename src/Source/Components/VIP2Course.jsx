@@ -54,7 +54,6 @@ const Vip2Course = () => {
         console.log("error form vip1cours buycourse postrequest", error);
       });
 
-
     setLoading(false);
   }
   return (
@@ -72,6 +71,10 @@ const Vip2Course = () => {
         Why Choose VIP2 COURSE?
       </Text>
       <List color={"white"} pl="20px">
+        <ListItem>
+          <ListIcon as={MdCheckCircle} color="green.500" />
+          Get access of Daily Life Hacks.
+        </ListItem>
         <ListItem>
           <ListIcon as={MdCheckCircle} color="green.500" />
           Discover innovative business ideas and advanced skills for a better
