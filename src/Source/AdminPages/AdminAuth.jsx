@@ -12,24 +12,22 @@ export default function AdminAuth({ children }) {
   // console.log(isAdmin)
 
   useEffect(() => {
-
     if (!isAdmin) {
       const token = JSON.parse(localStorage.getItem("token"));
       if (token) {
         let result = GetDataFromToken(token);
         dispatch(setUser(result.data));
-        
       }
     }
 
     GetRequest(`${url}admin/all`)
       .then((res) => {
-        // console.log(res)
-        dispatch(setAdminData(res.data))
+        // console.log(res);
+        dispatch(setAdminData(res.data));
       })
       .catch((error) => {
-      console.log(error)
-    })
+        console.log(error);
+      });
   }, []);
 
   if (isAdmin) {

@@ -1,0 +1,41 @@
+/* CSS */
+.button-prev,
+.button-current,
+.button-next {
+  padding: 8px 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.button-disabled {
+  background: #6e6d70;
+  color: #dfdedf;
+  cursor: not-allowed;
+}
+
+.button-enabled {
+  background-color: #0095ff;
+  color: #fff;
+}
+
+.button-prev:hover,
+.button-current:hover,
+.button-next:hover {
+  background-color: #07c;
+}
+
+.button-prev:focus,
+.button-current:focus,
+.button-next:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);
+}
+
+.button-prev:active,
+.button-current:active,
+.button-next:active {
+  background-color: #0064bd;
+  box-shadow: none;
+}

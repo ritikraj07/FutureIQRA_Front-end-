@@ -12,6 +12,7 @@ let dataFormate = {
     prevPage: null,
     nextPage: null
 }
+
 const AdminData = {
     UserData: dataFormate,
     ReportData: dataFormate,
@@ -45,6 +46,10 @@ const AdminDataSlice = createSlice({
                     return doc;
                 }
             });
+        },
+
+        AdminSetWithDraw: (state, action) => {
+            state.WithdrawData = action.payload.data
         }
 
 
@@ -55,6 +60,8 @@ const AdminDataSlice = createSlice({
 
 
 export const { setAdminData,
-    AdminChangeWithdrawStatus } = AdminDataSlice.actions
+    AdminChangeWithdrawStatus,
+    AdminSetWithDraw
+} = AdminDataSlice.actions
 
 export default AdminDataSlice.reducer
