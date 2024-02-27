@@ -5,6 +5,7 @@ import Footer from "./Source/Components/Footer";
 
 import { Helmet } from "react-helmet";
 import { useEffect } from "react";
+import DeadlineCountdown from "./Source/AdminPages/Component/CountDown";
 
 function App() {
   // useEffect(() => {
@@ -15,7 +16,7 @@ function App() {
     event.preventDefault();
   });
   return (
-    <Flex minH={"100vh"} flexDir={"column"} justifyContent={"end"}>
+    <Flex pos={'relative'} minH={"100vh"} flexDir={"column"} justifyContent={"end"}>
       <Helmet>
         <title>Future IQRA</title>
         <meta
@@ -36,11 +37,11 @@ function App() {
           href="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/favicon.png"
         />
       </Helmet>
+      <DeadlineCountdown />
       <AllRoutes />
       <Box>
         <Footer />
         <Copyright />
-        
       </Box>
     </Flex>
   );

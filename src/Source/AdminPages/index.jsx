@@ -1,4 +1,3 @@
-
 import { Route, Routes, NavLink, Outlet, useNavigate } from "react-router-dom";
 import {
   Box,
@@ -12,208 +11,199 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 
-import {HamburgerIcon} from '@chakra-ui/icons'
+import { HamburgerIcon } from "@chakra-ui/icons";
 import { MdSpaceDashboard, MdReport, MdQuestionAnswer } from "react-icons/md";
 import { SiCoursera } from "react-icons/si";
 import { TiHome } from "react-icons/ti";
 import { FaRupeeSign } from "react-icons/fa";
-import DeadlineCountdown from "./Component/CountDown";
 
 export default function AdminRouter() {
   const navigate = useNavigate();
 
   const iStyle = {
-    marginRight: '5px'
-  }
+    marginRight: "5px",
+  };
   const nStyle = {
     display: "flex",
     alignItems: "center",
-  }
+  };
 
-    return (
-      <Box>
-        <DeadlineCountdown />
-        <Flex pos={"relative"} bg="white" minH={window.innerHeight}>
-          <Flex
-            bg={"#393E4F"}
-            direction={"column"}
-            height={["inherit"]}
-            w={["20%"]}
-            px={["3px", "4px", "5px"]}
-            py={["50px"]}
-            color={"white"}
-            justifyContent={"flex-start"}
-            alignItems={["center"]}
-            display={["none", "block"]}
-            // border={'1px solid red'}
-          >
-            <Box height={"fit-content"} className="navLinkContainer">
-              <NavLink
-                className={({ isActive, isPending }) =>
-                  isActive ? "activeLink" : "inActiveLink"
-                }
-                to={"/"}
-                style={nStyle}
-              >
-                <TiHome style={iStyle} />
-                Home
-              </NavLink>
-              <br></br>
-              <NavLink
-                className={({ isActive, isPending }) =>
-                  isActive ? "activeLink" : "inActiveLink"
-                }
-                to={"/admin/dashboard"}
-                style={nStyle}
-              >
-                <MdSpaceDashboard style={iStyle} />
-                Dashboard
-              </NavLink>
-              <br></br>
-              <NavLink
-                className={({ isActive, isPending }) =>
-                  isActive ? "activeLink" : "inActiveLink"
-                }
-                to={"/admin/report"}
-                style={nStyle}
-              >
-                <MdReport style={iStyle} />
-                Report
-              </NavLink>
-              <br></br>
-              <NavLink
-                className={({ isActive, isPending }) =>
-                  isActive ? "activeLink" : "inActiveLink"
-                }
-                to={"/admin/q&a"}
-                style={nStyle}
-              >
-                <MdQuestionAnswer style={iStyle} />
-                Question
-              </NavLink>
-              <br></br>
-              <NavLink
-                className={({ isActive, isPending }) =>
-                  isActive ? "activeLink" : "inActiveLink"
-                }
-                to={"/admin/course"}
-                style={nStyle}
-              >
-                <SiCoursera style={iStyle} />
-                Course
-              </NavLink>
-              <br></br>
-              <NavLink
-                className={({ isActive, isPending }) =>
-                  isActive ? "activeLink" : "inActiveLink"
-                }
-                to={"/admin/withdraw"}
-                style={nStyle}
-              >
-                <FaRupeeSign style={iStyle} />
-                Withdraw
-              </NavLink>
-              <br></br>
-            </Box>
-          </Flex>
-
-          <Box
-            w={"100%"}
-            // p={["10px"]}
-            h="100vh"
-            overflowY="scroll"
-            sx={{
-              /* Hide scrollbar */
-              "&::-webkit-scrollbar": {
-                display: "none", // Hide scrollbar for Chrome, Safari, Opera
-              },
-              "&": {
-                scrollbarWidth: "none", // Hide scrollbar for Firefox
-                msOverflowStyle: "none", // Hide scrollbar for Internet Explorer and Edge
-              },
-            }}
-            pos={"relative"}
-          >
-            <Box
-              zIndex={100}
-              mt={"10px"}
-              ml={"10px"}
-              pos={"absolute"}
-              display={["block", "none"]}
+  return (
+    <Box>
+      <Flex pos={"relative"} bg="white" minH={window.innerHeight}>
+        <Flex
+          bg={"#393E4F"}
+          direction={"column"}
+          height={["inherit"]}
+          w={["20%"]}
+          px={["3px", "4px", "5px"]}
+          py={["50px"]}
+          color={"white"}
+          justifyContent={"flex-start"}
+          alignItems={["center"]}
+          display={["none", "block"]}
+          // border={'1px solid red'}
+        >
+          <Box height={"fit-content"} className="navLinkContainer">
+            <NavLink
+              className={({ isActive, isPending }) =>
+                isActive ? "activeLink" : "inActiveLink"
+              }
+              to={"/"}
+              style={nStyle}
             >
-              <Menu>
-                <MenuButton
-                  as={IconButton}
-                  aria-label="Options"
-                  icon={<HamburgerIcon />}
-                  variant="outline"
-                  bg={"white"}
-                >
-                  Menu
-                </MenuButton>
-                <MenuList>
-                  <MenuItem onClick={() => navigate("/")}>
-                    <TiHome style={iStyle} />
-                    Home
-                  </MenuItem>
-                  <MenuItem onClick={() => navigate("/admin/dashboard")}>
-                    <MdSpaceDashboard style={iStyle} /> Dashboard
-                  </MenuItem>
-                  <MenuItem onClick={() => navigate("/admin/report")}>
-                    <MdReport style={iStyle} />
-                    Report{" "}
-                  </MenuItem>
-                  <MenuItem onClick={() => navigate("/admin/q&a")}>
-                    <MdQuestionAnswer style={iStyle} />
-                    Question{" "}
-                  </MenuItem>
-                  <MenuItem onClick={() => navigate("/admin/course")}>
-                    <SiCoursera style={iStyle} />
-                    Course
-                  </MenuItem>
-                  <MenuItem onClick={() => navigate("/admin/withdraw")}>
-                    <FaRupeeSign style={iStyle} />
-                    Withdraw
-                  </MenuItem>
-                </MenuList>
-              </Menu>
-            </Box>
-            <Outlet />
+              <TiHome style={iStyle} />
+              Home
+            </NavLink>
+            <br></br>
+            <NavLink
+              className={({ isActive, isPending }) =>
+                isActive ? "activeLink" : "inActiveLink"
+              }
+              to={"/admin/dashboard"}
+              style={nStyle}
+            >
+              <MdSpaceDashboard style={iStyle} />
+              Dashboard
+            </NavLink>
+            <br></br>
+            <NavLink
+              className={({ isActive, isPending }) =>
+                isActive ? "activeLink" : "inActiveLink"
+              }
+              to={"/admin/report"}
+              style={nStyle}
+            >
+              <MdReport style={iStyle} />
+              Report
+            </NavLink>
+            <br></br>
+            <NavLink
+              className={({ isActive, isPending }) =>
+                isActive ? "activeLink" : "inActiveLink"
+              }
+              to={"/admin/q&a"}
+              style={nStyle}
+            >
+              <MdQuestionAnswer style={iStyle} />
+              Question
+            </NavLink>
+            <br></br>
+            <NavLink
+              className={({ isActive, isPending }) =>
+                isActive ? "activeLink" : "inActiveLink"
+              }
+              to={"/admin/course"}
+              style={nStyle}
+            >
+              <SiCoursera style={iStyle} />
+              Course
+            </NavLink>
+            <br></br>
+            <NavLink
+              className={({ isActive, isPending }) =>
+                isActive ? "activeLink" : "inActiveLink"
+              }
+              to={"/admin/withdraw"}
+              style={nStyle}
+            >
+              <FaRupeeSign style={iStyle} />
+              Withdraw
+            </NavLink>
+            <br></br>
           </Box>
         </Flex>
-      </Box>
-    );
+
+        <Box
+          w={"100%"}
+          // p={["10px"]}
+          h="100vh"
+          overflowY="scroll"
+          sx={{
+            /* Hide scrollbar */
+            "&::-webkit-scrollbar": {
+              display: "none", // Hide scrollbar for Chrome, Safari, Opera
+            },
+            "&": {
+              scrollbarWidth: "none", // Hide scrollbar for Firefox
+              msOverflowStyle: "none", // Hide scrollbar for Internet Explorer and Edge
+            },
+          }}
+          pos={"relative"}
+        >
+          <Box
+            zIndex={100}
+            mt={"10px"}
+            ml={"10px"}
+            pos={"absolute"}
+            display={["block", "none"]}
+          >
+            <Menu>
+              <MenuButton
+                as={IconButton}
+                aria-label="Options"
+                icon={<HamburgerIcon />}
+                variant="outline"
+                bg={"white"}
+              >
+                Menu
+              </MenuButton>
+              <MenuList>
+                <MenuItem onClick={() => navigate("/")}>
+                  <TiHome style={iStyle} />
+                  Home
+                </MenuItem>
+                <MenuItem onClick={() => navigate("/admin/dashboard")}>
+                  <MdSpaceDashboard style={iStyle} /> Dashboard
+                </MenuItem>
+                <MenuItem onClick={() => navigate("/admin/report")}>
+                  <MdReport style={iStyle} />
+                  Report{" "}
+                </MenuItem>
+                <MenuItem onClick={() => navigate("/admin/q&a")}>
+                  <MdQuestionAnswer style={iStyle} />
+                  Question{" "}
+                </MenuItem>
+                <MenuItem onClick={() => navigate("/admin/course")}>
+                  <SiCoursera style={iStyle} />
+                  Course
+                </MenuItem>
+                <MenuItem onClick={() => navigate("/admin/withdraw")}>
+                  <FaRupeeSign style={iStyle} />
+                  Withdraw
+                </MenuItem>
+              </MenuList>
+            </Menu>
+          </Box>
+          <Outlet />
+        </Box>
+      </Flex>
+    </Box>
+  );
 }
 
+//  <NavLink to={"/admin/report"} style={{ width: "100%" }}>
+//           <Flex alignItems={"center"}>
+//             {/* <MdReport style={{ marginRight: "20px" }} /> */}
+//             <Text color={"white"} display={["none", "none", "block"]}>
+//               Reports
+//             </Text>
+//           </Flex>
+//         </NavLink>
 
-
-
-
-
-
-
-  //  <NavLink to={"/admin/report"} style={{ width: "100%" }}>
-  //           <Flex alignItems={"center"}>
-  //             {/* <MdReport style={{ marginRight: "20px" }} /> */}
-  //             <Text color={"white"} display={["none", "none", "block"]}>
-  //               Reports
-  //             </Text>
-  //           </Flex>
-  //         </NavLink>
-
-  //         <NavLink to={"/admin/q&a"} style={{ width: "100%" }}>
-  //           <Flex alignItems={"center"}>
-  //             {/* <MdQuestionAnswer style={{ marginRight: "20px" }} /> */}
-  //             <Text color={"white"} display={["none", "none", "block"]}>
-  //               Questions
-  //             </Text>
-  //           </Flex>
-  //         </NavLink>
-  //         <NavLink to={"/admin/course"} style={{ width: "100%" }}>
-  //           <Flex alignItems={"center"}>
-  //             {/* <SiCoursera style={{ marginRight: "20px" }} /> */}
-  //             <Text color={"white"} display={["none", "none", "block"]}>
-  //               Course
-  //             </Text>
-  //           </Flex>
-  //         </NavLink>
+//         <NavLink to={"/admin/q&a"} style={{ width: "100%" }}>
+//           <Flex alignItems={"center"}>
+//             {/* <MdQuestionAnswer style={{ marginRight: "20px" }} /> */}
+//             <Text color={"white"} display={["none", "none", "block"]}>
+//               Questions
+//             </Text>
+//           </Flex>
+//         </NavLink>
+//         <NavLink to={"/admin/course"} style={{ width: "100%" }}>
+//           <Flex alignItems={"center"}>
+//             {/* <SiCoursera style={{ marginRight: "20px" }} /> */}
+//             <Text color={"white"} display={["none", "none", "block"]}>
+//               Course
+//             </Text>
+//           </Flex>
+//         </NavLink>
