@@ -55,12 +55,12 @@ export default function Home() {
   // console.log(withdrawHistory);
 
   let avatars = [
-    "https://6570556c9c603163391e8ba0--joyful-kheer-008761.netlify.app/Avatar/avatar1.jpg",
-    "https://6570556c9c603163391e8ba0--joyful-kheer-008761.netlify.app/Avatar/avatar2.jpg",
-    "https://6570556c9c603163391e8ba0--joyful-kheer-008761.netlify.app/Avatar/avatar3.jpg",
-    "https://6570556c9c603163391e8ba0--joyful-kheer-008761.netlify.app/Avatar/avatar4.jpg",
-    "https://6570556c9c603163391e8ba0--joyful-kheer-008761.netlify.app/Avatar/avatar5.jpg",
-    "https://6570556c9c603163391e8ba0--joyful-kheer-008761.netlify.app/Avatar/avatar6.jpg",
+    "https://futureiqra.onrender.com/avatar/1",
+    "https://futureiqra.onrender.com/avatar/2",
+    "https://futureiqra.onrender.com/avatar/3",
+    "https://futureiqra.onrender.com/avatar/4",
+    "https://futureiqra.onrender.com/avatar/5",
+    "https://futureiqra.onrender.com/avatar/6",
   ];
 
   const navigate = useNavigate();
