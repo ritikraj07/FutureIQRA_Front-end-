@@ -16,7 +16,9 @@ function App() {
     event.preventDefault();
   });
   return (
-    <Flex pos={'relative'} minH={"100vh"} flexDir={"column"} justifyContent={"end"}>
+    <Flex pos={'relative'}
+    minH={"100vh"}
+      flexDir={"column"} justifyContent={"end"}>
       <Helmet>
         <title>Future IQRA</title>
         <meta
@@ -39,6 +41,7 @@ function App() {
       </Helmet>
       
       <AllRoutes />
+      
       <Box>
         <Footer />
         <Copyright />

@@ -15,7 +15,7 @@ import { HamburgerIcon } from "@chakra-ui/icons";
 import { MdSpaceDashboard, MdReport, MdQuestionAnswer } from "react-icons/md";
 import { SiCoursera } from "react-icons/si";
 import { TiHome } from "react-icons/ti";
-import { FaRupeeSign } from "react-icons/fa";
+import { FaRupeeSign, FaBlog } from "react-icons/fa";
 
 export default function AdminRouter() {
   const navigate = useNavigate();
@@ -30,21 +30,27 @@ export default function AdminRouter() {
 
   return (
     <Box>
-      <Flex pos={"relative"} bg="white" minH={window.innerHeight}>
+      <Flex
+        pos={"relative"}
+        bg="white" minH={window.innerHeight}
+      >
         <Flex
-          bg={"#393E4F"}
+          bg={"black"}
           direction={"column"}
           height={["inherit"]}
           w={["20%"]}
           px={["3px", "4px", "5px"]}
-          py={["50px"]}
+          // py={["50px"]}
           color={"white"}
           justifyContent={"flex-start"}
           alignItems={["center"]}
           display={["none", "block"]}
           // border={'1px solid red'}
         >
-          <Box height={"fit-content"} className="navLinkContainer">
+          <Box
+            height={"fit-content"}
+            className="navLinkContainer"
+          >
             <NavLink
               className={({ isActive, isPending }) =>
                 isActive ? "activeLink" : "inActiveLink"
@@ -109,6 +115,16 @@ export default function AdminRouter() {
             >
               <FaRupeeSign style={iStyle} />
               Withdraw
+            </NavLink>
+            <br></br>
+            <NavLink
+              className={({ isActive, isPending }) =>
+                isActive ? "activeLink" : "inActiveLink"
+              }
+              to={"/admin/blogs"}
+              style={nStyle}
+            >
+              <FaBlog style={iStyle} /> Blogs
             </NavLink>
             <br></br>
           </Box>

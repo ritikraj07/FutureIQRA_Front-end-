@@ -47,28 +47,42 @@ export default function LeaderBoard() {
 
   return (
     <Box
-      height={'100%'}
-      backgroundColor={"#2658e6"}
-      minH={'100vh'}
+    // height={'100%'}
+    // backgroundColor={"#2658e6"}
+    // minH={'100vh'}
     >
-     <Navbar />
+      <Navbar />
 
       <Flex
         // bg={"white"}
-        p={['1px','2px','5px']}
-        bgGradient="linear(to-b, white, #2658e6)"
+        p={["1px", "2px", "5px"]}
+        // bgGradient="linear(to-b, white, #2658e6)"
+
         justifyContent={["center", "center", "center", "space-around"]}
-        alignItems={["center","center","center","center", "start"]}
-        flexDir={["column", "column", "column", "column", "row" ]}
+        alignItems={["center", "center", "center", "center", "start"]}
+        flexDir={["column", "column", "column", "column", "row"]}
       >
-        {leaderboard.length > 2 && <TopLeaders leaderboard={leaderboard} />}
+        <Box>
+          {leaderboard.length > 2 && <TopLeaders leaderboard={leaderboard} />}
+        </Box>
         <Box
           w={["95%", "90%", "85%", "70%", "50%", "50%"]}
           my={["40px", "30px", "30px", "20px", "1px"]}
           bg="#32085F"
           p={"10px"}
           borderRadius={"20px"}
-          h={'100%'}
+          h="100vh"
+          overflowY="scroll"
+          sx={{
+            /* Hide scrollbar */
+            "&::-webkit-scrollbar": {
+              display: "none", // Hide scrollbar for Chrome, Safari, Opera
+            },
+            "&": {
+              scrollbarWidth: "none", // Hide scrollbar for Firefox
+              msOverflowStyle: "none", // Hide scrollbar for Internet Explorer and Edge
+            },
+          }}
         >
           <Text
             fontSize={"2xl"}
@@ -79,35 +93,25 @@ export default function LeaderBoard() {
             {" "}
             Meet Our Leaders{" "}
           </Text>
-          <Box
-            h={'100%'}
-            overflowY={"hidden"}
-            overflow={"scroll"}
-            css={{
-              "&::-webkit-scrollbar": {
-                width: "0",
-              },
-              "&::-webkit-scrollbar-thumb": {
-                backgroundColor: "transparent", // Set the thumb color to transparent
-              },
-            }}
-          >
+          <Box>
             {leaderboard?.map((u, i) => {
               if (u.phone == phone) {
-                  return (
-                    <LeaderList
-                      key={u._id}
-                      name={u.name}
-                      money={u.wallet}
-                      image={u.image}
-                      rank={i + 1}
-                    />
-                  );
+                return (
+                  <LeaderList
+                    key={u._id}
+                    name={u.name}
+                    money={u.wallet}
+                    image={u.image}
+                    rank={i + 1}
+                  />
+                );
               }
-            
             })}
 
             {leaderboard?.map((u, i) => {
+              if (u.phone == phone) {
+                return;
+              }
               return (
                 <LeaderList
                   key={u._id}

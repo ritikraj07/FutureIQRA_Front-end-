@@ -135,7 +135,7 @@ export default function Home() {
   return (
     <Box
       width={"100%"}
-      backgroundColor={"#2658e6"}
+      // backgroundColor={"#2658e6"}
       display={"flex"}
       flexDir={"column"}
       alignItems={"center"}
@@ -193,7 +193,7 @@ export default function Home() {
         <Flex alignItems={"center"}>
           <Menu>
             <MenuButton>
-              <Avatar src={photo} />
+              <Avatar border={"2px solid white"} src={photo} />
             </MenuButton>
             <MenuList>
               <MenuItem onClick={onOpen}>Change Avatar</MenuItem>

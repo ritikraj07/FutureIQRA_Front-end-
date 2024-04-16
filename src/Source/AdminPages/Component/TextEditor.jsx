@@ -1,6 +1,6 @@
 import React, { useState, useRef, useMemo } from "react";
 import JoditEditor from "jodit-react";
-import { Box } from "@chakra-ui/react";
+import 'jodit';
 
 
 const TextEditor = ({ placeholder, content, setContent }) => {

@@ -13,13 +13,14 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 export default function Navbar({ ...args }) {
-  const { name, photo } = useSelector((state) => state.User);
+  const { name, photo, isLoggedIn } = useSelector((state) => state.User);
+  
   let navitage = useNavigate();
   return (
     <Box
       // border={"1px solid red"}
       w={"100%"}
-      backgroundColor={"#2658e6"}
+      backgroundColor={"purple"}
       px={[1, 10]}
       py={["0", "2px"]}
       display={"flex"}
@@ -29,8 +30,8 @@ export default function Navbar({ ...args }) {
     >
       <Image
         cursor={"pointer"}
-        w={"80px"}
-        h="80px"
+        w={"60px"}
+        h="60px"
         src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/favicon_io/android-chrome-512x512.png"
         alt="FutureIQRA"
         onClick={() => navitage("/")}

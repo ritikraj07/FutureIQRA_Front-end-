@@ -103,8 +103,8 @@ export default function Login() {
 
   return (
     <Box
-      height={window.innerHeight}
-      backgroundColor={"#2658e6"}
+      // height={window.innerHeight}
+      // backgroundColor={"#2658e6"}
       py={30}
       px={20}
       pos={"relative"}
@@ -130,13 +130,11 @@ export default function Login() {
           flexDir={"column"}
           w={350}
           bg={"white"}
-          borderRadius={50}
+          borderRadius={10}
           px={8}
           py={5}
         >
-          <Text as={"em"} textAlign={"center"} fontSize={"3xl"}>
-            Welcome Back
-          </Text>
+        
           <form onSubmit={Login}>
             <Stack spacing={4} my={5}>
               <InputGroup size={"sm"}>
@@ -147,6 +145,8 @@ export default function Login() {
                   focusBorderColor="lime"
                   placeholder="Phone Number"
                   errorBorderColor="red"
+                  maxLength={10}
+                  minLength={10}
                   onChange={(e) => setphone(e.target.value)}
                 />
               </InputGroup>

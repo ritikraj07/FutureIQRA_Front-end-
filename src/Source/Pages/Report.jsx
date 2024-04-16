@@ -98,7 +98,7 @@ export default function Report() {
 
   
   return (
-    <Box backgroundColor={"#2658e6"}>
+    <Box >
       <Navbar />
       <Flex
         my={["20px", "30px"]}
