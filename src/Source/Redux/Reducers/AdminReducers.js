@@ -19,7 +19,8 @@ const AdminData = {
     QuestionData: dataFormate,
     CourseData: dataFormate,
     WithdrawData: dataFormate,
-    PaymentData: dataFormate
+    PaymentData: dataFormate,
+    BlogData: dataFormate
 }
 
 
@@ -28,13 +29,15 @@ const AdminDataSlice = createSlice({
     initialState: AdminData,
     reducers: {
         setAdminData: (state, action) => {
-            let { UserData, CourseData, QuestionData, ReportData, WithdrawData, PaymentData } = action.payload
+            
+            let { UserData, CourseData, QuestionData, ReportData, WithdrawData, PaymentData, BlogData } = action.payload
             state.UserData = UserData,
                 state.ReportData = ReportData,
                 state.CourseData = CourseData,
                 state.WithdrawData = WithdrawData,
                 state.QuestionData = QuestionData,
-                state.PaymentData = PaymentData
+                state.PaymentData = PaymentData,
+                state.BlogData = BlogData
         },
         AdminChangeWithdrawStatus: (state, action) => {
             let { _id, status } = action.payload;
@@ -50,9 +53,11 @@ const AdminDataSlice = createSlice({
 
         AdminSetWithDraw: (state, action) => {
             state.WithdrawData = action.payload.data
+        },
+
+        AdminSetBlog: (state, action) => {
+            state.BlogData = action.payload.data
         }
-
-
 
 
     }
@@ -61,7 +66,8 @@ const AdminDataSlice = createSlice({
 
 export const { setAdminData,
     AdminChangeWithdrawStatus,
-    AdminSetWithDraw
+    AdminSetWithDraw,
+    AdminSetBlog
 } = AdminDataSlice.actions
 
 export default AdminDataSlice.reducer

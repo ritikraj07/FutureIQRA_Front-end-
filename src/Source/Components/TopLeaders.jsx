@@ -25,6 +25,7 @@ export default function TopLeaders({ leaderboard }) {
               fontWeight="extrabold"
               noOfLines={1}
               fontSize={["small", "xs", "sm"]}
+              color={"#22C35E"}
             >
               {lb[1].name}
             </Text>
@@ -67,6 +68,7 @@ export default function TopLeaders({ leaderboard }) {
               fontWeight="extrabold"
               noOfLines={1}
               fontSize={["small", "xs", "sm"]}
+              color={"white"}
             >
               {lb[0].name}
             </Text>
@@ -109,6 +111,7 @@ export default function TopLeaders({ leaderboard }) {
             <Text
               fontSize={["small", "xs", "sm"]}
               fontWeight="extrabold"
+              color={"#264653"}
               noOfLines={1}
             >
               {lb[2].name}

@@ -76,7 +76,7 @@ function QuestionAnswerBox({ question, index, EditLike }) {
     >
       {/* user who asked question */}
       <Flex my={["10px"]} alignItems={"center"}>
-        <Avatar src={photo || "https://bit.ly/sage-adebayo"} />
+        <Avatar src={photo || "https://futureiqra.onrender.com/avatar/1"} />
         <Flex
           mx={["10px"]}
           flexDir={["column", "column", "row"]}

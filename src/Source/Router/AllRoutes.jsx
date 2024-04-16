@@ -25,15 +25,22 @@ import RefundsAndReturnsPolicy from "../Components/Refunds&ReturnsPolicy.jsx";
 import AboutUs from "../Components/About.jsx";
 import ThankYou from "../Pages/ThankYou.jsx";
 import AdminWithdraw from "../AdminPages/AdminWithdraw.jsx";
+import AdminBlog from "../AdminPages/AdminBlog.jsx";
+import WriteBlog from "../AdminPages/AdminWriteBlog.jsx";
+import BlogPost from "../Pages/Blog.jsx";
+import Blogs from "../Pages/Blogs.jsx";
 
 export default function AllRoutes() {
   return (
     <Routes>
+      <Route path="/blog/:id" element={<BlogPost />} />
+      <Route path="/blog" element={<Blogs />} />
+      <Route path="/blogs" element={<Blogs />} />
       <Route
         path="/*"
         element={
           <Auth>
-          <Home />
+            <Home />
           </Auth>
         }
       />
@@ -184,10 +191,28 @@ export default function AllRoutes() {
         />
 
         <Route
+          path="blogs"
+          element={
+            <AdminAuth>
+              <AdminBlog />
+            </AdminAuth>
+          }
+        />
+
+        <Route
           path="course/:course_name/:course_id"
           element={
             <AdminAuth>
               <AddVideo />
+            </AdminAuth>
+          }
+        />
+
+        <Route
+          path="write_blog"
+          element={
+            <AdminAuth>
+              <WriteBlog />
             </AdminAuth>
           }
         />

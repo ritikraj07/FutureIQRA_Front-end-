@@ -17,10 +17,10 @@ export default function Auth({ children }) {
 
   // console.log("1");
   useEffect(() => {
-    console.log("20 auth file");
+    
     setIsLoading(true)
     if (token) {
-      console.log("token hai");
+
       PostRequest(`${url}user/token`).then((result) => {
         if (result?.status) {
           // console.log(result)
