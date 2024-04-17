@@ -30,10 +30,7 @@ export default function AdminRouter() {
 
   return (
     <Box>
-      <Flex
-        pos={"relative"}
-        bg="white" minH={window.innerHeight}
-      >
+      <Flex pos={"relative"} bg="white" minH={window.innerHeight}>
         <Flex
           bg={"black"}
           direction={"column"}
@@ -47,10 +44,7 @@ export default function AdminRouter() {
           display={["none", "block"]}
           // border={'1px solid red'}
         >
-          <Box
-            height={"fit-content"}
-            className="navLinkContainer"
-          >
+          <Box height={"fit-content"} className="navLinkContainer">
             <NavLink
               className={({ isActive, isPending }) =>
                 isActive ? "activeLink" : "inActiveLink"
@@ -187,6 +181,11 @@ export default function AdminRouter() {
                 <MenuItem onClick={() => navigate("/admin/withdraw")}>
                   <FaRupeeSign style={iStyle} />
                   Withdraw
+                </MenuItem>
+
+                <MenuItem onClick={() => navigate("/admin/blogs")}>
+                  <FaBlog style={iStyle} />
+                  Blogs
                 </MenuItem>
               </MenuList>
             </Menu>

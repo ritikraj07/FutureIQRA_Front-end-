@@ -50,14 +50,13 @@ import { TriangleUpIcon, SearchIcon } from "@chakra-ui/icons";
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { GetRequest } from "../Services/ApiCall";
+import { DeleteRequest, GetRequest } from "../Services/ApiCall";
 import { AdminSetBlog } from "../Redux/Reducers/AdminReducers";
 const AdminBlog = () => {
   const url = import.meta.env.VITE_API_URL;
   const toast = useToast();
   const dispatch = useDispatch()
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [day, setDay] = useState(0)
   const [currentPage, setPage] = useState(1);
   const [search, setSearch] = useState("")
   const {
@@ -78,7 +77,6 @@ const AdminBlog = () => {
   
   useEffect(() => {
     fetchBlog()
-    console.log(search)
   },[selectedCategory, currentPage])
 
 
@@ -119,6 +117,32 @@ const AdminBlog = () => {
     setPage(page);
     
   };
+
+  
+  function DeleteBlog(id) {
+    DeleteRequest(`${url}blog/${id}`).then((res) => {
+      if (res.status) {
+        toast({
+          title: "Blog Deleted Successfully",
+          status: "success",
+          duration: 3000,
+        });
+        fetchBlog();
+      } else {
+        toast({
+          title: "Something went wrong",
+          status: "error",
+          duration: 3000,
+        });
+      }
+    })
+  }
+
+
+
+
+
+
     return (
       <Box>
         <Flex
@@ -186,7 +210,7 @@ const AdminBlog = () => {
           flexWrap={"wrap"}
         >
           {docs?.map((blog) => {
-            return <BlogPost blog={blog} key={blog._id} />;
+            return <BlogPost blog={blog} key={blog._id} DeleteBlog={DeleteBlog}  />;
           })}
         </Flex>
 
@@ -231,8 +255,10 @@ const AdminBlog = () => {
 
 
 
-const BlogPost = ({ blog }) => {
+const BlogPost = ({ blog, DeleteBlog }) => {
+  const navigate = useNavigate()
   return (
+
     <Box
       w="250px"
       p="10px"
@@ -241,29 +267,31 @@ const BlogPost = ({ blog }) => {
       key={blog._id}
       margin="20px"
       cursor="pointer"
-      h={"250px"}
       overflow={"hidden"}
     >
-      <Link to={`/blog/${blog._id}`} style={{ textDecoration: "none" }}>
-        <Text fontWeight="bold" fontSize="xl" marginBottom="10px">
-          {blog.title}
-        </Text>
-        <Box
-          overflow={"hidden"}
-          h={"150px"}
-          //   dangerouslySetInnerHTML={{ __html: blog.body }}
-        >
-          <Text
-            fontSize="sm"
-            noOfLines={4}
-            fontFamily={"Roboto"}
-            fontWeight={"light"}
-          >
-            {" "}
-            {blog.short_description}
+      <Box h="200px" >
+        <Link to={`/blog/${blog._id}`} style={{ textDecoration: "none" }}>
+          <Text fontWeight="bold" fontSize="xl" marginBottom="10px">
+            {blog.title}
           </Text>
-        </Box>
-      </Link>
+          <Box>
+            <Text
+              fontSize="sm"
+              noOfLines={4}
+              fontFamily={"Roboto"}
+              fontWeight={"light"}
+            >
+              {" "}
+              {blog.short_description}
+            </Text>
+          </Box>
+        </Link>
+      </Box>
+
+      <Flex justifyContent={"space-between"} mt="10px" w="100%" alignItems={"center"}>
+        <Button onClick={() => DeleteBlog(blog._id)} colorScheme="red" >Delete</Button>
+        <Button onClick={() => navigate(`/admin/edit_blog/${blog._id}`)} colorScheme="blue" >Edit</Button>
+      </Flex>
     </Box>
   );
 };

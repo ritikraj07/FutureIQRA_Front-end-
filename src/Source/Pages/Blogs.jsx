@@ -1,33 +1,88 @@
-import { Box, Flex, Image, useToast, Text } from "@chakra-ui/react";
+import {
+  Box, Flex, Image, useToast,
+  Text, Select, InputGroup, InputRightElement, Input,
+} from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import Navbar from "../Components/Navbar";
 import { GetRequest } from "../Services/ApiCall";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { TriangleUpIcon, SearchIcon } from "@chakra-ui/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { AdminSetBlog } from "../Redux/Reducers/AdminReducers";
+
+const BlogCategory = {
+  TECHNOLOGY: "Technology",
+  TRAVEL: "Travel",
+  FASHION: "Fashion",
+  FOOD: "Food",
+  HEALTH_FITNESS: "Health & Fitness",
+  LIFESTYLE: "Lifestyle",
+  FINANCE: "Finance",
+  EDUCATION: "Education",
+  DIY_CRAFTS: "DIY & Crafts",
+  ENTERTAINMENT: "Entertainment",
+};
+
 export default function Blogs() {
   let url = import.meta.env.VITE_API_URL;
-    let [blogs, setBlogs] = useState([]);
-    let { pathname } = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+  const {
+    docs,
+    totalDocs,
+    limit,
+    totalPages,
+    page,
+    pagingCounter,
+    hasPrevPage,
+    hasNextPage,
+    prevPage,
+    nextPage,
+  } = useSelector((state) => state.Admin.BlogData);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [currentPage, setPage] = useState(1);
+  const [search, setSearch] = useState("");
+  let { pathname } = useLocation();
   let toast = useToast();
   useEffect(() => {
-    GetBlog();
-  }, []);
-    
-    let blogURL = `${url}blog`;
+    fetchBlog();
+  }, [selectedCategory, currentPage]);
 
-    function GetBlog() {
-         GetRequest(`${url}blog`).then((res) => {
-           if (res.status) {
-             setBlogs(res.data);
-           } else {
-             console.log(res);
-             toast({
-               title: "Something went wrong",
-               status: "error",
-               duration: 3000,
-             });
-           }
-         });
+
+
+  const handleCategoryChange = (event) => {
+    setSelectedCategory(event.target.value);
+  };
+
+  const handlePageChange = (page) => {
+    setPage(page);
+  };
+
+    function fetchBlog() {
+      GetRequest(
+        `${url}blog?search=${search}&category=${selectedCategory}&page=${currentPage}`
+      )
+        .then((res) => {
+          if (res.status) {
+            dispatch(AdminSetBlog(res));
+          } else {
+            toast({
+              title: "Something went wrong",
+              status: "error",
+              duration: 3000,
+            });
+          }
+        })
+        .catch((error) => {
+          toast({
+            title: "Something went wrong",
+            status: "error",
+            duration: 3000,
+            description: error.message,
+          });
+          console.log(error);
+        });
     }
 
   return (
@@ -54,32 +109,105 @@ export default function Blogs() {
       </Helmet>
 
       <Box width={"100%"} minH="100vh">
-        <Flex bg="purple">
+        <Flex
+          bg="#5426c0"
+          alignItems={"center"}
+          justifyContent={"space-between"}
+        >
           <Image
             cursor={"pointer"}
             w={"60px"}
             h="60px"
             src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/favicon_io/android-chrome-512x512.png"
             alt="FutureIQRA"
-            onClick={() => navitage("/")}
-                  />
-                  
+            onClick={() => navigate("/")}
+          />
 
+          <Flex
+            px={"50px"}
+            gap={"20px"}
+            alignItems={"center"}
+            justifyContent={"space-between"}
+          >
+            <InputGroup
+              bg={"white"}
+              borderRadius={10}
+              w={["200px"]}
+              my={[1, 2, 0]}
+            >
+              <Input
+                focusBorderColor="lime"
+                placeholder="Search..."
+                _placeholder={{ opacity: 1, color: "black" }}
+                _hover={{ bg: "white" }}
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+              <InputRightElement
+                pointerEvents="auto"
+                cursor={"pointer"}
+                children={<SearchIcon color="black" />}
+                onClick={() => fetchBlog()}
+              />
+            </InputGroup>
+            <BlogCategorySelect
+              value={selectedCategory}
+              onChange={handleCategoryChange}
+            />
+          </Flex>
         </Flex>
 
-        <Flex justifyContent={"flex-start"} m="30px auto" gap={'20px'} alignItems={"start"} flexWrap={"wrap"}>
-          {blogs.map((blog) => {
-            return <BlogPost key={blog._id} blog={blog} />;
-          })}
+        <Flex
+          justifyContent={"flex-start"}
+          m="30px auto"
+          gap={"20px"}
+          alignItems={"start"}
+          flexWrap={"wrap"}
+        >
+          {docs?.length >= 1 &&
+            docs?.map((blog) => {
+              return <BlogPost key={blog._id} blog={blog} />;
+            })}
         </Flex>
       </Box>
+      <Flex alignItems={"center"} justifyContent={"center"} m="10px">
+        <button
+          onClick={() => {
+            handlePageChange(currentPage - 1);
+          }}
+          disabled={currentPage === 1}
+          className={
+            !hasPrevPage
+              ? "button-prev button-disabled"
+              : "button-prev button-enabled"
+          }
+          role="button"
+        >
+          Previous
+        </button>
+        <button className="button-current button-disabled" role="button">
+          1
+        </button>
+        <button
+          onClick={() => {
+            handlePageChange(currentPage + 1);
+          }}
+          disabled={currentPage === totalPages}
+          className={
+            !hasNextPage
+              ? "button-next button-disabled"
+              : "button-next button-enabled"
+          }
+          role="button"
+        >
+          Next
+        </button>
+      </Flex>
     </Box>
   );
 }
 
 const BlogPost = ({ blog }) => {
-  
-
   return (
     <Box
       w="250px"
@@ -96,15 +224,41 @@ const BlogPost = ({ blog }) => {
         <Text fontWeight="bold" fontSize="xl" marginBottom="10px">
           {blog.title}
         </Text>
-        
+
         <Box
           overflow={"hidden"}
           h={"150px"}
-        //   dangerouslySetInnerHTML={{ __html: blog.body }}
-              >
-                  <Text fontSize="sm" noOfLines={4} fontFamily={"Roboto"} fontWeight={"light"} > {blog.short_description}</Text>
+          //   dangerouslySetInnerHTML={{ __html: blog.body }}
+        >
+          <Text
+            fontSize="sm"
+            noOfLines={4}
+            fontFamily={"Roboto"}
+            fontWeight={"light"}
+          >
+            {" "}
+            {blog.short_description}
+          </Text>
         </Box>
       </Link>
     </Box>
+  );
+};
+
+
+const BlogCategorySelect = ({ value, onChange }) => {
+  return (
+    <Select w="200px"
+      value={value}
+      onChange={onChange}
+      bg="white"
+    >
+      <option value="">Select a category</option>
+      {Object.values(BlogCategory).map((category) => (
+        <option key={category} value={category}>
+          {category}
+        </option>
+      ))}
+    </Select>
   );
 };

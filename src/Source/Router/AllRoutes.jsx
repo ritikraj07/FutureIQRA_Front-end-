@@ -29,6 +29,7 @@ import AdminBlog from "../AdminPages/AdminBlog.jsx";
 import WriteBlog from "../AdminPages/AdminWriteBlog.jsx";
 import BlogPost from "../Pages/Blog.jsx";
 import Blogs from "../Pages/Blogs.jsx";
+import EditBlog from "../AdminPages/Component/EditBlog.jsx";
 
 export default function AllRoutes() {
   return (
@@ -213,6 +214,15 @@ export default function AllRoutes() {
           element={
             <AdminAuth>
               <WriteBlog />
+            </AdminAuth>
+          }
+        />
+
+        <Route
+          path="edit_blog/:id"
+          element={
+            <AdminAuth>
+              <EditBlog />
             </AdminAuth>
           }
         />

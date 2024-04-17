@@ -1,23 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import "../Styles/Blog.css";
+import { Link, useLocation, useParams } from "react-router-dom";
+import "../Styles/blog.css";
 import { GetRequest } from "../Services/ApiCall";
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import { Helmet } from "react-helmet";
-import Navbar from "../Components/Navbar";
 import { formatReadableDate } from "../Services/DateRelated";
 
 const BlogPost = () => {
     const url = import.meta.env.VITE_API_URL;
   const { id } = useParams(); // Get the ID from the URL
   const [blogData, setBlogData] = useState(null);
+  const [relatedBlog, setRelatedBlog] = useState([]);
 
   useEffect(() => {
       // Fetch blog data using the ID
       if (id == "") return;
     GetRequest(`${url}blog/${id}`).then((res) => {
-        setBlogData(res.data);
-        // console.log(res)
+      if (res.status) {
+        setBlogData(res.data.blog);
+        setRelatedBlog(res.data.relatedBlogs);
+      } else {
+        console.log(res)
+        
+      }
+      
     })
   }, [id]); // Fetch data whenever ID changes
 
@@ -30,17 +36,15 @@ const BlogPost = () => {
 
   return (
     <Flex
-      // minH={"-100vh"}
-      // alignItems={"start"}
-      // justifyContent={"start"}
-      flexDir={"column"}
-      color="white"
-      bg="white"
+      flexDirection={"column"}
+      color="black"
+      bg="#f9f9f9"
+      minHeight="100vh"
+      fontFamily="Roboto, sans-serif"
     >
       <Helmet>
         <title>{title}</title>
         <meta name="description" content={short_description} />
-
         <link
           rel="shortcut icon"
           type="image/png"
@@ -54,62 +58,106 @@ const BlogPost = () => {
           href="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/favicon.png"
         />
       </Helmet>
-      <Box width={"100%"} minH="100vh">
-        <Flex bg="purple">
+      <Box width={"100%"} minHeight="100vh">
+        <Flex
+          alignItems="center"
+          justifyContent="space-between"
+          bg="#5426c0"
+          p="10px"
+          mb="20px"
+        >
           <Image
             cursor={"pointer"}
             w={"60px"}
             h="60px"
             src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/favicon_io/android-chrome-512x512.png"
             alt="FutureIQRA"
-            onClick={() => navitage("/")}
+            onClick={() => navigate("/")}
           />
-        </Flex>
 
-        <Flex justifyContent={"space-evenly"} flexWrap={"wrap"}>
-          <Box
-            width={["100%", "100%", "70%"]}
-            m={["2px", "4px", "10px"]}
-            p={["2px", "4px", "10px"]}
-            bg="white"
-          >
-            <Text
-              fontSize={["2xl", "3xl", "4xl"]}
-              fontWeight={"extrabold"}
-              noOfLines={1}
+          <Link to="/blogs">
+            <Text color="white" >More Blogs...</Text> </Link>
+        </Flex>
+        <Flex flexDir={["column", "row", "row"]} >
+          <Box mx="20px" my="10px" w={['90%', "80%", "70%"]}>
+            <Heading
+              fontWeight="bold"
+              color="#5426c0"
+              fontFamily={"Roboto slab, serif"}
             >
               {title}
-            </Text>
+            </Heading>
             <Text
-              fontFamily={"Roboto"}
-              fontSize={["sm"]}
-              fontWeight={"hairline"}
+              fontSize={["12px"]}
+              mb="10px"
+              fontWeight="hairline"
+              color="black"
             >
               {short_description}
             </Text>
-            <Text
-              fontFamily={"Roboto"}
-              fontSize={["sm", "md", "lg"]}
-              fontWeight={"semibold"}
-            >
-              By: &nbsp;
-              <strong>{author?.name}</strong>
+            <Text fontSize={["sm"]} fontWeight="semibold">
+              By: <strong>{author?.name}</strong>
             </Text>
-
-            <Text
-              fontFamily={"Roboto"}
-              fontSize={["sm", "md", "lg"]}
-              fontWeight={"semibold"}
-            >
-              Date: &nbsp;
-              <strong>{formatReadableDate(createdAt)}</strong>
+            <Text fontSize={["sm"]} fontWeight="semibold">
+              Date: <strong>{formatReadableDate(createdAt)}</strong>
             </Text>
-
+            <Box my="20px" bg="#5426c0" height="5px" />
             <Box
-              fontFamily={"Roboto"}
               fontSize={["sm", "md", "lg"]}
+              color="#333"
+              fontFamily={"Roboto"}
+              // fontWeight="light"
               dangerouslySetInnerHTML={{ __html: body }}
-            ></Box>
+            />
+          </Box>
+
+          {/* related blogs */}
+          <Box>
+            {relatedBlog?.map((blog) => {
+              return (
+                <Box
+                  w={["90%","250px"]}
+                  p="10px"
+                  borderRadius="10px"
+                  bg="blackAlpha.200"
+                  key={blog._id}
+                  margin="20px"
+                  cursor="pointer"
+                  h={"250px"}
+                  overflow={"hidden"}
+                >
+                  <Link
+                    to={`/blog/${blog._id}`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <Text
+                      color="#5426c0"
+                      fontWeight="bold"
+                      fontSize="xl"
+                      marginBottom="10px"
+                    >
+                      {blog.title}
+                    </Text>
+
+                    <Box
+                      overflow={"hidden"}
+                      h={"150px"}
+                      //   dangerouslySetInnerHTML={{ __html: blog.body }}
+                    >
+                      <Text
+                        fontSize="sm"
+                        noOfLines={4}
+                        fontFamily={"Roboto"}
+                        fontWeight={"light"}
+                      >
+                        {" "}
+                        {blog.short_description}
+                      </Text>
+                    </Box>
+                  </Link>
+                </Box>
+              );
+            })}
           </Box>
         </Flex>
       </Box>

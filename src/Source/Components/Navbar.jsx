@@ -20,7 +20,8 @@ export default function Navbar({ ...args }) {
     <Box
       // border={"1px solid red"}
       w={"100%"}
-      backgroundColor={"purple"}
+      // backgroundColor={"purple"}
+      bg="#5426c0"
       px={[1, 10]}
       py={["0", "2px"]}
       display={"flex"}
