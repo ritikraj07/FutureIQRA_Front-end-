@@ -108,10 +108,11 @@ export default function Blogs() {
         />
       </Helmet>
 
-      <Box width={"100%"} minH="100vh">
+      <Box width={""} minH="100vh">
         <Flex
           bg="#5426c0"
           alignItems={"center"}
+          px={["5px", "10px", "20px"]}
           justifyContent={"space-between"}
         >
           <Image
@@ -124,15 +125,16 @@ export default function Blogs() {
           />
 
           <Flex
-            px={"50px"}
+            // px={"50px"}
             gap={"20px"}
             alignItems={"center"}
             justifyContent={"space-between"}
           >
             <InputGroup
+              size={["sm", "md", "lg"]}
               bg={"white"}
               borderRadius={10}
-              w={["200px"]}
+              w={["150px", "150px", "200px"]}
               my={[1, 2, 0]}
             >
               <Input
@@ -150,11 +152,25 @@ export default function Blogs() {
                 onClick={() => fetchBlog()}
               />
             </InputGroup>
+            <Box display={["none", "block", "block"]}>
+              <BlogCategorySelect
+                value={selectedCategory}
+                onChange={handleCategoryChange}
+              />
+            </Box>
+          </Flex>
+        </Flex>
+
+        <Flex justifyContent={"flex-end"}
+          alignItems={"flex-end"}
+          
+          display={["block", "none", "none"]} p="10px" bg={"#5426c0"}>
+          
             <BlogCategorySelect
               value={selectedCategory}
               onChange={handleCategoryChange}
             />
-          </Flex>
+          
         </Flex>
 
         <Flex
@@ -248,10 +264,13 @@ const BlogPost = ({ blog }) => {
 
 const BlogCategorySelect = ({ value, onChange }) => {
   return (
-    <Select w="200px"
+    <Select
+      w="200px"
+      size={["sm", "md", "lg"]}
       value={value}
       onChange={onChange}
       bg="white"
+      
     >
       <option value="">Select a category</option>
       {Object.values(BlogCategory).map((category) => (
