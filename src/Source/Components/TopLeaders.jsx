@@ -48,7 +48,7 @@ export default function TopLeaders({ leaderboard }) {
           >
             <Image
               w={["60%", "70%", "80%"]}
-              src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/rank2.png"
+              src="https://futureiqra.onrender.com/image/rank2.png"
             />
           </Flex>
         </Flex>
@@ -91,7 +91,7 @@ export default function TopLeaders({ leaderboard }) {
           >
             <Image
               w={["60%", "70%", "80%"]}
-              src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/rank1.png"
+              src="https://futureiqra.onrender.com/image/rank1.png"
             />
           </Flex>
         </Flex>
@@ -135,7 +135,7 @@ export default function TopLeaders({ leaderboard }) {
           >
             <Image
               w={["60%", "70%", "80%"]}
-              src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/rank3.png"
+              src="https://futureiqra.onrender.com/image/rank3.png"
             />
           </Flex>
         </Flex>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Heading, Text, UnorderedList, ListItem } from "@chakra-ui/react";
 
-const PrivacyPolicy = () => {
+export default function PrivacyPolicy(){
   return (
     <Box bg={"white"}>
       <Box m={"10px 50px"}>
@@ -74,4 +74,3 @@ const PrivacyPolicy = () => {
   );
 };
 
-export default PrivacyPolicy;

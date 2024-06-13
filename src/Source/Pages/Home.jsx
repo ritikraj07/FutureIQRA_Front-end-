@@ -180,9 +180,10 @@ export default function Home() {
         justifyContent={"space-between"}
       >
         <Image
-          w={"100px"}
-          h="100px"
-          src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/favicon_io/android-chrome-512x512.png"
+          w={"70px"}
+          h="70px"
+          borderRadius={"50%"}
+          src="https://futureiqra.onrender.com/image/icon.png"
           alt="Future IQRA"
         />
 
@@ -283,7 +284,7 @@ export default function Home() {
                   h={["270px"]}
                   w={"100%"}
                   borderRadius={10}
-                  src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/vip1.jpg"
+                  src="https://futureiqra.onrender.com/image/vip1.jpg"
                   alt="vip1"
                 />
               </Box>
@@ -307,7 +308,7 @@ export default function Home() {
                   w={"100%"}
                   borderRadius={10}
                   alt="vip2"
-                  src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/vip2.jpg"
+                  src="https://futureiqra.onrender.com/image/vip2.jpg"
                 />
               </Box>
               <Box className="back">
@@ -328,7 +329,7 @@ export default function Home() {
                   className="image"
                   h={["270px"]}
                   borderRadius={10}
-                  src="https://65b52090c23cc3b62429bb24--joyful-kheer-008761.netlify.app/Accets/referearn.png"
+                  src="https://futureiqra.onrender.com/image/referearn.png"
                 />
               </Box>
               <Box className="back">
@@ -348,7 +349,7 @@ export default function Home() {
                   className="image"
                   h={["270px"]}
                   borderRadius={10}
-                  src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/leaderboard.jpg"
+                  src="https://futureiqra.onrender.com/image/leaderboard.jpg"
                 />
               </Box>
               <Box className="back">
@@ -368,7 +369,7 @@ export default function Home() {
                   className="image"
                   h={["270px"]}
                   borderRadius={10}
-                  src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/qna.png"
+                  src="https://futureiqra.onrender.com/image/qna.png"
                 />
               </Box>
               <Box className="back">
@@ -388,7 +389,7 @@ export default function Home() {
                   className="image"
                   h={["270px"]}
                   borderRadius={10}
-                  src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/contact.png"
+                  src="https://futureiqra.onrender.com/image/contact.png"
                 />
               </Box>
               <Box className="back">

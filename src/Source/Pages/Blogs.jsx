@@ -98,13 +98,13 @@ export default function Blogs() {
           rel="shortcut icon"
           type="image/png"
           sizes="512x512"
-          href="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/favicon.png"
+          href="https://futureiqra.onrender.com/image/favicon.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="512x512"
-          href="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/favicon.png"
+          href="https://futureiqra.onrender.com/image/favicon.png"
         />
       </Helmet>
 
@@ -119,7 +119,7 @@ export default function Blogs() {
             cursor={"pointer"}
             w={"60px"}
             h="60px"
-            src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/favicon_io/android-chrome-512x512.png"
+            src="https://futureiqra.onrender.com/image/favicon.png"
             alt="FutureIQRA"
             onClick={() => navigate("/")}
           />
@@ -161,16 +161,17 @@ export default function Blogs() {
           </Flex>
         </Flex>
 
-        <Flex justifyContent={"flex-end"}
+        <Flex
+          justifyContent={"flex-end"}
           alignItems={"flex-end"}
-          
-          display={["block", "none", "none"]} p="10px" bg={"#5426c0"}>
-          
-            <BlogCategorySelect
-              value={selectedCategory}
-              onChange={handleCategoryChange}
-            />
-          
+          display={["block", "none", "none"]}
+          p="10px"
+          bg={"#5426c0"}
+        >
+          <BlogCategorySelect
+            value={selectedCategory}
+            onChange={handleCategoryChange}
+          />
         </Flex>
 
         <Flex

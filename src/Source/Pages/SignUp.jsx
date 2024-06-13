@@ -125,7 +125,7 @@ const handleClick = () => setShow(!show);
       password: password,
       referby: referCode,
       image:
-        "https://6570556c9c603163391e8ba0--joyful-kheer-008761.netlify.app/Avatar/avatar1.jpg",
+        "https://futureiqra.onrender.com/Avatar/avatar1.jpg",
     };
 
     setIsLoading(true)
@@ -202,7 +202,7 @@ const handleClick = () => setShow(!show);
         top={[1, 5]}
         left={[1, 30]}
         h="80px"
-        src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/favicon_io/android-chrome-512x512.png"
+        src="https://futureiqra.onrender.com/image/icon.png"
         alt="FutureIQRA"
       />
       <Box w={"100%"} display={"flex"} flexDir={"column"} alignItems={"center"}>

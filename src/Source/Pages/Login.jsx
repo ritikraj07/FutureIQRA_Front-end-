@@ -115,7 +115,7 @@ export default function Login() {
         top={[1, 5]}
         left={[1, 30]}
         h="80px"
-        src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/favicon_io/android-chrome-512x512.png"
+        src="https://futureiqra.onrender.com/image/icon.png"
         alt="Future IQRA"
       />
       <Box w={"100%"} display={"flex"} flexDir={"column"} alignItems={"center"}>

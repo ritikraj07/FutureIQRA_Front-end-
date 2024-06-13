@@ -49,13 +49,13 @@ const BlogPost = () => {
           rel="shortcut icon"
           type="image/png"
           sizes="512x512"
-          href="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/favicon.png"
+          href="https://futureiqra.onrender.com/image/favicon.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="512x512"
-          href="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/favicon.png"
+          href="https://futureiqra.onrender.com/image/favicon.png"
         />
       </Helmet>
       <Box width={"100%"} minHeight="100vh">
@@ -70,16 +70,18 @@ const BlogPost = () => {
             cursor={"pointer"}
             w={"60px"}
             h="60px"
-            src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/favicon_io/android-chrome-512x512.png"
+            borderRadius={"50%"}
+            src="https://futureiqra.onrender.com/image/icon.png"
             alt="FutureIQRA"
             onClick={() => navigate("/")}
           />
 
           <Link to="/blogs">
-            <Text color="white" >More Blogs...</Text> </Link>
+            <Text color="white">More Blogs...</Text>{" "}
+          </Link>
         </Flex>
-        <Flex flexDir={["column", "row", "row"]} >
-          <Box mx="20px" my="10px" w={['90%', "80%", "70%"]}>
+        <Flex flexDir={["column", "row", "row"]}>
+          <Box mx="20px" my="10px" w={["90%", "80%", "70%"]}>
             <Heading
               fontWeight="bold"
               color="#5426c0"
@@ -116,7 +118,7 @@ const BlogPost = () => {
             {relatedBlog?.map((blog) => {
               return (
                 <Box
-                  w={["90%","250px"]}
+                  w={["90%", "250px"]}
                   p="10px"
                   borderRadius="10px"
                   bg="blackAlpha.200"

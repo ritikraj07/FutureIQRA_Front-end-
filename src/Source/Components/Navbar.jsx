@@ -33,7 +33,8 @@ export default function Navbar({ ...args }) {
         cursor={"pointer"}
         w={"60px"}
         h="60px"
-        src="https://65b51b3151be0ca5adcbbb85--joyful-kheer-008761.netlify.app/Accets/favicon_io/android-chrome-512x512.png"
+        borderRadius={"50%"}
+        src="https://futureiqra.onrender.com/image/icon.png"
         alt="FutureIQRA"
         onClick={() => navitage("/")}
       />
