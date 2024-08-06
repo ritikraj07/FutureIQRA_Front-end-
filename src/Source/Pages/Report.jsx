@@ -9,7 +9,7 @@ export default function Report() {
   const toast = useToast();
   const { name } = useSelector((state) => state.User)
   const [isLoading, setLoading] = useState(false)
-  const [reportDetali, setReportDetail] = useState({
+  const [reportDetail, setReportDetail] = useState({
     name:name,email:'',report:'',subject:''
   })
 
@@ -22,7 +22,7 @@ export default function Report() {
 
   function ReportKro() {
 
-    if (reportDetali.name.length == 0) {
+    if (reportDetail.name.length == 0) {
       toast({
         title: 'Please Enter Your Name',
         status: 'error',
@@ -30,8 +30,8 @@ export default function Report() {
       })
       return
     }
-    if (!validateEmail(reportDetali.email)) {
-      if (reportDetali.email.length == 0) {
+    if (!validateEmail(reportDetail.email)) {
+      if (reportDetail.email.length == 0) {
          toast({
            title: "Please Enter Your eamil",
            status: "error",
@@ -47,7 +47,7 @@ export default function Report() {
       
        return;
     }
-    if (reportDetali.subject.length == 0) {
+    if (reportDetail.subject.length == 0) {
       toast({
         title: "Please Enter Subject",
         status: "error",
@@ -56,7 +56,7 @@ export default function Report() {
 
       return 
     }
-    if (reportDetali.report.length == 0) {
+    if (reportDetail.report.length == 0) {
        toast({
          title: "Please Enter Your Message",
          status: "error",
@@ -67,9 +67,9 @@ export default function Report() {
     setLoading(true)
 
     let data = {
-      report: reportDetali.report,
-      email: reportDetali.email,
-      subject: reportDetali.subject,
+      report: reportDetail.report,
+      email: reportDetail.email,
+      subject: reportDetail.subject,
     };
 
     
@@ -81,7 +81,7 @@ export default function Report() {
             status: "success",
             duration: 3000,
           });
-          setReportDetail({ ...reportDetali, subject: "", report: "" });
+          setReportDetail({ ...reportDetail, subject: "", report: "" });
       } else {
         console.log("error", res);
              toast({
@@ -131,31 +131,31 @@ export default function Report() {
           <Stack spacing={3} px={[1, 10]}>
             <Input
               placeholder="Your Name"
-              value={reportDetali.name}
+              value={reportDetail.name}
               onChange={(e) =>
-                setReportDetail({ ...reportDetali, name: e.target.value })
+                setReportDetail({ ...reportDetail, name: e.target.value })
               }
             />
             <Input
               placeholder="Your Email"
-              value={reportDetali.email}
+              value={reportDetail.email}
               onChange={(e) =>
-                setReportDetail({ ...reportDetali, email: e.target.value })
+                setReportDetail({ ...reportDetail, email: e.target.value })
               }
             />
             <Input
               placeholder="Subject"
-              value={reportDetali.subject}
+              value={reportDetail.subject}
               onChange={(e) =>
-                setReportDetail({ ...reportDetali, subject: e.target.value })
+                setReportDetail({ ...reportDetail, subject: e.target.value })
               }
             />
             <Textarea
-              value={reportDetali.report}
+              value={reportDetail.report}
               onChange={(e) =>
-                setReportDetail({ ...reportDetali, report: e.target.value })
+                setReportDetail({ ...reportDetail, report: e.target.value })
               }
-              placeholder={`Hi ${reportDetali.name}, enter your message here`}
+              placeholder={`Hi ${reportDetail.name}, enter your message here`}
             />
             <Button
               loadingText="Reporting..."

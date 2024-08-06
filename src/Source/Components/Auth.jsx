@@ -47,7 +47,7 @@ export default function Auth({ children }) {
 
   return (
     <>
-      {/* {isLoading ? (
+       {isLoading ? (
         <div style={{ position: 'fixed', width: '50vh', height: '50vh', top: '45%', left: '45%' }}>
           <ReactLoading
             type={"bars"}
@@ -57,11 +57,11 @@ export default function Auth({ children }) {
 
           />
         </div>
-      ) :  */}
-       { loggedin ? (<> {children} </>) : (<Navigate to="/login" replace={true} />)}
+      ) :  
+       loggedin ? (<> {children} </>) : (<Navigate to="/login" replace={true} />)
       
       
-       {/* } */}
+        } 
     </>
   );
 }
